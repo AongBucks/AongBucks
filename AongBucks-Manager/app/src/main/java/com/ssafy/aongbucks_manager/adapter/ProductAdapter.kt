@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ssafy.aongbucks_manager.databinding.ListItemMenuBinding
 import com.ssafy.aongbucks_manager.dto.Product
-import com.ssafy.aongbucks_manager.fragment.OrderFragment
+import com.ssafy.aongbucks_manager.fragment.MenuFragment
 
 private const val TAG = "MenuAdapter_싸피"
-class MenuAdapter(val context: Context, val fContext: OrderFragment, var productList:List<Product>) :RecyclerView.Adapter<MenuAdapter.MenuHolder>(){
+class ProductAdapter(val context: Context, val fContext: MenuFragment, var productList:List<Product>) :RecyclerView.Adapter<ProductAdapter.MenuHolder>(){
 
     inner class MenuHolder(private val binding: ListItemMenuBinding) : RecyclerView.ViewHolder(binding.root){
         // binding을 객체로 받아 데이터와 연결해준다.

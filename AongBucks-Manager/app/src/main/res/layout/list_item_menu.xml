@@ -10,7 +10,7 @@
             type="com.ssafy.aongbucks_manager.dto.Product" />
         <variable
             name="fragment"
-            type="com.ssafy.aongbucks_manager.fragment.OrderFragment" />
+            type="com.ssafy.aongbucks_manager.fragment.MenuFragment" />
     </data>
 
     <LinearLayout

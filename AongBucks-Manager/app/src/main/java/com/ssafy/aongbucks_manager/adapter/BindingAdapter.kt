@@ -11,3 +11,11 @@ fun bindGlideFromResName(view: ImageView, img: String) {
         .load("${ApplicationClass.MENU_IMGS_URL}${img}")
         .into(view)
 }
+
+@BindingAdapter("imgResId")
+fun bindImageFromResource(view: ImageView, resId: Int) {
+    Glide.with(view)
+        .load("")
+        .placeholder(resId)
+        .into(view)
+}

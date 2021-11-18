@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <data>
+        <variable
+            name="menuDto"
+            type="com.ssafy.aongbucks_manager.dto.PaneMenu" />
+        <variable
+            name="activity"
+            type="com.ssafy.aongbucks_manager.activity.MainActivity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:onClick="@{activity::onPaneClickListener}"
+        android:background="@drawable/ripple_pane_item">
+
+        <ImageView
+            android:id="@+id/menuImage"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginVertical="16dp"
+            android:layout_marginLeft="32dp"
+            android:src="@drawable/ic_baseline_add_24"
+            app:imgResId="@{menuDto.img}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/default_green" />
+
+        <TextView
+            android:id="@+id/menuTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:gravity="center"
+            android:text="@{menuDto.name}"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="@color/house_green"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/menuImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/menuImage"
+            app:layout_constraintTop_toTopOf="@+id/menuImage" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

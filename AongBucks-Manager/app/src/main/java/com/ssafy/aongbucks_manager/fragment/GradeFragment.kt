@@ -3,9 +3,9 @@ package com.ssafy.aongbucks_manager.fragment
 import androidx.fragment.app.Fragment
 
 // 하단 주문 탭
-private const val TAG = "OrderFragment_싸피"
-class OrderFragment : Fragment(){
-
+private const val TAG = "GradeFragment_싸피"
+class GradeFragment : Fragment(){
+//
 //    private lateinit var menuAdapter: MenuAdapter
 //    private lateinit var mainActivity: MainActivity
 //    private lateinit var prodList:List<Product>
@@ -49,7 +49,7 @@ class OrderFragment : Fragment(){
 //        override fun onSuccess( code: Int, productList: List<Product>) {
 //            productList.let {
 //                Log.d(TAG, "onSuccess: ${productList}")
-//                menuAdapter = MenuAdapter(activity!!, this@OrderFragment, productList)
+//                menuAdapter = MenuAdapter(activity!!, this@GradeFragment, productList)
 //            }
 //
 //            binding.recyclerViewMenu.apply {
