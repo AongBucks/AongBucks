@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ssafy.aongbucks_manager.activity.MainActivity
-import com.ssafy.aongbucks_manager.adapter.ProductAdapter
+import com.ssafy.aongbucks_manager.adapter.MenuAdapter
 import com.ssafy.aongbucks_manager.databinding.FragmentMenuBinding
 import com.ssafy.aongbucks_manager.dto.Product
 import com.ssafy.aongbucks_manager.service.ProductService
@@ -21,7 +21,7 @@ import com.ssafy.aongbucks_manager.util.RetrofitCallback
 private const val TAG = "MenuFragment_싸피"
 class MenuFragment : Fragment(){
 
-    private lateinit var productAdapter: ProductAdapter
+    private lateinit var menuAdapter: MenuAdapter
     private lateinit var mainActivity: MainActivity
     private lateinit var prodList:List<Product>
     private lateinit var binding:FragmentMenuBinding
@@ -64,12 +64,12 @@ class MenuFragment : Fragment(){
         override fun onSuccess( code: Int, productList: List<Product>) {
             productList.let {
                 Log.d(TAG, "onSuccess: ${productList}")
-                productAdapter = ProductAdapter(activity!!, this@MenuFragment, productList)
+                menuAdapter = MenuAdapter(activity!!, this@MenuFragment, productList)
             }
 
             binding.recyclerViewMenu.apply {
                 layoutManager = GridLayoutManager(context,5)
-                adapter = productAdapter
+                adapter = menuAdapter
                 //원래의 목록위치로 돌아오게함
                 adapter!!.stateRestorationPolicy =
                     RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
