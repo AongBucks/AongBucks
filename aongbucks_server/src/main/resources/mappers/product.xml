@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- name space는 BookRepo의 fully qualified name으로 설정한다. -->
+<mapper namespace="com.ssafy.cafe.model.dao.ProductDao">
+	<insert id="insert" parameterType="Product">
+		INSERT INTO t_product
+		(name,
+		type,
+		price,
+		img)
+		VALUES
+		(#{name},
+		#{type},
+		#{price},
+		#{img})
+	</insert>
+
+	<update id="update" parameterType="Product">
+		UPDATE t_product
+		SET
+		name = #{name},
+		type = #{type},
+		price = #{price},
+		img = #{img}
+		WHERE id = #{id}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM t_product
+		WHERE id
+		= #{id}
+	</delete>
+	<select id="select" parameterType="int" resultType="Product">
+		SELECT * FROM
+		t_product
+		WHERE id = #{id}
+	</select>
+	<select id="selectAll" resultType="Product">
+		SELECT * FROM t_product order by id asc
+	</select>
+	
+	
+	<!-- backend  관통 과정에서 추가됨 -->
+    <select id="selectWithComment" resultType="map" parameterType="int">
+    select p.name, p.price, p.img, c.id as commentId, c.user_id, c.rating, c.comment, p.type,
+    (select name from t_user where id=c.user_Id    ) userName,
+    (select count(rating)  from t_comment where product_id=p.id) as commentCnt,
+    (select avg(rating)  from t_comment where product_id=p.id) as avg,
+    (select sum(quantity) from t_order_detail where product_id=p.id) as sells
+from t_product p left join  t_comment c on p.id=c.product_id
+where p.id=#{productId}
+order by c.id desc;
+    </select>
+	
+</mapper>

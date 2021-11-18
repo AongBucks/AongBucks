@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- name space는 BookRepo의 fully qualified name으로 설정한다. -->
+<mapper namespace="com.ssafy.cafe.model.dao.UserDao">
+	<insert id="insert" parameterType="User">
+INSERT INTO t_user
+    (id, 
+    name, 
+    pass)
+VALUES
+    (#{id}, 
+    #{name}, 
+    #{pass})
+	</insert>
+	
+	<update id="update" parameterType="User">
+UPDATE t_user
+SET
+    name = #{name}, 
+    pass = #{pass}
+WHERE id = #{id}
+	</update>
+	
+		<update id="updateStamp" parameterType="User">
+UPDATE t_user
+SET
+    stamps = stamps + #{stamps}
+WHERE id = #{id}
+	</update>
+	
+	
+	<delete id="delete" parameterType="string">
+		DELETE FROM t_user
+		WHERE id = #{id}
+	</delete>
+	<select id="select" parameterType="string" resultType="User">
+		SELECT * FROM t_user
+		WHERE id = #{id}
+	</select>
+	<select id="selectAll" resultType="User">
+		SELECT * FROM t_user
+	</select>
+</mapper>

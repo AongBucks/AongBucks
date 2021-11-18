@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- name space는 BookRepo의 fully qualified name으로 설정한다. -->
+<mapper namespace="com.ssafy.cafe.model.dao.OrderDao">
+	<insert id="insert" parameterType="Order">
+		<selectKey keyProperty="id" resultType="int" order="AFTER">
+			select max(o_id) from t_order
+		</selectKey>
+		INSERT INTO t_order
+		(user_id,
+		order_table)
+		VALUES
+		(#{userId},
+		#{orderTable})
+	</insert>
+
+	<update id="update" parameterType="Order">
+		UPDATE t_order
+		SET
+		completed =
+		#{completed}
+		WHERE o_id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		DELETE FROM t_order
+		WHERE o_id
+		=
+		#{id}
+	</delete>
+	<select id="select" parameterType="int" resultMap="OrderBasic">
+		SELECT * FROM
+		t_order
+		WHERE o_id = #{id}
+		order by o_id desc
+	</select>
+	<select id="selectAll" resultMap="OrderBasic">
+		SELECT * FROM t_order order by
+		o_id desc
+	</select>
+
+	<select id="selectByUser" resultMap="OrderBasic"
+		parameterType="string">
+		SELECT * FROM t_order where user_id=#{userId} order by
+		o_id desc
+	</select>
+
+	<select id="selectWithDetail" resultMap="OrderWithDetail">
+		select o.o_id, o.user_id, o.order_table, o.order_time, o.completed,
+		d.d_id, d.order_id, d.product_id, d.quantity
+		from t_order o join
+		t_order_detail d on o.o_id = d.order_id
+		where o.o_id=#{id}
+		order by d.d_id desc
+	</select>
+
+	<resultMap type="Order" id="OrderBasic">
+		<id column="o_id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="order_table" property="orderTable" />
+		<result column="order_time" property="orderTime" />
+		<result column="completed" property="completed" />
+	</resultMap>
+
+	<resultMap type="Order" id="OrderWithDetail" extends="OrderBasic">
+		<association property="stamp" column="order_id"
+			javaType="Stamp"
+			resultMap="com.ssafy.cafe.model.dao.StampDao.StampBasic"></association>
+		<collection property="details" column="order_id"
+			javaType="list" ofType="OrderDetail"
+			resultMap="com.ssafy.cafe.model.dao.OrderDetailDao.OrderDetailBasic" />
+	</resultMap>
+
+	<select id="selectOrderTotalInfo" resultType="map"
+		parameterType="int">
+		select o.o_id, o.order_table, o.order_time , d.quantity, p.name, p.price as
+		unitprice, p.img, s.quantity as stamp, d.quantity*p.price as
+		totalprice
+		from t_order o join t_order_detail d on o.o_id = d.order_id
+		join t_product p on d.product_id =p.id
+		join t_stamp s on o.o_id=s.order_id
+
+		where o_id=#{oid};
+	</select>
+
+	<!-- 관통 프로젝트 6단계에서 추가됨 -->
+	<select id="getLastMonthOrder" parameterType="string" resultType="map">
+	select o.o_id, o.user_id, o.order_time, d.quantity, p.id, p.name, p.type, p.price, p.img
+		from t_order o join t_order_detail d on d.order_id=o.o_id
+               join t_product p on d.product_id = p.id
+		where user_id=#{id} and order_time > date_add(now(), interval -1 month)
+		order by o.o_id desc, d.d_id desc
+</select>
+</mapper>

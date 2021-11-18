@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- name space는 BookRepo의 fully qualified name으로 설정한다. -->
+<mapper namespace="com.ssafy.cafe.model.dao.OrderDetailDao">
+	<insert id="insert" parameterType="OrderDetail">
+INSERT INTO t_order_detail
+    (
+    order_id,
+    product_id, 
+    quantity)
+VALUES
+    ( 
+    #{orderId},
+    #{productId}, 
+    #{quantity})
+	</insert>
+
+
+	<delete id="delete" parameterType="int">
+		DELETE FROM t_order_detail
+		WHERE d_id =
+		#{id}
+	</delete>
+	<select id="select" parameterType="int" resultMap="OrderDetailBasic">
+		SELECT * FROM
+		t_order_detail
+		WHERE d_id = #{id} order by d_id desc
+	</select>
+	<select id="selectAll" resultMap="OrderDetailBasic">
+		SELECT * FROM t_order_detail order by d_id desc
+	</select>
+	
+	<resultMap type="OrderDetail" id="OrderDetailBasic">
+		<id column="d_id" property="id"/>
+		<result column="order_id" property="orderId"/>
+		<result column="product_id" property="productId"/>
+		<result column="quantity" property="quantity"/>
+	</resultMap>
+</mapper>
