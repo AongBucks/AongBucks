@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -54,16 +55,16 @@ class OrderFragment : Fragment(){
         ProductService().getProductList(ProductCallback())
     }
 
+    fun onMenuClickListener(view: View) {
+        Log.d(TAG, "onMenuClickListener: click!")
+        Toast.makeText(view.context, "click... ${view.tag}", Toast.LENGTH_SHORT).show()
+    }
+
     inner class ProductCallback: RetrofitCallback<List<Product>> {
         override fun onSuccess( code: Int, productList: List<Product>) {
             productList.let {
                 Log.d(TAG, "onSuccess: ${productList}")
-                menuAdapter = MenuAdapter(productList)
-                menuAdapter.setItemClickListener(object : MenuAdapter.ItemClickListener{
-                    override fun onClick(view: View, position: Int, productId:Int) {
-//                        mainActivity.openFragment(3, "productId", productId)
-                    }
-                })
+                menuAdapter = MenuAdapter(activity!!, this@OrderFragment, productList)
             }
 
             binding.recyclerViewMenu.apply {

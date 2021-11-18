@@ -1,59 +1,40 @@
 package com.ssafy.aongbucks_manager.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.ssafy.aongbucks_manager.R
-import com.ssafy.aongbucks_manager.config.ApplicationClass
+import com.ssafy.aongbucks_manager.databinding.ListItemMenuBinding
 import com.ssafy.aongbucks_manager.dto.Product
+import com.ssafy.aongbucks_manager.fragment.OrderFragment
 
 private const val TAG = "MenuAdapter_싸피"
-class MenuAdapter(var productList:List<Product>) :RecyclerView.Adapter<MenuAdapter.MenuHolder>(){
+class MenuAdapter(val context: Context, val fContext: OrderFragment, var productList:List<Product>) :RecyclerView.Adapter<MenuAdapter.MenuHolder>(){
 
-    inner class MenuHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val menuName = itemView.findViewById<TextView>(R.id.textMenuNames)
-        val menuImage = itemView.findViewById<ImageView>(R.id.menuImage)
-
-        fun bindInfo(product : Product){
-            menuName.text = product.name
-            Glide.with(itemView)
-                .load("${ApplicationClass.MENU_IMGS_URL}${product.img}")
-                .into(menuImage)
-
-            itemView.setOnClickListener{
-                itemClickListner.onClick(it, layoutPosition, productList[layoutPosition].id)
+    inner class MenuHolder(private val binding: ListItemMenuBinding) : RecyclerView.ViewHolder(binding.root){
+        // binding을 객체로 받아 데이터와 연결해준다.
+        fun bind(item: Product) {
+            binding.apply {
+                productDto = item
+                fragment = fContext
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_menu, parent, false)
-        return MenuHolder(view)
+        var listItemMenuBinding =
+            ListItemMenuBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MenuHolder(listItemMenuBinding)
     }
 
     override fun onBindViewHolder(holder: MenuHolder, position: Int) {
+        val dto = productList[position]
         holder.apply{
-            bindInfo(productList[position])
+            bind(dto)
+            itemView.tag = dto
         }
     }
 
-    override fun getItemCount(): Int {
-        return productList.size
-    }
-
-    //클릭 인터페이스 정의 사용하는 곳에서 만들어준다.
-    interface ItemClickListener {
-        fun onClick(view: View,  position: Int, productId:Int)
-    }
-    //클릭리스너 선언
-    private lateinit var itemClickListner: ItemClickListener
-    //클릭리스너 등록 매소드
-    fun setItemClickListener(itemClickListener: ItemClickListener) {
-        this.itemClickListner = itemClickListener
-    }
+    override fun getItemCount() = productList.size
 }
 

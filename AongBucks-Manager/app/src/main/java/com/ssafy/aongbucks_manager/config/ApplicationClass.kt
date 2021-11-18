@@ -1,6 +1,5 @@
 package com.ssafy.aongbucks_manager.config
 
-import android.Manifest
 import android.app.Application
 import com.ssafy.aongbucks_manager.intercepter.AddCookiesInterceptor
 import com.ssafy.aongbucks_manager.intercepter.ReceivedCookiesInterceptor
@@ -21,15 +20,6 @@ class ApplicationClass : Application() {
 
         lateinit var sharedPreferencesUtil: SharedPreferencesUtil
         lateinit var retrofit: Retrofit
-
-        // 모든 퍼미션 관련 배열
-        val requiredPermissions = arrayOf(
-            Manifest.permission.ACCESS_FINE_LOCATION,
-        )
-
-        // 주문 준비 완료 확인 시간 1분
-        const val ORDER_COMPLETED_TIME = 60*1000
-
     }
 
 
