@@ -2,16 +2,26 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ssafy.aongbucks_manager">
 
+    <!--  서버와의 통신을 위한 Internet 허용  -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
+        android:name="com.ssafy.aongbucks_manager.config.ApplicationClass"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AongBucksManager">
-        <activity android:name=".MainActivity"
-            android:screenOrientation="landscape"
-            android:exported="true">
+        android:theme="@style/Theme.AongBucksManager"
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true"
+            android:usesCleartextTraffic="true" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:exported="true"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
