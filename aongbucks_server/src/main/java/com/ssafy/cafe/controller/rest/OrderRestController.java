@@ -30,6 +30,13 @@ public class OrderRestController {
         return order.getId();
     }
     
+    @GetMapping("/manager")
+    @ApiOperation(value="전체 주문의 상세 내역을 목록 형태로 반환한다."
+            + "이 정보는 사용자 정보 화면의 주문 내역 조회에서 사용된다.", response = List.class)
+    public List<Map> getOrderDetail() {
+        return oService.selectAllOrderTotalInfo();
+    }
+    
     @GetMapping("/{orderId}")
     @ApiOperation(value="{orderId}에 해당하는 주문의 상세 내역을 목록 형태로 반환한다."
             + "이 정보는 사용자 정보 화면의 주문 내역 조회에서 사용된다.", response = List.class)

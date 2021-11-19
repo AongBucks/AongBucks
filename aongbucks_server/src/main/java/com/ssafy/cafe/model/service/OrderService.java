@@ -37,6 +37,11 @@ public interface OrderService {
      * @param order
      */
     public void updateOrder(Order order);
+    /**
+     * 관리자용. 전체 주문 정보
+     * @return
+     */
+    List<Map> selectAllOrderTotalInfo();
     
     /**
      *  back end 관통에서 추가함

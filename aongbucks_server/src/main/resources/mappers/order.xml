@@ -37,7 +37,7 @@
 	</select>
 	<select id="selectAll" resultMap="OrderBasic">
 		SELECT * FROM t_order order by
-		o_id desc
+		order_time desc
 	</select>
 
 	<select id="selectByUser" resultMap="OrderBasic"

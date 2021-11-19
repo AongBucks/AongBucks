@@ -13,7 +13,7 @@ public interface OrderDao {
 
     Order select(Integer orderId);
 
-    List<Order> selectAll();
+    List<Map> selectAll();
     
     Order selectWithDetail(int id);
     

@@ -27,8 +27,8 @@ public class MobileThrowProjectApplication {
 	   @Bean
 	    public Docket postsApi() {
 	       final ApiInfo apiInfo = new ApiInfoBuilder()
-	               .title("SSAFY Cafe Rest API")
-	               .description("<h3>SSAFY Cafe에서 제공되는 Rest api의 문서 제공</h3>")
+	               .title("AongBucks Rest API")
+	               .description("<h3>AongBucks에서 제공되는 Rest api의 문서 제공</h3>")
 	               .contact(new Contact("SSAFY", "https://edu.ssafy.com", "ssafy@ssafy.com"))
 	               .license("MIT License")
 	               .version("1.0")
