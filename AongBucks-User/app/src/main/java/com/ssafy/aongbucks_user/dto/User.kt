@@ -5,7 +5,8 @@ data class User (
     val pass : String,
     val name : String,
     val stamps : Int,
-    val grade : Int
+    val grade : Int,
+    val stampList : ArrayList<Stamp> = ArrayList(),
 ) {
     constructor(): this("", "", "", 0, 0)
     constructor(id : String, pass : String) : this(id, "", pass, 0, 0)

@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">AONGBUCKS</string>
+    <string name="login">로그인</string>
+    <string name="hello">안녕하세요.</string>
+    <string name="aongbucks">애옹벅스입니다.</string>
+    <string name="login_please">회원 서비스 이용을 위해 로그인 해주세요.</string>
+    <string name="id">아이디</string>
+    <string name="password">비밀번호</string>
+    <string name="join">회원가입</string>
+    <string name="home">Home</string>
+    <string name="order">Order</string>
+    <string name="mypage">MyPage</string>
 </resources>

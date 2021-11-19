@@ -2,7 +2,14 @@ package com.ssafy.aongbucks_user.config
 
 import android.Manifest
 import android.app.Application
+import com.ssafy.aongbucks_user.interceptor.AddCookiesInterceptor
+import com.ssafy.aongbucks_user.interceptor.ReceivedCookiesInterceptor
 import com.ssafy.aongbucks_user.util.SharedPreferencesUtil
+import okhttp3.OkHttpClient
+import okhttp3.Interceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 class ApplicationClass : Application() {
     companion object{
@@ -13,7 +20,7 @@ class ApplicationClass : Application() {
         const val IMGS_URL = "${SERVER_URL}imgs/"
 
         lateinit var sharedPreferencesUtil: SharedPreferencesUtil
-//        lateinit var retrofit: Retrofit
+        lateinit var retrofit: Retrofit
 
         // 모든 퍼미션 관련 배열
         val requiredPermissions = arrayOf(
@@ -32,16 +39,16 @@ class ApplicationClass : Application() {
         //shared preference 초기화
         sharedPreferencesUtil = SharedPreferencesUtil(applicationContext)
 
-//        val okHttpClient = OkHttpClient.Builder()
-//            .addInterceptor(AddCookiesInterceptor())
-//            .addInterceptor(ReceivedCookiesInterceptor())
-//            .connectTimeout(30, TimeUnit.SECONDS).build()
+        val okHttpClient = OkHttpClient.Builder()
+            .addInterceptor(AddCookiesInterceptor())
+            .addInterceptor(ReceivedCookiesInterceptor())
+            .connectTimeout(30, TimeUnit.SECONDS).build()
 
         // 앱이 처음 생성되는 순간, retrofit 인스턴스를 생성
-//        retrofit = Retrofit.Builder()
-//            .baseUrl(SERVER_URL)
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .client(okHttpClient)
-//            .build()
+        retrofit = Retrofit.Builder()
+            .baseUrl(SERVER_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .build()
     }
 }
