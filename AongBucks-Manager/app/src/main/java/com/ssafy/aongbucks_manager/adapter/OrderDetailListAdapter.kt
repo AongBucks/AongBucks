@@ -8,11 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.ssafy.smartstore.R
-import com.ssafy.smartstore.config.ApplicationClass
-import com.ssafy.smartstore.dto.OrderDetail
-import com.ssafy.smartstore.response.OrderDetailResponse
-import com.ssafy.smartstore.util.CommonUtils
+import com.ssafy.aongbucks_manager.R
+import com.ssafy.aongbucks_manager.config.ApplicationClass
+import com.ssafy.aongbucks_manager.reponse.OrderDetailResponse
+import com.ssafy.aongbucks_manager.util.CommonUtils
 
 
 class OrderDetailListAdapter(val context: Context, val orderDetail:List<OrderDetailResponse>) :RecyclerView.Adapter<OrderDetailListAdapter.OrderDetailListHolder>(){

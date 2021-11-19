@@ -9,15 +9,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.ssafy.smartstore.R
-import com.ssafy.smartstore.config.ApplicationClass
-import com.ssafy.smartstore.dto.UserOrderDetail
-import com.ssafy.smartstore.response.LatestOrderResponse
-import com.ssafy.smartstore.util.CommonUtils
+import com.ssafy.aongbucks_manager.R
+import com.ssafy.aongbucks_manager.config.ApplicationClass
+import com.ssafy.aongbucks_manager.reponse.TotalOrderResponse
+import com.ssafy.aongbucks_manager.util.CommonUtils
 
 private const val TAG = "OrderAdapter_싸피"
-class OrderAdapter(val context: Context, val list:List<LatestOrderResponse>) :RecyclerView.Adapter<OrderAdapter.OrderHolder>(){
+class OrderAdapter(val context: Context, val list:List<TotalOrderResponse>) :RecyclerView.Adapter<OrderAdapter.OrderHolder>(){
 
     inner class OrderHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val menuImage = itemView.findViewById<ImageView>(R.id.menuImage)
@@ -26,7 +24,7 @@ class OrderAdapter(val context: Context, val list:List<LatestOrderResponse>) :Re
         val textMenuDate = itemView.findViewById<TextView>(R.id.textMenuDate)
         val textCompleted = itemView.findViewById<TextView>(R.id.textCompleted)
 
-        fun bindInfo(data:LatestOrderResponse){
+        fun bindInfo(data:TotalOrderResponse){
             Log.d(TAG, "bindInfo: ${data}")
 
             Glide.with(itemView)
@@ -41,7 +39,7 @@ class OrderAdapter(val context: Context, val list:List<LatestOrderResponse>) :Re
 
             textMenuPrice.text = CommonUtils.makeComma(data.totalPrice)
             textMenuDate.text = CommonUtils.getFormattedString(data.orderDate)
-            textCompleted.text = CommonUtils.isOrderCompleted(data)
+            textCompleted.text = CommonUtils.isOrderCompleted(data.orderCompleted)
             //클릭연결
             itemView.setOnClickListener{
                 Log.d(TAG, "bindInfo: ${data.orderId}")
