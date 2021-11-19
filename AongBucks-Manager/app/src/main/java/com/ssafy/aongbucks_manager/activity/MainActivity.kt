@@ -68,5 +68,4 @@ class MainActivity : AppCompatActivity() {
         paneAdapter.notifyDataSetChanged()
     }
 
-
 }

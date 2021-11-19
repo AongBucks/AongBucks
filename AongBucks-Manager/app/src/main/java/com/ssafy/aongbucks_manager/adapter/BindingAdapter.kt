@@ -1,14 +1,14 @@
 package com.ssafy.aongbucks_manager.adapter
 
 import android.widget.ImageView
-import android.widget.RemoteViews
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ssafy.aongbucks_manager.R
 import com.ssafy.aongbucks_manager.config.ApplicationClass
-import com.ssafy.aongbucks_manager.dto.PaneMenu
+import com.ssafy.aongbucks_manager.util.CommonUtils
+import java.util.*
 
 @BindingAdapter("glideImg")
 fun bindGlideFromResName(view: ImageView, img: String) {
@@ -28,4 +28,30 @@ fun bindImageFromResource(view: ImageView, resId: Int) {
 @BindingAdapter("backColor")
 fun bindBackgroundBySelected(layout: ConstraintLayout, isSelected: Boolean) {
     layout.setBackgroundResource(if(isSelected) R.drawable.bg_pane_item_select else R.drawable.ripple_pane_item)
+}
+
+@BindingAdapter(value = ["chiefMenu","count"])
+fun bindOrderMenunames(view: TextView, menu: String, count: Int) {
+    view.text = if(count>1) "${menu} 외 ${count-1}건" else menu
+}
+
+@BindingAdapter("price")
+fun bindOrderPrice(view: TextView, price: Int) {
+    view.text = CommonUtils.makeComma(price)
+}
+
+@BindingAdapter("totalPrice")
+fun bindOrderTotalPrice(view: TextView, price: Int) {
+    view.text = "총 " + CommonUtils.makeComma(price)
+}
+
+@BindingAdapter("date")
+fun bindOrderTime(view: TextView, date: Date?) {
+    if (date == null) return
+    view.text = CommonUtils.getFormattedString(date)
+}
+
+@BindingAdapter("complete")
+fun bindBackgroundByCompleted(layout: ConstraintLayout, complete: Char) {
+    if(complete == 'Y') layout.setBackgroundResource(R.color.light_green)
 }

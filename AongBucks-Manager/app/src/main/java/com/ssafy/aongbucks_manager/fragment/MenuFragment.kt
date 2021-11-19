@@ -44,11 +44,6 @@ class MenuFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
         initData()
-
-        binding.addButton.setOnClickListener{
-            //장바구니 이동
-//            mainActivity.openFragment(1)
-        }
     }
 
     private fun initData(){

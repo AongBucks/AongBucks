@@ -26,11 +26,11 @@
             android:text="@string/login_title"
             android:textSize="@dimen/title_big_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.164"
+            app:layout_constraintHorizontal_bias="0.18"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.623" />
+            app:layout_constraintVertical_bias="0.56" />
 
         <TextView
             android:id="@+id/sub"
@@ -54,11 +54,13 @@
             app:layout_constraintStart_toStartOf="@+id/codeEditText" />
 
         <EditText
+            style="@style/Text.Regular"
             android:id="@+id/codeEditText"
             android:layout_width="@dimen/login_code_size"
             android:layout_height="wrap_content"
             android:inputType="numberPassword"
             android:layout_marginBottom="@dimen/margin_size_20"
+            android:textSize="@dimen/title_big_text_size"
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="@+id/button"
             app:layout_constraintStart_toStartOf="@+id/button" />
@@ -74,7 +76,7 @@
             android:textSize="@dimen/default_text_size"
             app:layout_constraintBottom_toBottomOf="@+id/sub"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.828"
+            app:layout_constraintHorizontal_bias="0.82"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintVertical_bias="1.0" />
 

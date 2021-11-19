@@ -15,13 +15,12 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/menu_item_height_size"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
         android:onClick="@{fragment::onMenuClickListener}"
         android:paddingLeft="0dp"
-        android:layout_marginRight="@dimen/margin_size_5"
-        android:layout_marginBottom="@dimen/margin_size_5">
+        android:layout_marginBottom="@dimen/margin_size_20">
 
         <androidx.cardview.widget.CardView
             android:layout_width="@dimen/card_size"
@@ -42,12 +41,23 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
+            style="@style/Text.Title"
             android:id="@+id/textMenuNames"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{productDto.name}"
             android:textSize="@dimen/item_menu_text_size"
             android:gravity="center"/>
+
+        <TextView
+            style="@style/Text.Regular"
+            android:id="@+id/textMenuPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1000원"
+            android:textSize="@dimen/default_text_size"
+            android:gravity="center"
+            app:price="@{productDto.price}"/>
 
     </LinearLayout>
 

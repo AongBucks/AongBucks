@@ -27,17 +27,10 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/contentContainer"
-                android:layout_width="10dp"
+                android:layout_width="5dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:name="com.ssafy.aongbucks_manager.fragment.OrderFragment" />
-
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/detailContainer"
-                android:layout_width="10dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:visibility="gone"/>
 
         </androidx.slidingpanelayout.widget.SlidingPaneLayout>
 

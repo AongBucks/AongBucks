@@ -1,6 +1,7 @@
 package com.ssafy.aongbucks_manager.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -32,6 +33,7 @@ class MenuAdapter(val context: Context, val fContext: MenuFragment, var list:Lis
         holder.apply{
             bind(dto)
             itemView.tag = dto
+            Log.d(TAG, "onBindViewHolder: ${dto}")
         }
     }
 
