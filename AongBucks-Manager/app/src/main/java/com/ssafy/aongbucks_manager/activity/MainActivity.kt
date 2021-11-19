@@ -12,6 +12,7 @@ import com.ssafy.aongbucks_manager.R
 import com.ssafy.aongbucks_manager.adapter.PaneAdapter
 import com.ssafy.aongbucks_manager.databinding.ActivityMainBinding
 import com.ssafy.aongbucks_manager.dto.PaneMenu
+import com.ssafy.aongbucks_manager.fragment.GradeFragment
 import com.ssafy.aongbucks_manager.fragment.MenuFragment
 import com.ssafy.aongbucks_manager.fragment.OrderFragment
 import com.ssafy.aongbucks_manager.viewmodel.MainActivityViewModel
@@ -53,13 +54,11 @@ class MainActivity : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         when(id) {
             ORDER_MANAGE -> transaction
-                .replace(R.id.detailContainer, OrderFragment())
+                .replace(R.id.contentContainer, OrderFragment())
             MENU_MANAGE -> transaction
-                .replace(R.id.detailContainer, MenuFragment())
-//            GRADE_MANAGE -> supportFragmentManager.beginTransaction()
-//                .replace(R.id.detailContainer, GradeFragment())
-            ORDER_MANAGE -> null
-            GRADE_MANAGE -> null
+                .replace(R.id.contentContainer, MenuFragment())
+            GRADE_MANAGE -> transaction
+                .replace(R.id.contentContainer, GradeFragment())
         }
         transaction.commit()
         binding.slidingPaneLayout.open() // 생략하면 어케되지

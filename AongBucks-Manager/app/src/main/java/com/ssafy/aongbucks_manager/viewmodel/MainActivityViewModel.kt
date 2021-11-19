@@ -8,7 +8,7 @@ import com.ssafy.aongbucks_manager.dto.PaneMenu
 private const val TAG = "MainActivityViewModel_싸피"
 class MainActivityViewModel: ViewModel() {
 
-    var current: Int = MainActivity.MENU_MANAGE
+    var current: Int = MainActivity.ORDER_MANAGE
         private set
 
     var items = mutableListOf<PaneMenu>()

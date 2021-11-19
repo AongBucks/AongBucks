@@ -10,14 +10,10 @@
             type="com.ssafy.aongbucks_manager.viewmodel.MainActivityViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".activity.MainActivity">
-
         <androidx.slidingpanelayout.widget.SlidingPaneLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
+            tools:context=".activity.MainActivity"
             android:id="@+id/slidingPaneLayout"
+            android:drawableLeft="@color/default_green"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -30,12 +26,19 @@
                 android:elevation="10dp" />
 
             <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/detailContainer"
-                android:layout_width="300dp"
+                android:id="@+id/contentContainer"
+                android:layout_width="10dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:name="com.ssafy.aongbucks_manager.fragment.OrderFragment" />
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/detailContainer"
+                android:layout_width="10dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:visibility="gone"/>
+
         </androidx.slidingpanelayout.widget.SlidingPaneLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
