@@ -1,6 +1,5 @@
 package com.ssafy.aongbucks_manager.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.ssafy.aongbucks_manager.R
 import com.ssafy.aongbucks_manager.activity.MainActivity
@@ -18,8 +17,8 @@ class MainActivityViewModel: ViewModel() {
     init {
         items = mutableListOf(
             PaneMenu(MainActivity.TITLE, "애옹벅스\n관리자 메뉴", null, false),
-            PaneMenu(MainActivity.ORDER_MANAGE, "주문 관리", R.drawable.round_fact_check_24, false),
-            PaneMenu(MainActivity.MENU_MANAGE, "메뉴 관리", R.drawable.round_free_breakfast_24, true),
+            PaneMenu(MainActivity.ORDER_MANAGE, "주문 관리", R.drawable.round_fact_check_24, true),
+            PaneMenu(MainActivity.MENU_MANAGE, "메뉴 관리", R.drawable.round_free_breakfast_24, false),
             PaneMenu(MainActivity.GRADE_MANAGE, "등급 관리", R.drawable.round_manage_accounts_24, false)
         )
     }

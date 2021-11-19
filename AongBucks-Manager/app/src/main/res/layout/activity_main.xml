@@ -34,7 +34,7 @@
                 android:layout_width="300dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:name="com.ssafy.aongbucks_manager.fragment.MenuFragment" />
+                android:name="com.ssafy.aongbucks_manager.fragment.OrderFragment" />
         </androidx.slidingpanelayout.widget.SlidingPaneLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

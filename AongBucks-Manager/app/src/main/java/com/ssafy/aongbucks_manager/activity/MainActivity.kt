@@ -52,8 +52,8 @@ class MainActivity : AppCompatActivity() {
 
         val transaction = supportFragmentManager.beginTransaction()
         when(id) {
-//            ORDER_MANAGE -> supportFragmentManager.beginTransaction()
-//                .replace(R.id.detailContainer, OrderFragment())
+            ORDER_MANAGE -> transaction
+                .replace(R.id.detailContainer, OrderFragment())
             MENU_MANAGE -> transaction
                 .replace(R.id.detailContainer, MenuFragment())
 //            GRADE_MANAGE -> supportFragmentManager.beginTransaction()
