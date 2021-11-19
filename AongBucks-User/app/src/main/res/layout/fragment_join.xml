@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:paddingLeft="20dp"
-        android:text="회원가입"
+        android:text="@string/join"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -32,59 +32,85 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/santana"
-        android:text="고객님"
+        android:text="@string/customer"
         android:textColor="@color/black"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="환영합니다!"
+        android:text="@string/welcome"
         android:textColor="@color/black"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:text="이름과 아이디, 비밀번호를 입력해주세요."
+        android:layout_marginTop="50dp"
+        android:text="@string/enter_please"
         android:textColor="@color/black" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="이름"
-        android:inputType="textPersonName" />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="아이디"
-        android:inputType="textPersonName"
-        android:textSize="20sp"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:ems="10"
+            android:hint="@string/name"
+            android:inputType="textPersonName"
+            android:textSize="16dp" />
 
-    <EditText
-        android:id="@+id/pass"
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:ems="10"
+            android:hint="@string/id"
+            android:inputType="text"
+            android:textSize="16sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="비밀번호"
-        android:inputType="textPersonName"
-        android:textSize="20sp" />
+        app:passwordToggleDrawable="@drawable/password_toggle_selector"
+        app:passwordToggleTint="@color/light_blue"
+        app:passwordToggleEnabled="true">
+
+        <EditText
+            android:id="@+id/pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textSize="16sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:orientation="horizontal">
 
         <Button
@@ -95,8 +121,8 @@
             android:layout_weight="1"
             android:background="@drawable/button_outlined"
             android:fontFamily="@font/santana_bold"
-            android:text="회원가입"
-            android:onClick="join" />
+            android:onClick="join"
+            android:text="@string/join" />
     </LinearLayout>
 
 </LinearLayout>

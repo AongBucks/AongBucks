@@ -3,28 +3,20 @@ package com.ssafy.aongbucks_user.fragment
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.databinding.BindingAdapter
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.ssafy.aongbucks_user.R
 import com.ssafy.aongbucks_user.activity.LoginActivity
-import com.ssafy.aongbucks_user.config.ApplicationClass
 import com.ssafy.aongbucks_user.config.ApplicationClass.Companion.sharedPreferencesUtil
 import com.ssafy.aongbucks_user.databinding.FragmentLoginBinding
 import com.ssafy.aongbucks_user.dto.User
-import com.ssafy.aongbucks_user.service.UserApi
 import com.ssafy.aongbucks_user.viewModel.UserViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
 
 private const val TAG = "LoginFragment_싸피"
 class LoginFragment : Fragment() {
@@ -55,48 +47,27 @@ class LoginFragment : Fragment() {
             .into(binding.logo)
 
         binding.loginBtn.setOnClickListener { login() }
+
         binding.joinBtn.setOnClickListener { moveToJoin() }
 
     }
 
     private fun login() {
-//        CoroutineScope(Dispatchers.IO).launch {
-//            try {
-//                Toast.makeText(context, "login ", Toast.LENGTH_SHORT).show()
-//
-//                var user = User(binding.id.toString(), binding.pass.toString())
-//                user = UserApi.userService.login(user)
-//
-//
-//                Toast.makeText(context, "login 2", Toast.LENGTH_SHORT).show()
-//
-//                if (user.id != null) {
-//                    Log.d(TAG, "login: userid 있음")
-//                    ApplicationClass.sharedPreferencesUtil.addUser(user)
-//                    loginActivity.openFragment(1)
-//                } else {
-//                    Toast.makeText(context, "ID 또는 패스워드를 확인해주세요.", Toast.LENGTH_SHORT).show()
-//                }
-//            } catch (e : Exception) {
-////                Toast.makeText(context, "로그인 오류", Toast.LENGTH_SHORT).show()
-//            }
-//        }
-
-//        var user = User(binding.id.toString(), binding.pass.toString())
-//        viewModel.userLogin(user)
-//        viewModel.user.observe(viewLifecycleOwner, Observer {
-////            Toast.makeText()
-//            if (it != null) {
-//                sharedPreferencesUtil.addUser(it)
+        val user = User(binding.id.text.toString(), binding.pass.text.toString())
+        viewModel.userLogin(user)
+        viewModel.user.observe(viewLifecycleOwner, Observer {
+            if (it.id != null) {
+                Log.d(TAG, "login success: ${viewModel.user.value}")
+                sharedPreferencesUtil.addUser(it)
                 loginActivity.openFragment(1)
-//            } else {
-//                Toast.makeText(context, "ID 또는 패스워드를 확인해주세요.", Toast.LENGTH_SHORT).show()
-//            }
-//        })
+            } else {
+                Log.d(TAG, "login fail: ${viewModel.user.value}")
+                Toast.makeText(context, "ID 또는 패스워드를 확인해주세요.", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun moveToJoin() {
-        Toast.makeText(context, "moveToJoin", Toast.LENGTH_SHORT).show()
         loginActivity.openFragment(2)
     }
 }

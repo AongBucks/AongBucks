@@ -2,8 +2,8 @@ package com.ssafy.aongbucks_user.dto
 
 data class User (
     val id : String,
-    val pass : String,
     val name : String,
+    val pass : String,
     val stamps : Int,
     val grade : Int,
     val stampList : ArrayList<Stamp> = ArrayList(),

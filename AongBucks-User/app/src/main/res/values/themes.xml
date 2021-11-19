@@ -46,19 +46,19 @@
     <style name="Text.Title" parent="android:TextAppearance">
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:fontFamily">@font/santana_black</item>
+        <item name="android:fontFamily">@font/sodo_sans_semi_bold</item>
         <item name="android:includeFontPadding">false</item>
     </style>
     <style name="Text.light" parent="android:TextAppearance">
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/accent_green</item>
-        <item name="android:fontFamily">@font/santana</item>
+        <item name="android:fontFamily">@font/sodo_sans_semi_bold</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
         <item name="android:background">@color/light_green</item>
-        <item name="fontFamily">@font/santana_black</item>
+        <item name="fontFamily">@font/sodo_sans_semi_bold</item>
     </style>
 
     <style name="TabLayout" parent="Widget.MaterialComponents.TabLayout.Colored">
