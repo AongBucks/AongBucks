@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- name space는 BookRepo의 fully qualified name으로 설정한다. -->
+<mapper namespace="com.ssafy.cafe.model.dao.StampDao">
+	<insert id="insert" parameterType="Stamp">
+		INSERT INTO t_stamp
+		(user_id,
+		order_id,
+		quantity)
+		VALUES
+		(#{userId},
+		#{orderId},
+		#{quantity})
+	</insert>
+
+
+	<select id="select" parameterType="int" resultType="Stamp">
+		SELECT * FROM
+		t_stamp
+		WHERE id = #{id}
+	</select>
+	<select id="selectAll" resultMap="StampBasic">
+		SELECT * FROM t_stamp order by
+		id desc
+	</select>
+
+	<select id="selectByUserId" resultMap="StampBasic"
+		parameterType="string">
+		SELECT * FROM t_stamp where user_id=#{userId} order by
+		id desc
+	</select>
+
+	<resultMap type="Stamp" id="StampBasic">
+		<id column="id" property="id" />
+		<result column="order_id" property="orderId" />
+		<result column="user_id" property="userId" />
+		<result column="quantity" property="quantity" />
+	</resultMap>
+</mapper>
