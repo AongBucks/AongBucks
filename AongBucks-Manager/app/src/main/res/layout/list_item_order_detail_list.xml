@@ -6,9 +6,9 @@
     android:layout_margin="10dp">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:cardCornerRadius="20dp"
+        android:layout_width="@dimen/card_size"
+        android:layout_height="@dimen/card_size"
+        app:cardCornerRadius="@dimen/card_corner_radius_size"
         app:cardElevation="0dp"
         android:backgroundTint="@color/coffee_menu_back"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,8 +16,9 @@
         <ImageView
             android:id="@+id/menuImage"
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_size_10"
             android:adjustViewBounds="true"
             android:src="@drawable/coffee1" />
     </androidx.cardview.widget.CardView>
@@ -25,8 +26,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="@dimen/margin_size_20"
+        android:layout_marginTop="@dimen/margin_size_20"
         android:orientation="vertical">
 
         <TextView
@@ -36,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="아메리카노"
-            android:textSize="20dp" />
+            android:textSize="@dimen/item_detail_order_text_size" />
 
         <TextView
             android:id="@+id/textShoppingMenuMoney"
@@ -45,13 +46,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="4000원"
-            android:textSize="20dp" />
+            android:textSize="@dimen/item_detail_order_text_size" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/margin_size_20"
         android:orientation="vertical">
 
         <TextView
@@ -62,7 +63,7 @@
             android:layout_gravity="right"
             android:layout_weight="1"
             android:text="2잔"
-            android:textSize="20dp" />
+            android:textSize="@dimen/item_order_text_size" />
 
         <TextView
             android:id="@+id/textShoppingMenuMoneyAll"
@@ -72,7 +73,7 @@
             android:layout_gravity="right"
             android:layout_weight="1"
             android:text="18,800원"
-            android:textSize="20dp" />
+            android:textSize="@dimen/item_order_text_size" />
     </LinearLayout>
 
 

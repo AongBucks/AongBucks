@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">애옹벅스 관리자</string>
+    <string name="login_title">안녕하세요,\n애옹벅스 관리자 애플리케이션입니다.</string>
+    <string name="login_sub">관리자 코드를 입력하여 로그인 해주세요.</string>
+    <string name="login_code_hint">관리자 코드</string>
+    <string name="login_button">시작하기</string>
 </resources>

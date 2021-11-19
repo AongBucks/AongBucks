@@ -64,7 +64,7 @@ class MenuFragment : Fragment(){
         override fun onSuccess( code: Int, productList: List<Product>) {
             productList.let {
                 Log.d(TAG, "onSuccess: ${productList.size}")
-                menuAdapter = MenuAdapter(activity!!, this@MenuFragment, productList)
+                menuAdapter = MenuAdapter(mainActivity, this@MenuFragment, productList)
             }
 
             binding.recyclerViewMenu.apply {

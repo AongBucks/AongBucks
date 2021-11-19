@@ -15,28 +15,28 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="@dimen/menu_item_height_size"
         android:orientation="vertical"
         android:gravity="center"
         android:onClick="@{fragment::onMenuClickListener}"
         android:paddingLeft="0dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp">
+        android:layout_marginRight="@dimen/margin_size_5"
+        android:layout_marginBottom="@dimen/margin_size_5">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="0dp"
+            android:layout_width="@dimen/card_size"
+            android:layout_height="@dimen/card_size"
+            app:cardCornerRadius="@dimen/card_corner_radius_size"
             android:backgroundTint="@color/coffee_menu_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="@dimen/margin_size_10">
             <ImageView
                 android:id="@+id/menuImage"
                 android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/margin_size_10"
                 android:adjustViewBounds="true"
                 app:glideImg="@{productDto.img}"/>
         </androidx.cardview.widget.CardView>
@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{productDto.name}"
-            android:textSize="10dp"
+            android:textSize="@dimen/item_menu_text_size"
             android:gravity="center"/>
 
     </LinearLayout>

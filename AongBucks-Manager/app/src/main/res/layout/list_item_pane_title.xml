@@ -14,16 +14,16 @@
         android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="32dp" >
+        android:layout_margin="@dimen/margin_size_32" >
 
         <TextView
+            style="@style/Text.Title"
             android:id="@+id/menuTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{menuDto.name}"
-            android:textColor="@color/default_green"
-            android:textSize="32sp"
-            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_big_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

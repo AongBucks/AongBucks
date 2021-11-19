@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/white"
-        android:padding="30dp">
+        android:padding="@dimen/padding_size_30">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewOrder"

@@ -23,7 +23,7 @@
     <style name="Text.Title" parent="android:TextAppearance">
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:fontFamily">@font/santana_black</item>
+        <item name="android:fontFamily">@font/santana_bold</item>
         <item name="android:includeFontPadding">false</item>
     </style>
     <style name="Text.light" parent="android:TextAppearance">

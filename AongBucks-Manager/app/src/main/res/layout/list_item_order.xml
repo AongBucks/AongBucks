@@ -12,53 +12,57 @@
     android:background="@drawable/bg_order_item">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="0dp"
+        android:layout_width="@dimen/card_size"
+        android:layout_height="@dimen/card_size"
+        app:cardCornerRadius="@dimen/card_corner_radius_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:backgroundTint="@color/coffee_menu_back">
         <ImageView
             android:id="@+id/menuImage"
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_size_10"
             android:adjustViewBounds="true"
             android:src="@drawable/coffee1" />
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/textMenuNames"
-        android:layout_width="180dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="아메리카노 외 3잔"
-        android:textSize="15dp"
+        android:textSize="@dimen/item_order_text_size"
         android:gravity="center"
         style="@style/Text.Regular"/>
+
     <TextView
         android:id="@+id/textMenuPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="25,000원"
-        android:textSize="15dp"
+        android:textSize="@dimen/item_order_text_size"
         style="@style/Text.Regular"/>
+
     <TextView
         android:id="@+id/textMenuDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="2021.05.06"
-        android:textSize="15dp"
+        android:textSize="@dimen/item_order_text_size"
         style="@style/Text.Regular"/>
+
     <TextView
         android:id="@+id/textCompleted"
         android:background="@drawable/button_go_order"
-        android:layout_marginTop="10dp"
-        android:layout_width="100dp"
-        android:layout_height="35dp"
+        android:layout_marginTop="@dimen/margin_size_10"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="픽업완료"
         style="@style/Text.Regular"/>
+
 </LinearLayout>
