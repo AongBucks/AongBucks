@@ -32,7 +32,7 @@ class PaneAdapter(val context: Context, var list:List<PaneMenu>) :RecyclerView.A
     }
 
     /**
-     * PaneMenu의 id값이 0일 때만 TitleHolder를 지정하기 위해서
+     * PaneMenu의 id값이 MainActivity.TITLE일 때만 TitleHolder를 지정하기 위해서
      * ItemViewType 을 list[position].id 로 지정해준다.
      */
     override fun getItemViewType(position: Int): Int {
@@ -40,7 +40,7 @@ class PaneAdapter(val context: Context, var list:List<PaneMenu>) :RecyclerView.A
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        if (viewType == 0) {
+        if (viewType == MainActivity.TITLE) {
             var listItemPaneTitleBinding =
                 ListItemPaneTitleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             return TitleHolder(listItemPaneTitleBinding)
@@ -53,7 +53,7 @@ class PaneAdapter(val context: Context, var list:List<PaneMenu>) :RecyclerView.A
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val dto = list[position]
-        if (dto.id == 0) {
+        if (dto.id == MainActivity.TITLE) {
             (holder as TitleHolder).apply {
                 bind(dto)
             }

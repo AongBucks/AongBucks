@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
         android:onClick="@{activity::onPaneClickListener}"
-        android:background="@drawable/ripple_pane_item">
+        app:backColor="@{menuDto.selected}">
 
         <ImageView
             android:id="@+id/menuImage"
@@ -32,7 +32,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/default_green" />
+            app:tint="@color/house_green" />
 
         <TextView
             android:id="@+id/menuTextView"

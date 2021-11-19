@@ -19,8 +19,9 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:text="MANAGE MENU"
-            android:textColor="@color/light_green"
+            android:textColor="@color/accent_green"
             android:textSize="30dp"
+            android:padding="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

@@ -63,7 +63,7 @@ class MenuFragment : Fragment(){
     inner class ProductCallback: RetrofitCallback<List<Product>> {
         override fun onSuccess( code: Int, productList: List<Product>) {
             productList.let {
-                Log.d(TAG, "onSuccess: ${productList}")
+                Log.d(TAG, "onSuccess: ${productList.size}")
                 menuAdapter = MenuAdapter(activity!!, this@MenuFragment, productList)
             }
 
