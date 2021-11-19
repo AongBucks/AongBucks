@@ -39,6 +39,15 @@
 		SELECT * FROM t_product order by id asc
 	</select>
 	
+	<select id="selectFavorites" parameterType="string" resultType="Product">
+		SELECT * FROM t_product
+		WHERE id IN (
+			SELECT product_id
+			FROM t_favorite
+			WHERE user_id = #{id}
+		)
+	</select>
+	
 	
 	<!-- backend  관통 과정에서 추가됨 -->
     <select id="selectWithComment" resultType="map" parameterType="int">
