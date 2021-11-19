@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.AongBucksManager" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.AongBucksManager" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/default_green</item>
         <item name="colorPrimaryVariant">@color/accent_green</item>
@@ -13,4 +13,24 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Text.Regular" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/house_green</item>
+        <item name="android:fontFamily">@font/eland_choice_m</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="Text.Title" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/house_green</item>
+        <item name="android:fontFamily">@font/eland_choice_b</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="Text.light" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/house_green</item>
+        <item name="android:fontFamily">@font/eland_choice_l</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
 </resources>

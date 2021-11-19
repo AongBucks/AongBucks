@@ -4,7 +4,11 @@
     <color name="accent_green">#32724E</color>
     <color name="light_green">#D8E8E2</color>
     <color name="house_green">#243832</color>
+    <color name="logo_green">#11AA77</color>
     <color name="warm_neutral">#F2F0EB</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <color name="coffee_menu_back">#F0E3DB</color>
 </resources>
