@@ -3,17 +3,18 @@ package com.ssafy.cafe.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+
 import com.ssafy.cafe.model.dto.User;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author itsmeyjc
  * @since 2021. 6. 23.
  */
 class UserServiceTest extends AbstractServiceTest {
-    private User testUser = new User("test", "test", "test", 0);
+    private User testUser = new User("test", "test", "test", 0, 1);
 
     @Test
     @Order(1)

@@ -2,14 +2,17 @@ package com.ssafy.cafe.dao;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+
 import java.util.List;
+
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+
 import com.ssafy.cafe.model.dto.User;
 
 class UserTest extends AbstractDaoTest{
 
-    User data = new User("새사용자","hong gil dong","1234", 0);
+    User data = new User("새사용자","hong gil dong","1234", 0, 1);
     
     
     @Test
