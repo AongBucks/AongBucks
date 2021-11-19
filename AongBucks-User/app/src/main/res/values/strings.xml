@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AONGBUCKS</string>
+    <string name="app_name">애옹벅스</string>
     <string name="login">로그인</string>
     <string name="hello">안녕하세요.</string>
     <string name="aongbucks">애옹벅스입니다.</string>
@@ -10,4 +10,8 @@
     <string name="home">Home</string>
     <string name="order">Order</string>
     <string name="mypage">MyPage</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="total_menu">전체 메뉴</string>
+    <string name="favorite_menu">나의 메뉴</string>
 </resources>
