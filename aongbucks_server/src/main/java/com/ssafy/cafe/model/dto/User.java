@@ -9,13 +9,15 @@ public class User {
     private String name;
     private String pass;
     private Integer stamps;
+    private Integer grade_id;
     private List<Stamp> stampList = new ArrayList<>();
 
-    public User(String id, String name, String pass, Integer stamps) {
+    public User(String id, String name, String pass, Integer stamps, Integer grade_id) {
         this.id = id;
         this.name = name;
         this.pass = pass;
         this.stamps = stamps;
+        this.grade_id = grade_id;
     }
     
     public User() {}
@@ -50,6 +52,14 @@ public class User {
 
 	public void setStamps(Integer stamps) {
 		this.stamps = stamps;
+	}
+
+	public Integer getGrade_id() {
+		return grade_id;
+	}
+
+	public void setGrade_id(Integer grade_id) {
+		this.grade_id = grade_id;
 	}
 
 	public List<Stamp> getStampList() {

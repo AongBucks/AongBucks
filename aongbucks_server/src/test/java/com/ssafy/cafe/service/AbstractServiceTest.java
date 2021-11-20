@@ -4,10 +4,9 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import com.ssafy.cafe.model.dao.OrderDao;
 import com.ssafy.cafe.model.dao.OrderDetailDao;
-import com.ssafy.cafe.model.dao.ProductDao;
-import com.ssafy.cafe.model.dao.UserDao;
 import com.ssafy.cafe.model.dto.User;
 import com.ssafy.cafe.model.service.CommentService;
 import com.ssafy.cafe.model.service.OrderService;
@@ -24,7 +23,7 @@ import com.ssafy.cafe.model.service.UserService;
 // @Transactional
 public abstract class AbstractServiceTest {
 
-    public static User user = new User("id 01", "name 01", "pass 01", 0);
+    public static User user = new User("id 01", "name 01", "pass 01", 0, 1);
 
     /*
     public static UserService userService;
