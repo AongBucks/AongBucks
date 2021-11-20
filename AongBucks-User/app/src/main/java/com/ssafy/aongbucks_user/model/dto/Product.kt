@@ -1,6 +1,4 @@
-package com.ssafy.aongbucks_user.dto
-
-import org.w3c.dom.Comment
+package com.ssafy.aongbucks_user.model.dto
 
 data class Product (
     val id: Int,

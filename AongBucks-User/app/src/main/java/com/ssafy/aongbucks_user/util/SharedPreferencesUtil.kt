@@ -2,7 +2,7 @@ package com.ssafy.aongbucks_user.util
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.ssafy.aongbucks_user.dto.User
+import com.ssafy.aongbucks_user.model.dto.User
 
 class SharedPreferencesUtil (context : Context) {
     val SHARED_PREFERENCES_NAME = "smartstore_preference"

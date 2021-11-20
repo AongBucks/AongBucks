@@ -18,4 +18,5 @@
     <string name="enter_please">이름과 아이디, 비밀번호를 입력해주세요.</string>
     <string name="welcome">환영합니다!</string>
     <string name="customer">고객님</string>
+    <string name="no_menu">등록된 메뉴가 없습니다.</string>
 </resources>

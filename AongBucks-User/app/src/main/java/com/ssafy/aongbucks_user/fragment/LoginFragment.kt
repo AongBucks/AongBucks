@@ -2,20 +2,18 @@ package com.ssafy.aongbucks_user.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.ssafy.aongbucks_user.R
 import com.ssafy.aongbucks_user.activity.LoginActivity
 import com.ssafy.aongbucks_user.config.ApplicationClass.Companion.sharedPreferencesUtil
 import com.ssafy.aongbucks_user.databinding.FragmentLoginBinding
-import com.ssafy.aongbucks_user.dto.User
+import com.ssafy.aongbucks_user.model.dto.User
 import com.ssafy.aongbucks_user.viewModel.UserViewModel
 
 private const val TAG = "LoginFragment_싸피"
@@ -32,7 +30,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
@@ -55,15 +53,15 @@ class LoginFragment : Fragment() {
     private fun login() {
         val user = User(binding.id.text.toString(), binding.pass.text.toString())
         viewModel.userLogin(user)
-        viewModel.user.observe(viewLifecycleOwner, Observer {
-            if (it.id != null) {
-                Log.d(TAG, "login success: ${viewModel.user.value}")
-                sharedPreferencesUtil.addUser(it)
-                loginActivity.openFragment(1)
-            } else {
-                Log.d(TAG, "login fail: ${viewModel.user.value}")
-                Toast.makeText(context, "ID 또는 패스워드를 확인해주세요.", Toast.LENGTH_SHORT).show()
-            }
+        viewModel.user.observe(viewLifecycleOwner, {
+            // 로그인 성공
+            sharedPreferencesUtil.addUser(it)
+            loginActivity.openFragment(1)
+        })
+        
+        viewModel.loginFailToast.observe(viewLifecycleOwner, {
+            // 로그인 실패
+            Toast.makeText(context, viewModel.loginFailToast.value, Toast.LENGTH_SHORT).show()
         })
     }
 

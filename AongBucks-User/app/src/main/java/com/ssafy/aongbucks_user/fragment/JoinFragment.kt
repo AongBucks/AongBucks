@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide
 import com.ssafy.aongbucks_user.R
 import com.ssafy.aongbucks_user.activity.LoginActivity
 import com.ssafy.aongbucks_user.databinding.FragmentJoinBinding
-import com.ssafy.aongbucks_user.dto.User
+import com.ssafy.aongbucks_user.model.dto.User
 import com.ssafy.aongbucks_user.viewModel.UserViewModel
 
 private const val TAG = "JoinFragment_싸피"
@@ -58,27 +58,32 @@ class JoinFragment : Fragment() {
 
         // 중복 아이디인지 확인
         viewModel.userDuplicated(id)
-        viewModel.isUsedId.observe(viewLifecycleOwner, Observer { isUsed ->
+        viewModel.isUsedId.observe(viewLifecycleOwner, { isUsed ->
             if (!isUsed) {
-                // 중복 아이디가 아니면 사용자 추가
-                Log.d(TAG, "UserId is not used")
+                // 중복 아이디가 아니므로 회원가입 고고
                 val user = User(id, name, pass, 0, 1)
                 viewModel.userJoin(user)
-                viewModel.joinCompleted.observe(viewLifecycleOwner, Observer { success ->
-                    if (success) {
-                        // 회원가입 성공하면 다이얼로그 띄우고 로그인 화면으로 이동
-                        Log.d(TAG, "join success")
-                        loginActivity.openFragment(3)
-                    } else {
-                        // 회원가입 실패하면....
-                        Log.d(TAG, "join failed")
-                    }
-                })
-            } else {
-                // 중복 아이디이면 다이얼로그 띄우고 종료
-                Log.d(TAG, "UserId is used")
-                Toast.makeText(context, "이미 사용중인 아이디입니다.", Toast.LENGTH_SHORT).show()
             }
         })
+
+        viewModel.isUsedIdToast.observe(viewLifecycleOwner, {
+            // 중복 아이디이면 다이얼로그 띄우고 종료
+            Log.d(TAG, "UserId is used")
+            Toast.makeText(context, viewModel.isUsedIdToast.value, Toast.LENGTH_SHORT).show()
+        })
+
+        viewModel.joinCompleted.observe(viewLifecycleOwner, {
+            // 회원가입 성공하면 다이얼로그 띄우고 확인 누르면 로그인 화면으로 이동
+            Log.d(TAG, "join success")
+            Toast.makeText(context, "회원가입이 완료되었습니다.\n로그인을 해주세요.", Toast.LENGTH_SHORT).show()
+            loginActivity.openFragment(3)
+        })
+
+        viewModel.joinFailToast.observe(viewLifecycleOwner, {
+            // 회원가입 실패하면 다이얼로그 띄우기
+            Log.d(TAG, "join failed")
+            Toast.makeText(context, viewModel.joinFailToast.value, Toast.LENGTH_SHORT).show()
+        })
     }
+
 }

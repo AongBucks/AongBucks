@@ -6,6 +6,6 @@ import androidx.databinding.BindingAdapter
 
 @BindingAdapter("imageDrawable")
 fun imageDrawable(view : View, img : String) {
+//    val resId =
 
 }
-
