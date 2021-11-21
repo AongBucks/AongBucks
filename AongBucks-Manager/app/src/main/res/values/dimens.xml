@@ -33,6 +33,7 @@
     <!-- padding size -->
     <dimen name="padding_size_30">30dp</dimen>
     <dimen name="padding_size_16">16dp</dimen>
+    <dimen name="padding_size_12">12dp</dimen>
 
     <!-- etc size -->
     <dimen name="title_line_spacing_extra">10dp</dimen>

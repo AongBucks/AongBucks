@@ -75,12 +75,12 @@ class MainActivity : AppCompatActivity() {
         if (activityViewModel.isDetailOpen.value == true) {
             super.onBackPressed()
         } else {
-            var builder = AlertDialog.Builder(this)
+            var builder = AlertDialog.Builder(this, R.style.AlertDialog)
             builder.apply {
                 setTitle("종료하기")
                 setMessage("정말 종료하시나옹?")
-                setPositiveButton("종료", null)
-                setNegativeButton("취소", null)
+                setPositiveButton("종료") { _, _ -> finish()}
+                setNeutralButton("취소", null)
                 Log.d(TAG, "onBackPressed: show dialog")
             }.show()
         }
