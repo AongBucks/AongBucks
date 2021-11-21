@@ -7,4 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="starbucks_green">#FF295B44</color>
+    <color name="accent_green">#FF32724E</color>
+    <color name="light_green">#FFD8E8E2</color>
+    <color name="house_green">#FF243832</color>
+    <color name="warm_neutral">#FFF2F0EB</color>
+    <color name="light_blue">#FFB6CBD5</color>
+    <color name="yello">#FFF0E0B0</color>
+
 </resources>

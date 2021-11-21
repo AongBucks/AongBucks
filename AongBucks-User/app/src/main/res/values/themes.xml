@@ -2,15 +2,69 @@
     <!-- Base application theme. -->
     <style name="Theme.AongBucksUser" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/accent_green</item>
+        <item name="colorPrimaryVariant">@color/starbucks_green</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/black</item>
+        <item name="colorSecondaryVariant">@color/house_green</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <item name="android:textViewStyle">@style/customTextViewFontStyle</item>
+        <item name="android:buttonStyle">@style/customButtonFontStyle</item>
+        <item name="android:editTextStyle">@style/customEditTextFontStyle</item>
+        <item name="android:radioButtonStyle">@style/customRadioButtonFontStyle</item>
+        <item name="android:checkboxStyle">@style/customCheckboxFontStyle</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <!--ratingBar-->
+        <item name="colorControlNormal">@color/light_green</item>
+        <item name="colorControlActivated">@color/house_green</item>
+    </style>
+
+    <style name="statusBarTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/starbucks_green</item>
+        <item name="colorPrimaryDark">@color/starbucks_green</item>
+        <!-- Other attributes -->
+    </style>
+
+    <style name="AppTheme" parent="android:Theme.Material">
+        <item name="android:colorPrimaryDark">@color/accent_green</item>
+    </style>
+
+    <style name="Text.Regular" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/santana</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="Text.Title" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/sodo_sans_semi_bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="Text.light" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/accent_green</item>
+        <item name="android:fontFamily">@font/sodo_sans_semi_bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="android:background">@color/light_green</item>
+        <item name="fontFamily">@font/sodo_sans_semi_bold</item>
+    </style>
+
+    <style name="TabLayout" parent="Widget.MaterialComponents.TabLayout.Colored">
+        <item name="background">@color/white</item>
+        <item name="tabIndicatorColor">@color/accent_green</item>
+        <item name="tabTextColor">@color/black</item>
+        <item name="tabSelectedTextColor">@color/accent_green</item>
     </style>
 </resources>

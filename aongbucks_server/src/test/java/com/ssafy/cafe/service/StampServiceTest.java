@@ -1,10 +1,13 @@
 package com.ssafy.cafe.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import org.junit.jupiter.api.Test;
+
 import com.ssafy.cafe.model.dto.Order;
 import com.ssafy.cafe.model.dto.OrderDetail;
 import com.ssafy.cafe.model.dto.Stamp;
@@ -16,7 +19,7 @@ class StampServiceTest extends AbstractServiceTest{
     @Test
     @org.junit.jupiter.api.Order(1)
     public void stampTest() {
-        User testUser = new User("test", "test", "test", 0);
+        User testUser = new User("test", "test", "test", 0, 1);
         userService.join(testUser);
         
         Order order = new Order(testUser.getId(), "table_test", new Date(), 'N');

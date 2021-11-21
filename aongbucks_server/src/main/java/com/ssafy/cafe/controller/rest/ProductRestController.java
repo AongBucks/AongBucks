@@ -2,14 +2,17 @@ package com.ssafy.cafe.controller.rest;
 
 import java.util.List;
 import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.ssafy.cafe.model.dto.Product;
 import com.ssafy.cafe.model.service.ProductService;
+
 import io.swagger.annotations.ApiOperation;
 
 @RestController
@@ -23,6 +26,12 @@ public class ProductRestController {
     @ApiOperation(value="전체 상품의 목록을 반환한다.", response = List.class)
     public List<Product> getProductList(){
         return pService.getProductList();
+    }
+    
+    @GetMapping("/favorite")
+    @ApiOperation(value="사용자가 즐겨찾기로 등록한 상품의 목록을 반환한다.", response = List.class)
+    public List<Product> getProductList(String userId){
+        return pService.getFavoriteProducts(userId);
     }
     
     @GetMapping("/{productId}")

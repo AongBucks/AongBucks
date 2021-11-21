@@ -4,29 +4,20 @@
 <!-- name space는 BookRepo의 fully qualified name으로 설정한다. -->
 <mapper namespace="com.ssafy.cafe.model.dao.UserDao">
 	<insert id="insert" parameterType="User">
-INSERT INTO t_user
-    (id, 
-    name, 
-    pass)
-VALUES
-    (#{id}, 
-    #{name}, 
-    #{pass})
+		INSERT INTO t_user (id, name, pass, grade_id)
+		VALUES (#{id}, #{name}, #{pass}, 1)
 	</insert>
 	
 	<update id="update" parameterType="User">
-UPDATE t_user
-SET
-    name = #{name}, 
-    pass = #{pass}
-WHERE id = #{id}
+		UPDATE t_user
+		SET name = #{name}, pass = #{pass}
+		WHERE id = #{id}
 	</update>
 	
-		<update id="updateStamp" parameterType="User">
-UPDATE t_user
-SET
-    stamps = stamps + #{stamps}
-WHERE id = #{id}
+	<update id="updateStamp" parameterType="User">
+		UPDATE t_user
+		SET stamps = stamps + #{stamps}
+		WHERE id = #{id}
 	</update>
 	
 	
@@ -34,10 +25,12 @@ WHERE id = #{id}
 		DELETE FROM t_user
 		WHERE id = #{id}
 	</delete>
+	
 	<select id="select" parameterType="string" resultType="User">
 		SELECT * FROM t_user
 		WHERE id = #{id}
 	</select>
+	
 	<select id="selectAll" resultType="User">
 		SELECT * FROM t_user
 	</select>

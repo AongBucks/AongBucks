@@ -2,9 +2,11 @@ package com.ssafy.cafe.model.service;
 
 import java.util.List;
 import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+
 import com.ssafy.cafe.model.dao.ProductDao;
 import com.ssafy.cafe.model.dto.Product;
 
@@ -21,6 +23,11 @@ public class ProductServiceImpl implements ProductService{
     @Cacheable(value="getProductList")
     public List<Product> getProductList() {
         return pDao.selectAll();
+    }
+    
+    @Override
+    public List<Product> getFavoriteProducts(String userId) {
+        return pDao.selectFavorites(userId);
     }
 
     @Override
