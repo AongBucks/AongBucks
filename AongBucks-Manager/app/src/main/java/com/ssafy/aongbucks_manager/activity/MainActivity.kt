@@ -1,12 +1,12 @@
 package com.ssafy.aongbucks_manager.activity
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ssafy.aongbucks_manager.R
 import com.ssafy.aongbucks_manager.adapter.PaneAdapter
@@ -17,6 +17,7 @@ import com.ssafy.aongbucks_manager.fragment.MenuFragment
 import com.ssafy.aongbucks_manager.fragment.OrderFragment
 import com.ssafy.aongbucks_manager.viewmodel.MainActivityViewModel
 
+private const val TAG = "MainActivity_싸피"
 class MainActivity : AppCompatActivity() {
 
     companion object {
@@ -68,4 +69,30 @@ class MainActivity : AppCompatActivity() {
         paneAdapter.notifyDataSetChanged()
     }
 
+    override fun onBackPressed() {
+        Log.d(TAG, "onBackPressed: ")
+
+        if (activityViewModel.isDetailOpen.value == true) {
+            super.onBackPressed()
+        } else {
+            var builder = AlertDialog.Builder(this)
+            builder.apply {
+                setTitle("종료하기")
+                setMessage("정말 종료하시나옹?")
+                setPositiveButton("종료", null)
+                setNegativeButton("취소", null)
+                Log.d(TAG, "onBackPressed: show dialog")
+            }.show()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy: ")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop: ")
+    }
 }

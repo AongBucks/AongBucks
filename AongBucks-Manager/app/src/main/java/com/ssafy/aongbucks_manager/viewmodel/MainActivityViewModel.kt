@@ -45,4 +45,8 @@ class MainActivityViewModel: ViewModel() {
         selectedOrder.value = order
         isDetailOpen.value = true
     }
+
+    fun detailClose() {
+        isDetailOpen.value = false
+    }
 }

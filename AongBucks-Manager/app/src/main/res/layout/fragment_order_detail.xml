@@ -7,6 +7,11 @@
         <variable
             name="totalOrderDto"
             type="com.ssafy.aongbucks_manager.reponse.TotalOrderResponse" />
+
+        <variable
+            name="fragment"
+            type="com.ssafy.aongbucks_manager.fragment.OrderDetailFragment" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,9 +36,11 @@
             android:background="@drawable/round_highlight_off_24"
             android:scaleType="fitXY"
             android:padding="@dimen/padding_size_16"
+            android:onClick="@{fragment::close}"
             app:layout_constraintBottom_toBottomOf="@+id/title"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/title" />
+            app:layout_constraintTop_toTopOf="@+id/title"
+            android:backgroundTint="@color/light_green" />
 
         <TextView
             android:id="@+id/tvOrderStatus"
@@ -58,6 +65,17 @@
             app:date="@{totalOrderDto.orderDate}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvOrderStatus" />
+
+        <TextView
+            android:id="@+id/tvOrderTable"
+            style="@style/Text.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_size_20"
+            android:text="@{totalOrderDto.orderTable}"
+            android:textSize="@dimen/item_detail_order_text_size"
+            app:layout_constraintStart_toEndOf="@id/tvOrderDate"
+            app:layout_constraintTop_toTopOf="@+id/tvOrderDate" />
 
         <TextView
             android:id="@+id/tvTotalPrice"

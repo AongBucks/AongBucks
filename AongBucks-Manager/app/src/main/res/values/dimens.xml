@@ -10,7 +10,7 @@
 
     <!-- layout size -->
     <dimen name="menu_item_height_size">150dp</dimen>
-    <dimen name="login_logo_size">150dp</dimen>
+    <dimen name="login_logo_size">130dp</dimen>
     <dimen name="login_code_size">300dp</dimen>
     <dimen name="card_size">100dp</dimen>
     <dimen name="card_corner_radius_size">100dp</dimen>
@@ -18,9 +18,10 @@
     <dimen name="order_complete_width_size">100dp</dimen>
     <dimen name="order_complete_height_size">30dp</dimen>
     <dimen name="complete_button_width_size">250dp</dimen>
-    <dimen name="order_detail_close_button_size">44dp</dimen>
+    <dimen name="order_detail_close_button_size">40dp</dimen>
 
     <!-- margin size -->
+    <dimen name="margin_size_36">36dp</dimen>
     <dimen name="margin_size_32">32dp</dimen>
     <dimen name="margin_size_20">20dp</dimen>
     <dimen name="margin_size_16">16dp</dimen>

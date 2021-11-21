@@ -3,20 +3,26 @@ package com.ssafy.aongbucks_manager.fragment
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.Slide
+import androidx.transition.Transition
+import androidx.transition.TransitionManager
+import com.ssafy.aongbucks_manager.R
 import com.ssafy.aongbucks_manager.activity.MainActivity
 import com.ssafy.aongbucks_manager.adapter.OrderAdapter
 import com.ssafy.aongbucks_manager.databinding.FragmentOrderBinding
 import com.ssafy.aongbucks_manager.reponse.TotalOrderResponse
 import com.ssafy.aongbucks_manager.service.OrderService
 import com.ssafy.aongbucks_manager.viewmodel.MainActivityViewModel
+
 
 // 하단 주문 탭
 private const val TAG = "OrderFragment_싸피"
@@ -39,16 +45,21 @@ class OrderFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentOrderBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_order, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initAllOrderData()
 
+        val transition: Transition = Slide(Gravity.RIGHT)
+        transition.duration = 200
+        transition.addTarget(R.id.detailContainer)
+
         activityViewModel.isDetailOpen.observe(viewLifecycleOwner) { isOpen ->
+            Log.d(TAG, "onViewCreated: detail status : ${activityViewModel.isDetailOpen.value}")
+            TransitionManager.beginDelayedTransition(binding.layout, transition);
             binding.detailContainer.visibility = if (isOpen) View.VISIBLE else View.GONE
         }
     }
@@ -74,10 +85,8 @@ class OrderFragment : Fragment(){
         activityViewModel.detailOpen((view.tag as TotalOrderResponse))
     }
 
-    // TODO: 2021-11-20 detail 에 table정보도 표시하기 
-    // TODO: 2021-11-20 detail 에서 버튼 누르면 detail fragment gone
     // TODO: 2021-11-20 detail 에서 '제조완료'버튼을 누르면 '제조완료'표시하고, 리스트 배경색 바꾸기
     // TODO: 2021-11-20 detail databinding 적용하기
-    // TODO: 2021-11-20 관리자 코드 로그인
+    // TODO: 2021-11-20 끝을 드래그하면 새로고침되게하면 ㄱㅊ을 것 같은데?! 
     
 }

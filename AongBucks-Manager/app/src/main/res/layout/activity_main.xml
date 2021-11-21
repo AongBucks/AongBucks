@@ -23,6 +23,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="start"
                 android:background="@color/warm_neutral"
+                android:overScrollMode="never"
                 android:elevation="10dp" />
 
             <androidx.fragment.app.FragmentContainerView
