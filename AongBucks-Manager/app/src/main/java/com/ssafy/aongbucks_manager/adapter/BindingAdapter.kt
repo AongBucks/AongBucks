@@ -62,3 +62,9 @@ fun bindTextComplete(view: TextView, complete: Char) {
     if (complete == 'Y') view.text = "제조 완료"
     else view.text = "대기 중.."
 }
+
+@BindingAdapter(value = ["menuType", "menuCount"])
+fun bindDetailMenuCount(view: TextView, menuType: String?, count: Int) {
+    var type = if(menuType == "coffee") "잔" else "개"
+    view.text = count.toString() + type
+}

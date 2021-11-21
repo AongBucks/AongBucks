@@ -1,53 +1,39 @@
 package com.ssafy.aongbucks_manager.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.ssafy.aongbucks_manager.R
-import com.ssafy.aongbucks_manager.config.ApplicationClass
+import com.ssafy.aongbucks_manager.databinding.ListItemOrderDetailListBinding
 import com.ssafy.aongbucks_manager.reponse.OrderDetailResponse
-import com.ssafy.aongbucks_manager.util.CommonUtils
 
+private const val TAG = "OrderDetailListAdapter_싸피"
+class OrderDetailListAdapter(val context: Context, val list:List<OrderDetailResponse>) :RecyclerView.Adapter<OrderDetailListAdapter.OrderDetailListHolder>(){
 
-class OrderDetailListAdapter(val context: Context, val orderDetail:List<OrderDetailResponse>) :RecyclerView.Adapter<OrderDetailListAdapter.OrderDetailListHolder>(){
-
-    inner class OrderDetailListHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val menuImage = itemView.findViewById<ImageView>(R.id.menuImage)
-        val textShoppingMenuName = itemView.findViewById<TextView>(R.id.textShoppingMenuName)
-        val textShoppingMenuMoney = itemView.findViewById<TextView>(R.id.textShoppingMenuMoney)
-        val textShoppingMenuCount = itemView.findViewById<TextView>(R.id.textShoppingMenuCount)
-        val textShoppingMenuMoneyAll = itemView.findViewById<TextView>(R.id.textShoppingMenuMoneyAll)
-
-        fun bindInfo(data:OrderDetailResponse){
-            var type = if(data.productType == "coffee") "잔" else "개"
-
-            Glide.with(itemView)
-                .load("${ApplicationClass.MENU_IMGS_URL}${data.img}")
-                .into(menuImage)
-
-            textShoppingMenuName.text = data.productName
-            textShoppingMenuMoney.text = CommonUtils.makeComma(data.unitPrice)
-            textShoppingMenuCount.text = "${data.quantity} ${type}"
-            textShoppingMenuMoneyAll.text = CommonUtils.makeComma(data.unitPrice * data.quantity)
+    inner class OrderDetailListHolder(private val binding: ListItemOrderDetailListBinding) : RecyclerView.ViewHolder(binding.root){
+        fun bind(dto:OrderDetailResponse){
+            binding.apply {
+                orderDetailDto = dto
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderDetailListHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_order_detail_list, parent, false)
-        return OrderDetailListHolder(view)
+        var listItemOrderDetailListBinding =
+            ListItemOrderDetailListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return OrderDetailListHolder(listItemOrderDetailListBinding)
     }
 
     override fun onBindViewHolder(holder: OrderDetailListHolder, position: Int) {
-        holder.bindInfo(orderDetail[position])
+        val dto = list[position]
+        Log.d(TAG, "onBindViewHolder: ${dto}")
+        holder.apply {
+            bind(dto)
+            itemView.tag = dto
+        }
     }
 
-    override fun getItemCount(): Int {
-        return orderDetail.size
-    }
+    override fun getItemCount(): Int = list.size
 }
 
