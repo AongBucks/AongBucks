@@ -13,6 +13,13 @@
     <color name="house_green">#FF243832</color>
     <color name="warm_neutral">#FFF2F0EB</color>
     <color name="light_blue">#FFB6CBD5</color>
-    <color name="yello">#FFF0E0B0</color>
+    <color name="yellow">#FFF0E0B0</color>
+    <color name="red">#FFCE1019</color>
+    <color name="pink">#FFE7888C</color>
+    <color name="coral">#FFE76069</color>
+    <color name="dark_gray">#FF666666</color>
+    <color name="medium_gray">#FF999999</color>
+    <color name="light_gray">#FFCCCCCC</color>
+    <color name="background">#FFEFE1D9</color>
 
 </resources>

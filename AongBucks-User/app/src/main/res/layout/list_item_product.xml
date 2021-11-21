@@ -19,13 +19,14 @@
         <androidx.cardview.widget.CardView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:cardBackgroundColor="#EFE1D9"
+            app:cardBackgroundColor="@color/background"
             app:cardCornerRadius="100dp">
 
             <ImageView
                 android:id="@+id/menuImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="2dp"
                 android:background="#00FFFFFF"
                 app:srcCompat="@drawable/coffee1" />
         </androidx.cardview.widget.CardView>
@@ -43,7 +44,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="@{product.name}"
-                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -53,7 +53,6 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/santana"
                 android:text="@{String.valueOf(product.price)}"
-                android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 

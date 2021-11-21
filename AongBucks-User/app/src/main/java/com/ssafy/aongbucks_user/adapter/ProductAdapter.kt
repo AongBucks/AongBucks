@@ -2,6 +2,7 @@ package com.ssafy.aongbucks_user.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +21,10 @@ class ProductAdapter(var context : Context, var productList : List<Product>)
                 product = dto
                 itemView.tag = dto
             }
+
+            itemView.setOnClickListener {
+                itemClickListener.onClick(it, layoutPosition, productList[layoutPosition].id)
+            }
         }
     }
 
@@ -35,5 +40,14 @@ class ProductAdapter(var context : Context, var productList : List<Product>)
     }
 
     override fun getItemCount(): Int = productList.size
+
+    interface ItemClickListener {
+        fun onClick(View : View, position: Int, productId : Int)
+    }
+
+    private lateinit var itemClickListener : ItemClickListener
+    fun setItemClickListener(itemClickListener : ItemClickListener) {
+        this.itemClickListener = itemClickListener
+    }
 
 }

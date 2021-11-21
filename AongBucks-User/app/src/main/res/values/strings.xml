@@ -19,4 +19,6 @@
     <string name="welcome">환영합니다!</string>
     <string name="customer">고객님</string>
     <string name="no_menu">등록된 메뉴가 없습니다.</string>
+    <string name="to_favorite_menu">좋아하는 메뉴에</string>
+    <string name="press_heart">를 눌러 보세요.</string>
 </resources>

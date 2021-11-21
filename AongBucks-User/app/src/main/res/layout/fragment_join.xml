@@ -15,7 +15,6 @@
         android:layout_marginTop="40dp"
         android:paddingLeft="20dp"
         android:text="@string/join"
-        android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -33,7 +32,6 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/santana"
         android:text="@string/customer"
-        android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -52,8 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="@string/enter_please"
-        android:textColor="@color/black" />
+        android:text="@string/enter_please" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
