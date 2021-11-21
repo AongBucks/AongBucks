@@ -4,6 +4,7 @@ import com.ssafy.aongbucks_manager.reponse.OrderDetailResponse
 import com.ssafy.aongbucks_manager.reponse.TotalOrderResponse
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface OrderApi {
@@ -14,4 +15,7 @@ interface OrderApi {
 
     @GET("rest/order/manager")
     fun getTotalOrderList(): Call<List<TotalOrderResponse>>
+
+    @POST("rest/order/state/{orderId}")
+    fun postOrderState(@Path("orderId") orderId: Int) : Call<Int>
 }

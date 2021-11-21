@@ -48,9 +48,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_size_32"
-            android:text="@string/order_detail_complete"
-            android:textColor="@color/accent_green"
+            android:text="제조 완료"
+            android:textColor="@{totalOrderDto.orderCompleted == 'Y' ? @color/accent_green : @color/red}"
             android:textSize="@dimen/item_detail_order_text_size"
+            app:stateText="@{totalOrderDto.orderCompleted}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title" />
 
@@ -109,6 +110,7 @@
             android:text="@string/order_detail_complete"
             android:textColor="@color/white"
             android:textSize="@dimen/default_text_size"
+            android:onClick="@{fragment::completeOrder}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

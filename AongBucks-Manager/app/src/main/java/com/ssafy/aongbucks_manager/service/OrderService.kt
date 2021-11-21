@@ -64,4 +64,29 @@ class OrderService{
 
         return responseLiveData
     }
+
+    fun completeState(id: Int) : LiveData<Boolean> {
+        var isSuccess = MutableLiveData<Boolean>(false)
+
+        RetrofitUtil.orderService.postOrderState(id)
+            .enqueue(object: Callback<Int> {
+                override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                    val res = response.body()
+                    if(response.code() == 200){
+                        if (res != null) {
+                            isSuccess.value = true
+                        }
+                        Log.d(TAG, "onResponse: $res")
+                    } else {
+                        Log.d(TAG, "onResponse: Error Code ${response.code()}")
+                    }
+                }
+
+                override fun onFailure(call: Call<Int>, t: Throwable) {
+                    Log.d(TAG, t.message ?: "주문 상태 변경 중 통신오류")
+                }
+            })
+
+        return isSuccess
+    }
 }

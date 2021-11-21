@@ -9,7 +9,7 @@ import com.ssafy.aongbucks_manager.fragment.OrderFragment
 import com.ssafy.aongbucks_manager.reponse.TotalOrderResponse
 
 private const val TAG = "OrderAdapter_싸피"
-class OrderAdapter(val context: Context, val orderFragment: OrderFragment, val list:List<TotalOrderResponse>) :RecyclerView.Adapter<OrderAdapter.OrderHolder>(){
+class OrderAdapter(val context: Context, val orderFragment: OrderFragment, var list:List<TotalOrderResponse>) :RecyclerView.Adapter<OrderAdapter.OrderHolder>(){
 
     inner class OrderHolder(private val binding: ListItemOrderBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(data:TotalOrderResponse){
@@ -30,6 +30,7 @@ class OrderAdapter(val context: Context, val orderFragment: OrderFragment, val l
         val dto = list[position]
         holder.apply {
             bind(dto)
+            dto.position = position
             itemView.tag = dto
         }
     }

@@ -14,4 +14,6 @@ data class TotalOrderResponse(
     @SerializedName("completed") var orderCompleted: Char,
     @SerializedName("total_price") val totalPrice: Int,
     @SerializedName("order_table") val orderTable: String
-)
+) {
+    var position = -1
+}

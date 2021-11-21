@@ -31,7 +31,7 @@ fun bindBackgroundBySelected(layout: ConstraintLayout, isSelected: Boolean) {
 }
 
 @BindingAdapter(value = ["chiefMenu","count"])
-fun bindOrderMenunames(view: TextView, menu: String, count: Int) {
+fun bindOrderMenuNames(view: TextView, menu: String, count: Int) {
     view.text = if(count>1) "${menu} 외 ${count-1}건" else menu
 }
 
@@ -53,5 +53,12 @@ fun bindOrderTime(view: TextView, date: Date?) {
 
 @BindingAdapter("complete")
 fun bindBackgroundByCompleted(layout: ConstraintLayout, complete: Char) {
-    if(complete == 'Y') layout.setBackgroundResource(R.color.light_green)
+    if (complete == 'Y') layout.setBackgroundResource(R.color.light_green)
+    else layout.setBackgroundResource(R.color.white)
+}
+
+@BindingAdapter("stateText")
+fun bindTextComplete(view: TextView, complete: Char) {
+    if (complete == 'Y') view.text = "제조 완료"
+    else view.text = "대기 중.."
 }

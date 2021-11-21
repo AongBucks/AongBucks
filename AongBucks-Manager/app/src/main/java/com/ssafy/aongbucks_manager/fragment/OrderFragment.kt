@@ -73,8 +73,22 @@ class OrderFragment : Fragment(){
                 binding.recyclerViewOrder.apply {
                     layoutManager = LinearLayoutManager(mainActivity)
                     adapter = orderAdapter
+                    // 원래의 목록 위치로 돌아오게 함
                     adapter!!.stateRestorationPolicy =
-                        RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY // 원래의 목록 위치로 돌아오게 함
+                        RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+                }
+
+                // TODO: 2021-11-21 이게 맞나..........?
+                activityViewModel.changeStatePosition.observe(viewLifecycleOwner) {
+                    Log.d(TAG, "onViewCreated: selectedOrder observe")
+                    orderAdapter.apply {
+                        val p = activityViewModel.changeStatePosition.value
+                        if (p != null && p > -1) {
+                            list[p].orderCompleted = 'Y'
+                            notifyItemChanged(p)
+                            Log.d(TAG, "initAllOrderData: ${p} change!")
+                        }
+                    }
                 }
             }
         )
@@ -85,7 +99,6 @@ class OrderFragment : Fragment(){
         activityViewModel.detailOpen((view.tag as TotalOrderResponse))
     }
 
-    // TODO: 2021-11-20 detail 에서 '제조완료'버튼을 누르면 '제조완료'표시하고, 리스트 배경색 바꾸기
     // TODO: 2021-11-20 detail databinding 적용하기
     // TODO: 2021-11-20 끝을 드래그하면 새로고침되게하면 ㄱㅊ을 것 같은데?! 
     

@@ -22,6 +22,9 @@ class MainActivityViewModel: ViewModel() {
     var items = mutableListOf<PaneMenu>()
         private set
 
+    var changeStatePosition = MutableLiveData(-1) // 제조 상태가 변경되면 position 기록
+        private set
+
     init {
         items = mutableListOf(
             PaneMenu(MainActivity.TITLE, "애옹벅스 관리", null, false),
@@ -48,5 +51,13 @@ class MainActivityViewModel: ViewModel() {
 
     fun detailClose() {
         isDetailOpen.value = false
+    }
+
+    fun completeSelectedState() {
+        var tempOrder = selectedOrder.value ?: return
+        tempOrder.orderCompleted = 'Y'
+
+        selectedOrder.value = tempOrder
+        changeStatePosition.value = tempOrder.position
     }
 }

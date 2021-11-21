@@ -95,6 +95,9 @@ class OrderDetailFragment : Fragment(){
                         RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
                 }
 
+                if (order.orderCompleted == 'Y') binding.button.visibility = View.GONE
+                else binding.button.visibility = View.VISIBLE
+
                 Log.d(TAG, "onViewCreated: $orderDetails")
             }
         )
@@ -102,6 +105,22 @@ class OrderDetailFragment : Fragment(){
 
     fun close(view: View) {
         activityViewModel.detailClose()
+    }
+
+    fun completeOrder(view: View) {
+        var dto = activityViewModel.selectedOrder.value ?: return
+
+        val complete = OrderService().completeState(dto.orderId)
+        complete.observe(
+            viewLifecycleOwner,
+            {
+                if (it == true) {
+                    activityViewModel.completeSelectedState()
+                    binding.totalOrderDto = dto
+                    binding.button.visibility = View.GONE
+                }
+            }
+        )
     }
 
     override fun onDestroyView() {
