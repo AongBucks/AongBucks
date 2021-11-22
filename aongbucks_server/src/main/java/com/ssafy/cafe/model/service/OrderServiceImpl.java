@@ -84,7 +84,12 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public List<Map> selectAllOrderTotalInfo() {
-		return oDao.selectAll();
+		return oDao.selectAllOrderInfo();
 	}
 
+	@Override
+	public void completeOrderByOrderId(Integer orderId) {
+		oDao.updateStateByOrderId(orderId);
+	}
+	
 }
