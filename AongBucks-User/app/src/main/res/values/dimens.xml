@@ -2,11 +2,16 @@
 <resources>
     <dimen name="menu_card_view_size">80dp</dimen>
     <dimen name="login_logo_size">70dp</dimen>
+    <dimen name="pay_card_height_size">200dp</dimen>
+    <dimen name="pay_menu_height_size">70dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
     
     <dimen name="menudetail_margin_bottom">150dp</dimen>
     <dimen name="title_margin_top_size">@dimen/margin_size_40</dimen>
     <dimen name="title_margin_left_size">@dimen/margin_size_20</dimen>
     <dimen name="layout_padding_size">@dimen/padding_size_30</dimen>
+
+    <dimen name="elevation_size">5dp</dimen>
 
     <dimen name="margin_size_50">50dp</dimen>
     <dimen name="margin_size_40">40dp</dimen>
@@ -16,9 +21,13 @@
     
     <dimen name="padding_size_30">30dp</dimen>
     <dimen name="padding_size_20">20dp</dimen>
+    <dimen name="padding_size_12">12dp</dimen>
+    <dimen name="padding_size_8">8dp</dimen>
     
     <dimen name="text_title_large_size">30sp</dimen>
     <dimen name="text_title_size">25sp</dimen>
+    <dimen name="item_title_text_size">20sp</dimen>
+    <dimen name="text_card_size">16sp</dimen>
     <dimen name="text_default_size">16sp</dimen>
     
 </resources>

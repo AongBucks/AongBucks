@@ -22,23 +22,93 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="0dp"
-            android:layout_height="160dp"
-            android:background="@drawable/bg_pay_card"
-            android:elevation="10dp"
-            android:padding="5dp"
+            android:layout_height="@dimen/pay_card_height_size"
             android:layout_marginTop="@dimen/margin_size_16"
+            android:layout_marginHorizontal="@dimen/elevation_size"
+            android:background="@drawable/bg_pay_card"
+            android:elevation="@dimen/elevation_size"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/userNameTextView">
 
-            <ImageView
+            <TextView
+                android:id="@+id/textView11"
+                style="@style/Text.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:padding="@dimen/padding_size_12"
+                android:text="애옹페이"
+                android:textColor="@color/warm_neutral"
+                android:textSize="@dimen/text_card_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/priceTextView"
+                style="@style/Text.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_size_8"
+                android:text="7,000원"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_title_large_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="130dp"
                 android:src="@drawable/ic_aong"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.935"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.25" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/pay_menu_height_size"
+            android:layout_marginTop="@dimen/margin_size_20"
+            android:layout_marginHorizontal="@dimen/elevation_size"
+            android:background="@drawable/ripple_pay_menu"
+            android:elevation="@dimen/elevation_size"
+            android:clickable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/giftCardImage"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:src="@drawable/round_add_24"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/giftCardText"
+                app:tint="@color/starbucks_green" />
+
+            <TextView
+                android:id="@+id/giftCardText"
+                style="@style/Text.light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_size_8"
+                android:text="기프트 카드 등록"
+                android:textSize="@dimen/text_card_size"
+                android:layout_marginLeft="@dimen/margin_size_16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/giftCardImage"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
