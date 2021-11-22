@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="30dp"
+    android:padding="@dimen/layout_padding_size"
     tools:context=".fragment.OrderFragment">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:paddingLeft="20dp"
+        android:layout_marginTop="@dimen/title_margin_top_size"
+        android:paddingLeft="@dimen/title_margin_left_size"
         android:text="@string/order"
-        android:textSize="30sp" />
+        android:textSize="@dimen/text_title_large_size" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="30dp"
+    android:padding="@dimen/layout_padding_size"
     tools:context=".fragment.LoginFragment">
 
 
@@ -13,50 +13,50 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:paddingLeft="20dp"
+        android:layout_marginTop="@dimen/title_margin_top_size"
+        android:paddingLeft="@dimen/title_margin_left_size"
         android:text="@string/login"
-        android:textSize="30sp"
+        android:textSize="@dimen/text_title_large_size"
         android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="@dimen/login_logo_size"
+        android:layout_height="@dimen/login_logo_size"
+        android:layout_marginTop="@dimen/margin_size_50"
         tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/margin_size_20"
         android:fontFamily="@font/santana"
         android:text="@string/hello"
-        android:textSize="25sp"
+        android:textSize="@dimen/text_title_size"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/margin_size_10"
         android:text="@string/aongbucks"
-        android:textSize="25sp"
+        android:textSize="@dimen/text_title_size"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/margin_size_10"
         android:text="@string/login_please" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="@dimen/margin_size_50"
         android:text="@string/id"
         android:textColor="@color/black"
         android:visibility="invisible" />
@@ -73,7 +73,7 @@
             android:background="@color/white"
             android:ems="10"
             android:inputType="text"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_default_size"
             android:hint="@string/id"/>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -103,7 +103,7 @@
             android:background="@color/white"
             android:ems="10"
             android:inputType="textPassword"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_default_size"
             android:hint="@string/password"/>
 
     </com.google.android.material.textfield.TextInputLayout>
