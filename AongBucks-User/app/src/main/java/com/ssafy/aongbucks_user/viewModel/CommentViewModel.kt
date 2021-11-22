@@ -13,6 +13,10 @@ import kotlinx.coroutines.launch
 private const val TAG = "CommentViewModel_싸피"
 class CommentViewModel : ViewModel() {
 
+    /**
+     * comment 추가
+     */
+
     private val _added = MutableLiveData<Boolean>()
     val added : LiveData<Boolean>
         get() = _added
@@ -37,6 +41,11 @@ class CommentViewModel : ViewModel() {
         insertComment(comment)
     }
 
+
+    /**
+     * comment 수정
+     */
+
     private val _edited = MutableLiveData<Boolean>()
     val edited : LiveData<Boolean>
         get() = _edited
@@ -60,6 +69,10 @@ class CommentViewModel : ViewModel() {
     fun editComment(comment : Comment) {
         updateComment(comment)
     }
+
+    /**
+     * comment 삭제
+     */
 
     private val _deleted = MutableLiveData<Boolean>()
     val deleted : LiveData<Boolean>

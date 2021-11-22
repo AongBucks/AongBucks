@@ -28,6 +28,7 @@ import com.ssafy.aongbucks_user.model.dto.User
 import com.ssafy.aongbucks_user.model.response.MenuDetailWithCommentResponse
 import com.ssafy.aongbucks_user.util.CommonUtils
 import com.ssafy.aongbucks_user.viewModel.CommentViewModel
+import com.ssafy.aongbucks_user.viewModel.FavoriteViewModel
 import com.ssafy.aongbucks_user.viewModel.ProductViewModel
 import kotlinx.android.synthetic.main.list_item_comment.view.*
 
@@ -36,8 +37,9 @@ class MenuDetailFragment : Fragment() {
     private lateinit var binding : FragmentMenuDetailBinding
     private lateinit var mainActivity: MainActivity
 
-    private val viewModel : ProductViewModel by viewModels()
+    private val pViewModel : ProductViewModel by viewModels()
     private val cViewModel : CommentViewModel by viewModels()
+    private val fViewModel : FavoriteViewModel by viewModels()
 
     private lateinit var commentAdapter : CommentAdapter
 
@@ -97,10 +99,20 @@ class MenuDetailFragment : Fragment() {
             override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
                 when (isChecked) {
                     true -> { // 즐겨찾기에 추가
-
+                        fViewModel.addFavorite(user.id, productId)
+                        fViewModel.added.observe(viewLifecycleOwner, { added ->
+                            if (added) {
+                                Toast.makeText(requireContext(), R.string.favorite_added, Toast.LENGTH_SHORT).show()
+                            }
+                        })
                     }
                     false -> { // 즐겨찾기에서 제거
-
+                        fViewModel.delFavorite(user.id, productId)
+                        fViewModel.deleted.observe(viewLifecycleOwner, { deleted ->
+                            if (deleted) {
+                                Toast.makeText(requireContext(), R.string.favorite_deleted, Toast.LENGTH_SHORT).show()
+                            }
+                        })
                     }
                 }
             }
@@ -108,9 +120,9 @@ class MenuDetailFragment : Fragment() {
     }
     
     private fun getData() {
-        viewModel.getProductWithComments(productId, user.id)
-        viewModel.productWithComments.observe(viewLifecycleOwner, {
-            val menuWithComments = viewModel.productWithComments.value as List<MenuDetailWithCommentResponse>
+        pViewModel.getProductWithComments(productId, user.id)
+        pViewModel.productWithComments.observe(viewLifecycleOwner, {
+            val menuWithComments = pViewModel.productWithComments.value as List<MenuDetailWithCommentResponse>
             val menu = menuWithComments[0]
             menuPrice = menu.productPrice
             Log.d(TAG, "onViewCreated: $menu")
