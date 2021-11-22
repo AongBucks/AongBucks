@@ -5,6 +5,7 @@ public class Favorite {
 	String userId;
 	Integer productId;
 	
+	public Favorite() {}
 	
 	public Favorite(String userId, Integer productId) {
 		super();

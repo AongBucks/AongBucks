@@ -6,25 +6,30 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
 import com.ssafy.aongbucks_user.R
 import com.ssafy.aongbucks_user.activity.MainActivity
-import com.ssafy.aongbucks_user.adapter.CommentAdapter
 import com.ssafy.aongbucks_user.adapter.FavoriteAdapter
 import com.ssafy.aongbucks_user.adapter.ProductAdapter
 import com.ssafy.aongbucks_user.config.ApplicationClass
 import com.ssafy.aongbucks_user.databinding.FragmentOrderBinding
 import com.ssafy.aongbucks_user.model.dto.Product
+import com.ssafy.aongbucks_user.model.dto.User
+import com.ssafy.aongbucks_user.viewModel.FavoriteViewModel
 import com.ssafy.aongbucks_user.viewModel.ProductViewModel
 
 private const val TAG = "OrderFragment_싸피"
 class OrderFragment : Fragment() {
     private lateinit var binding : FragmentOrderBinding
     private lateinit var mainActivity : MainActivity
-    private val viewModel : ProductViewModel by viewModels()
+    private lateinit var user : User
+
+    private val pViewModel : ProductViewModel by viewModels()
+    private val fViewModel : FavoriteViewModel by viewModels()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -42,6 +47,8 @@ class OrderFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        user = ApplicationClass.sharedPreferencesUtil.getUser()
 
         // 전체 메뉴
         showTotalMenu()
@@ -67,9 +74,9 @@ class OrderFragment : Fragment() {
     }
 
     private fun showTotalMenu() {
-        viewModel.getProducts()
-        viewModel.products.observe(viewLifecycleOwner, {
-            val products = viewModel.products.value
+        pViewModel.getProducts()
+        pViewModel.products.observe(viewLifecycleOwner, {
+            val products = pViewModel.products.value
 
             if (products!!.isEmpty()) {
                 binding.noMenu.visibility = View.VISIBLE
@@ -82,10 +89,9 @@ class OrderFragment : Fragment() {
     }
 
     private fun showFavoriteMenu() {
-        val user = ApplicationClass.sharedPreferencesUtil.getUser()
-        viewModel.getFavoriteProducts(user.id)
-        viewModel.favorites.observe(viewLifecycleOwner, {
-            val favorites = viewModel.favorites.value
+        pViewModel.getFavoriteProducts(user.id)
+        pViewModel.favorites.observe(viewLifecycleOwner, {
+            val favorites = pViewModel.favorites.value
 
             if (favorites!!.isEmpty()) {
                 binding.noMenu.visibility = View.VISIBLE
@@ -127,9 +133,15 @@ class OrderFragment : Fragment() {
                 override fun onFavorite(view: View, position: Int, productId: Int) {
                     // 즐겨찾기 목록에서 제거
                     // 서버에서도 제거해야함
-                    productList.removeAt(position)
-                    notifyItemRemoved(position)
-                    notifyItemRangeChanged(position, itemCount)
+                    fViewModel.delFavorite(user.id, productId)
+                    fViewModel.deleted.observe(viewLifecycleOwner, { deleted ->
+                        if (deleted) {
+                            Toast.makeText(requireContext(), R.string.favorite_deleted,Toast.LENGTH_SHORT).show()
+                            productList.removeAt(position)
+                            notifyItemRemoved(position)
+                            notifyItemRangeChanged(position, itemCount)
+                        }
+                    })
                 }
 
                 override fun onAddCart(view: View, position: Int, product: Product) {

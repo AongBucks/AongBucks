@@ -2,6 +2,7 @@ package com.ssafy.aongbucks_user.model
 
 import com.ssafy.aongbucks_user.config.ApplicationClass
 import com.ssafy.aongbucks_user.model.api.CommentApiService
+import com.ssafy.aongbucks_user.model.api.FavoriteApiService
 import com.ssafy.aongbucks_user.model.api.ProductApiService
 import com.ssafy.aongbucks_user.model.api.UserApiService
 
@@ -17,6 +18,10 @@ object RetrofitClient {
 
     val commentService : CommentApiService by lazy {
         ApplicationClass.retrofit.create(CommentApiService::class.java)
+    }
+
+    val favoriteService : FavoriteApiService by lazy {
+        ApplicationClass.retrofit.create(FavoriteApiService::class.java)
     }
 
 }
