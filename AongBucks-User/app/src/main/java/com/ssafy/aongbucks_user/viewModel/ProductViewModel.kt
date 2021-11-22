@@ -68,8 +68,8 @@ class ProductViewModel : ViewModel() {
     /**
      *  {productId}에 해당하는 상품의 정보를 comment와 함께 반환
      */
-    private val _productWithComments = MutableLiveData<MenuDetailWithCommentResponse>()
-    val productWithComments : LiveData<MenuDetailWithCommentResponse>
+    private val _productWithComments = MutableLiveData<List<MenuDetailWithCommentResponse>>()
+    val productWithComments : LiveData<List<MenuDetailWithCommentResponse>>
         get() = _productWithComments
 
     private fun getProductDetailWithComments(productId : Int) {
@@ -77,7 +77,7 @@ class ProductViewModel : ViewModel() {
             val response = RetrofitClient.productService.getProductWithComments(productId)
             if (response.isSuccessful) {
                 if (response.body() != null) {
-                    val menuDetail = response.body() as MenuDetailWithCommentResponse
+                    val menuDetail = response.body() as List<MenuDetailWithCommentResponse>
                     _productWithComments.postValue(menuDetail)
                     Log.d(TAG, "getProductDetailWithComments: ${_productWithComments.value}")
                 }
