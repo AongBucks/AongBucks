@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- name space는 BookRepo의 fully qualified name으로 설정한다. -->
+<mapper namespace="com.ssafy.cafe.model.dao.PayDao">
+	<insert id="insert" parameterType="String">
+		insert into t_pay (user_id, price) value (#{userId}, 0)
+	</insert>
+
+	<update id="update" parameterType="Pay">
+		update t_pay set price = #{price} where user_id = #{userId}
+	</update>
+
+	<select id="select" parameterType="String" resultType="Pay">
+		select * from t_pay where user_id = #{userId}
+	</select>
+
+</mapper>
