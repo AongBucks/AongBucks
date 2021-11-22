@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,11 +31,11 @@ public class FavoriteRestController {
         return true;
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{userId}")
     @Transactional
     @ApiOperation(value="userId와 productId에 해당하는 Favorite을 삭제한다.", response = Boolean.class)
-    public Boolean delete(@RequestBody Favorite favorite) {
-    	fService.removeFavorite(favorite);
+    public Boolean delete(@PathVariable String userId, Integer productId) {
+    	fService.removeFavorite(new Favorite(userId, productId));
         return true;
     }
 }
