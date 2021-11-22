@@ -7,6 +7,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -62,6 +63,12 @@ class OrderFragment : Fragment(){
             TransitionManager.beginDelayedTransition(binding.layout, transition);
             binding.detailContainer.visibility = if (isOpen) View.VISIBLE else View.GONE
         }
+
+        binding.orderSwipeRefreshLayout.setOnRefreshListener {
+            initAllOrderData()
+            binding.orderSwipeRefreshLayout.isRefreshing=false
+            Toast.makeText(mainActivity, "주문 목록이 갱신되었습니다.", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun initAllOrderData() {
@@ -99,7 +106,6 @@ class OrderFragment : Fragment(){
         activityViewModel.detailOpen((view.tag as TotalOrderResponse))
     }
 
-    // TODO: 2021-11-20 detail databinding 적용하기
     // TODO: 2021-11-20 끝을 드래그하면 새로고침되게하면 ㄱㅊ을 것 같은데?! 
     
 }

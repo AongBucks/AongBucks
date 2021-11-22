@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import com.ssafy.aongbucks_manager.R
 import com.ssafy.aongbucks_manager.adapter.PaneAdapter
 import com.ssafy.aongbucks_manager.databinding.ActivityMainBinding
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initPaneList() {
         paneAdapter = PaneAdapter(this@MainActivity, activityViewModel.items)
-        binding.recyclerView.apply {
+        binding.slidingRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = paneAdapter
         }

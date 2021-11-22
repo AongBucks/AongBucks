@@ -18,7 +18,7 @@
             android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+                android:id="@+id/slidingRecyclerView"
                 android:layout_width="280dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="start"

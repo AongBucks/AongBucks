@@ -72,4 +72,7 @@ dependencies {
 
     // SlidingPaneLayout
     implementation "androidx.slidingpanelayout:slidingpanelayout:1.2.0-beta01"
+
+    // swipe refresh layout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 }
