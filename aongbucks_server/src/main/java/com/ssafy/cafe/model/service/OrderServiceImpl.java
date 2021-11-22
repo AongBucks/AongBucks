@@ -82,4 +82,9 @@ public class OrderServiceImpl implements OrderService {
         return oDao.getLastMonthOrder(id);
     }
 
+	@Override
+	public List<Map> selectAllOrderTotalInfo() {
+		return oDao.selectAll();
+	}
+
 }

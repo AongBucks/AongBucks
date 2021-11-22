@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" >
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/white" >
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/orderSwipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewOrder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/detailContainer"
+            android:name="com.ssafy.aongbucks_manager.fragment.OrderDetailFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+</layout>

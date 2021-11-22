@@ -9,11 +9,13 @@ public interface OrderDao {
 
     int update(Order order);
 
+    int updateStateByOrderId(Integer id);
+    
     int delete(Integer orderId);
 
     Order select(Integer orderId);
 
-    List<Order> selectAll();
+    List<Map> selectAll();
     
     Order selectWithDetail(int id);
     
@@ -28,4 +30,10 @@ public interface OrderDao {
      * @return
      */
     List<Map<String, Object>> getLastMonthOrder(String id);
+
+    /**
+     * 전체 주문 내역 반환 (이미지, 총 가격 포함)
+     * @return
+     */
+    List<Map> selectAllOrderInfo();
 }

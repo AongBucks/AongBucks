@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="totalOrderDto"
+            type="com.ssafy.aongbucks_manager.reponse.TotalOrderResponse" />
+
+        <variable
+            name="fragment"
+            type="com.ssafy.aongbucks_manager.fragment.OrderDetailFragment" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/padding_size_30"
+        android:background="@drawable/bg_order_detail">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/Text.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="주문 자세히 보기"
+            android:textSize="@dimen/title_big_text_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:layout_width="@dimen/order_detail_close_button_size"
+            android:layout_height="@dimen/order_detail_close_button_size"
+            android:background="@drawable/round_highlight_off_24"
+            android:scaleType="fitXY"
+            android:padding="@dimen/padding_size_16"
+            android:onClick="@{fragment::close}"
+            app:layout_constraintBottom_toBottomOf="@+id/title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/title"
+            android:backgroundTint="@color/light_green" />
+
+        <TextView
+            android:id="@+id/tvOrderStatus"
+            style="@style/Text.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_32"
+            android:text="제조 완료"
+            android:textColor="@{totalOrderDto.orderCompleted == 'Y' ? @color/accent_green : @color/red}"
+            android:textSize="@dimen/item_detail_order_text_size"
+            app:stateText="@{totalOrderDto.orderCompleted}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title" />
+
+        <TextView
+            android:id="@+id/tvOrderDate"
+            style="@style/Text.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_10"
+            android:text="2021.05.01"
+            android:textSize="@dimen/item_detail_order_text_size"
+            app:date="@{totalOrderDto.orderDate}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvOrderStatus" />
+
+        <TextView
+            android:id="@+id/tvOrderTable"
+            style="@style/Text.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_size_20"
+            android:text="@{totalOrderDto.orderTable}"
+            android:textSize="@dimen/item_detail_order_text_size"
+            app:layout_constraintStart_toEndOf="@id/tvOrderDate"
+            app:layout_constraintTop_toTopOf="@+id/tvOrderDate" />
+
+        <TextView
+            android:id="@+id/tvTotalPrice"
+            style="@style/Text.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20,000원"
+            android:textSize="@dimen/item_detail_order_text_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvOrderDate"
+            app:totalPrice="@{totalOrderDto.totalPrice}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewOrderDetail"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_size_32"
+            android:layout_marginBottom="@dimen/margin_size_32"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTotalPrice" />
+
+        <android.widget.Button
+            android:id="@+id/button"
+            style="@style/Text.Regular"
+            android:layout_width="@dimen/complete_button_width_size"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_button"
+            android:text="@string/order_detail_complete"
+            android:textColor="@color/white"
+            android:textSize="@dimen/default_text_size"
+            android:onClick="@{fragment::completeOrder}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

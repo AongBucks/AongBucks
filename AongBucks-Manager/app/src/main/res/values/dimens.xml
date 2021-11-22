@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- text size -->
+    <dimen name="default_text_size">16sp</dimen>
+    <dimen name="title_big_text_size">32sp</dimen>
+    <dimen name="item_title_text_size">20sp</dimen>
+    <dimen name="item_menu_text_size">18sp</dimen>
+    <dimen name="item_order_text_size">18sp</dimen>
+    <dimen name="item_detail_order_text_size">20sp</dimen>
+    <dimen name="item_grade_text_size">20sp</dimen>
+
+    <!-- layout size -->
+    <dimen name="login_logo_size">130dp</dimen>
+    <dimen name="login_code_size">300dp</dimen>
+
+    <dimen name="menu_item_height_size">150dp</dimen>
+    <dimen name="pane_image_size">24dp</dimen>
+
+    <dimen name="card_size">100dp</dimen>
+    <dimen name="card_corner_radius_size">100dp</dimen>
+
+    <dimen name="order_complete_width_size">100dp</dimen>
+    <dimen name="order_complete_height_size">30dp</dimen>
+    <dimen name="complete_button_width_size">250dp</dimen>
+    <dimen name="order_detail_close_button_size">40dp</dimen>
+
+    <dimen name="grade_img_size">45dp</dimen>
+    <dimen name="grade_id_size">32dp</dimen>
+    <dimen name="grade_dialog_edittext_size">80dp</dimen>
+
+    <!-- margin size -->
+    <dimen name="margin_size_40">40dp</dimen>
+    <dimen name="margin_size_36">36dp</dimen>
+    <dimen name="margin_size_32">32dp</dimen>
+    <dimen name="margin_size_20">20dp</dimen>
+    <dimen name="margin_size_16">16dp</dimen>
+    <dimen name="margin_size_12">12dp</dimen>
+    <dimen name="margin_size_10">10dp</dimen>
+    <dimen name="margin_size_5">5dp</dimen>
+    <dimen name="margin_size_2">2dp</dimen>
+    <dimen name="item_order_text_margin_size">8dp</dimen>
+
+    <!-- padding size -->
+    <dimen name="padding_size_100">100dp</dimen>
+    <dimen name="padding_size_30">30dp</dimen>
+    <dimen name="padding_size_16">16dp</dimen>
+    <dimen name="padding_size_12">12dp</dimen>
+    <dimen name="padding_size_4">4dp</dimen>
+
+    <!-- etc size -->
+    <dimen name="title_line_spacing_extra">10dp</dimen>
+</resources>

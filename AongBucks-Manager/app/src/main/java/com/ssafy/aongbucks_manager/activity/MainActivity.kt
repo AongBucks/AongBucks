@@ -1,21 +1,24 @@
 package com.ssafy.aongbucks_manager.activity
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import com.ssafy.aongbucks_manager.R
 import com.ssafy.aongbucks_manager.adapter.PaneAdapter
 import com.ssafy.aongbucks_manager.databinding.ActivityMainBinding
 import com.ssafy.aongbucks_manager.dto.PaneMenu
+import com.ssafy.aongbucks_manager.fragment.GradeFragment
 import com.ssafy.aongbucks_manager.fragment.MenuFragment
 import com.ssafy.aongbucks_manager.fragment.OrderFragment
 import com.ssafy.aongbucks_manager.viewmodel.MainActivityViewModel
 
+private const val TAG = "MainActivity_싸피"
 class MainActivity : AppCompatActivity() {
 
     companion object {
@@ -39,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initPaneList() {
         paneAdapter = PaneAdapter(this@MainActivity, activityViewModel.items)
-        binding.recyclerView.apply {
+        binding.slidingRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = paneAdapter
         }
@@ -52,14 +55,12 @@ class MainActivity : AppCompatActivity() {
 
         val transaction = supportFragmentManager.beginTransaction()
         when(id) {
-//            ORDER_MANAGE -> supportFragmentManager.beginTransaction()
-//                .replace(R.id.detailContainer, OrderFragment())
+            ORDER_MANAGE -> transaction
+                .replace(R.id.contentContainer, OrderFragment())
             MENU_MANAGE -> transaction
-                .replace(R.id.detailContainer, MenuFragment())
-//            GRADE_MANAGE -> supportFragmentManager.beginTransaction()
-//                .replace(R.id.detailContainer, GradeFragment())
-            ORDER_MANAGE -> null
-            GRADE_MANAGE -> null
+                .replace(R.id.contentContainer, MenuFragment())
+            GRADE_MANAGE -> transaction
+                .replace(R.id.contentContainer, GradeFragment())
         }
         transaction.commit()
         binding.slidingPaneLayout.open() // 생략하면 어케되지
@@ -69,5 +70,30 @@ class MainActivity : AppCompatActivity() {
         paneAdapter.notifyDataSetChanged()
     }
 
+    override fun onBackPressed() {
+        Log.d(TAG, "onBackPressed: ")
 
+        if (activityViewModel.isDetailOpen.value == true) {
+            super.onBackPressed()
+        } else {
+            var builder = AlertDialog.Builder(this, R.style.AlertDialog)
+            builder.apply {
+                setTitle("종료하기")
+                setMessage("정말 종료하시나옹?")
+                setPositiveButton("종료") { _, _ -> finish()}
+                setNeutralButton("취소", null)
+                Log.d(TAG, "onBackPressed: show dialog")
+            }.show()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy: ")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop: ")
+    }
 }

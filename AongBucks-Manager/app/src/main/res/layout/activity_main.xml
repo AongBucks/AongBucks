@@ -10,32 +10,29 @@
             type="com.ssafy.aongbucks_manager.viewmodel.MainActivityViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".activity.MainActivity">
-
         <androidx.slidingpanelayout.widget.SlidingPaneLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
+            tools:context=".activity.MainActivity"
             android:id="@+id/slidingPaneLayout"
+            android:drawableLeft="@color/default_green"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+                android:id="@+id/slidingRecyclerView"
                 android:layout_width="280dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="start"
-                android:background="@color/warm_neutral"
+                android:background="@drawable/bg_pane_layout"
+                android:overScrollMode="never"
                 android:elevation="10dp" />
 
             <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/detailContainer"
-                android:layout_width="300dp"
+                android:id="@+id/contentContainer"
+                android:layout_width="5dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:name="com.ssafy.aongbucks_manager.fragment.MenuFragment" />
+                android:name="com.ssafy.aongbucks_manager.fragment.OrderFragment" />
+
         </androidx.slidingpanelayout.widget.SlidingPaneLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

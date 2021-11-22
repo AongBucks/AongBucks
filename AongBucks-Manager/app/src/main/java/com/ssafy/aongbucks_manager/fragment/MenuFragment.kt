@@ -44,11 +44,6 @@ class MenuFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
         initData()
-
-        binding.addButton.setOnClickListener{
-            //장바구니 이동
-//            mainActivity.openFragment(1)
-        }
     }
 
     private fun initData(){
@@ -64,7 +59,7 @@ class MenuFragment : Fragment(){
         override fun onSuccess( code: Int, productList: List<Product>) {
             productList.let {
                 Log.d(TAG, "onSuccess: ${productList.size}")
-                menuAdapter = MenuAdapter(activity!!, this@MenuFragment, productList)
+                menuAdapter = MenuAdapter(mainActivity, this@MenuFragment, productList)
             }
 
             binding.recyclerViewMenu.apply {

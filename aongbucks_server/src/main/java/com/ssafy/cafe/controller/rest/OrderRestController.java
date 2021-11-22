@@ -30,6 +30,13 @@ public class OrderRestController {
         return order.getId();
     }
     
+    @GetMapping("/manager")
+    @ApiOperation(value="전체 주문의 상세 내역을 목록 형태로 반환한다."
+            + "이 정보는 사용자 정보 화면의 주문 내역 조회에서 사용된다.", response = List.class)
+    public List<Map> getOrderDetail() {
+        return oService.selectAllOrderTotalInfo();
+    }
+    
     @GetMapping("/{orderId}")
     @ApiOperation(value="{orderId}에 해당하는 주문의 상세 내역을 목록 형태로 반환한다."
             + "이 정보는 사용자 정보 화면의 주문 내역 조회에서 사용된다.", response = List.class)
@@ -42,5 +49,12 @@ public class OrderRestController {
             + "반환 정보는 1차 주문번호 내림차순, 2차 주문 상세 내림차순으로 정렬된다.", response = List.class)
     public List<Map<String, Object>> getLastMonthOrder(String id) {
         return oService.getLastMonthOrder(id);
+    }
+
+    @PatchMapping("/state/{orderId}")
+    @ApiOperation(value="order 객체의 complete 상태를 전환하고 order의 id를 반환한다.", response = Integer.class )
+    public Integer changeOrder(@PathVariable Integer orderId) {
+        oService.completeOrderByOrderId(orderId);
+        return orderId;
     }
 }

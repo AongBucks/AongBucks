@@ -7,7 +7,7 @@ data class Order (
     var userId: String,
     var orderTable: String,
     var orderTime: String,
-    var complited: String,
+    var completed: String,
     val details: ArrayList<OrderDetail> = ArrayList() ){
 
     var totalQnanty:Int = 0

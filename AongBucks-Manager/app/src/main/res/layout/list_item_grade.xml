@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="gradeDto"
+            type="com.ssafy.aongbucks_manager.reponse.GradeResponse" />
+        <variable
+            name="fragment"
+            type="com.ssafy.aongbucks_manager.fragment.GradeFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/padding_size_12"
+        android:onClick="@{fragment::onGradeClickListener}"
+        android:background="?attr/selectableItemBackground">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <TextView
+            android:id="@+id/gradeIdTextView"
+            style="@style/Text.Title"
+            android:layout_width="@dimen/grade_id_size"
+            android:layout_height="@dimen/grade_id_size"
+            android:background="@drawable/bg_grade_id"
+            android:gravity="center"
+            android:text="@{String.valueOf(gradeDto.id)}"
+            android:textColor="@color/default_green"
+            android:textSize="@dimen/default_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/gradeImage"
+            app:layout_constraintHorizontal_bias="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/gradeImage"
+            android:layout_width="@dimen/grade_img_size"
+            android:layout_height="@dimen/grade_img_size"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/coffee1"
+            app:gradeImg="@{gradeDto.img}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/gradeNameTextView"
+            style="@style/Text.Regular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{gradeDto.grade}"
+            android:textSize="@dimen/item_grade_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <TextView
+            android:id="@+id/gradeDiscountTextView"
+            style="@style/Text.Regular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="3"
+            android:textSize="@dimen/item_grade_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/gradeNameTextView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.25"
+            app:percent="@{gradeDto.discount}"/>
+
+        <TextView
+            android:id="@+id/gradeStandardTextView"
+            style="@style/Text.Regular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="200"
+            android:textSize="@dimen/item_grade_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/gradeDiscountTextView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.25"
+            app:score="@{gradeDto.standard}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

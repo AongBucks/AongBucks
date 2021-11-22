@@ -16,35 +16,35 @@
         android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="@dimen/margin_size_10"
         android:onClick="@{activity::onPaneClickListener}"
         app:backColor="@{menuDto.selected}">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/menuImage"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginVertical="16dp"
-            android:layout_marginLeft="32dp"
+            android:layout_width="@dimen/pane_image_size"
+            android:layout_height="@dimen/pane_image_size"
+            android:layout_marginVertical="@dimen/margin_size_16"
+            android:layout_marginLeft="@dimen/margin_size_32"
             android:src="@drawable/ic_baseline_add_24"
+            android:tint="@{menuDto.isSelected ? @color/warm_neutral : @color/house_green}"
             app:imgResId="@{menuDto.img}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/house_green" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            style="@style/Text.Title"
             android:id="@+id/menuTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="@dimen/margin_size_16"
             android:gravity="center"
             android:text="@{menuDto.name}"
             android:textAlignment="center"
-            android:textStyle="bold"
-            android:textColor="@color/house_green"
-            android:textSize="16sp"
+            android:textColor="@{menuDto.isSelected ? @color/warm_neutral : @color/house_green}"
+            android:textSize="@dimen/default_text_size"
             app:layout_constraintBottom_toBottomOf="@+id/menuImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
