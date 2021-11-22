@@ -14,5 +14,6 @@ data class MenuDetailWithCommentResponse (
     @SerializedName("comment") var commentContent: String?,
     @SerializedName("userName") val commentUserName: String?,
     @SerializedName("commentCnt") val productCommentTotalCnt: Int,
-    @SerializedName("type") val type: String
+    @SerializedName("type") val type: String,
+    @SerializedName("isFavorite") val isFavorite: Int
 )

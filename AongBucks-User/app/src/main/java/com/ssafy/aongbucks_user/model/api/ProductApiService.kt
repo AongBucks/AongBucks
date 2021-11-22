@@ -19,6 +19,6 @@ interface ProductApiService {
 
     // {productId}에 해당하는 상품의 정보를 comment와 함께 반환
     @GET("/rest/product/{productId}")
-    suspend fun getProductWithComments(@Path("productId") productId : Int) : Response<List<MenuDetailWithCommentResponse>>
+    suspend fun getProductWithComments(@Path("productId") productId : Int, @Query("userId") userId : String): Response<List<MenuDetailWithCommentResponse>>
 
 }
