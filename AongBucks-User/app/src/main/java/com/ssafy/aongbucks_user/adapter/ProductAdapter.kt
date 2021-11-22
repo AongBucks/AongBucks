@@ -16,10 +16,10 @@ class ProductAdapter(var context : Context, var productList : List<Product>)
     inner class ProductHolder(private val binding : ListItemProductBinding)
         : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(dto : Product) {
+        fun bind(data : Product) {
             binding.apply {
-                product = dto
-                itemView.tag = dto
+                product = data
+                itemView.tag = data
             }
 
             itemView.setOnClickListener {

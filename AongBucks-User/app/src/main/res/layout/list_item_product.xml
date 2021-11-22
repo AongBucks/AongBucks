@@ -19,6 +19,8 @@
         <androidx.cardview.widget.CardView
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:clipToPadding="false"
             app:cardBackgroundColor="@color/background"
             app:cardCornerRadius="100dp">
 
@@ -26,7 +28,6 @@
                 android:id="@+id/menuImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="2dp"
                 android:background="#00FFFFFF"
                 app:srcCompat="@drawable/coffee1" />
         </androidx.cardview.widget.CardView>
@@ -52,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/santana"
-                android:text="@{String.valueOf(product.price)}"
+                makeComma="@{product.price}"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 

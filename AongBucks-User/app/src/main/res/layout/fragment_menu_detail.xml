@@ -6,7 +6,7 @@
     <data>
         <variable
             name="menu"
-            type="com.ssafy.aongbucks_user.model.dto.Product" />
+            type="com.ssafy.aongbucks_user.model.response.MenuDetailWithCommentResponse" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,7 +43,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"
                         app:layout_collapseMode="pin"
-                        app:title="@{menu.name, default =Title}"
+                        app:title="@{menu.productName, default =Title}"
                         app:titleTextColor="@color/black" />
 
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -52,13 +52,75 @@
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/menudetail_margin_bottom"
+                android:padding="15dp"
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:id="@+id/textView10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:text="@string/rating"
+                            android:textSize="18sp" />
+
+                        <RatingBar
+                            android:id="@+id/ratingBar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:numStars="5"
+                            setRating="@{menu.productRating}" />
+
+                        <TextView
+                            android:id="@+id/rating"
+                            setRatingAvg="@{menu.productRatingAvg}"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:gravity="center"
+                            android:textSize="20sp" />
+
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/noComments"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/santana"
+                            android:gravity="center_horizontal"
+                            android:paddingTop="50dp"
+                            android:text="@string/no_comments"
+                            android:textSize="20sp"
+                            android:visibility="invisible" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="15dp">
+
+                        </androidx.recyclerview.widget.RecyclerView>
+                    </FrameLayout>
+
+                </LinearLayout>
+
             </androidx.core.widget.NestedScrollView>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -78,6 +140,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                android:clickable="true"
                 android:padding="5dp">
 
                 <ImageView
@@ -86,31 +149,31 @@
                     android:layout_height="25dp"
                     android:layout_marginStart="15dp"
                     android:src="@drawable/minus"
-                    app:tint="@color/medium_gray"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/light_gray" />
 
                 <TextView
                     android:id="@+id/menuCnt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:text="1"
                     android:textSize="20sp"
+                    app:layout_constraintEnd_toStartOf="@+id/plusBtn"
                     app:layout_constraintStart_toEndOf="@+id/minusBtn"
                     app:layout_constraintTop_toTopOf="@+id/minusBtn" />
 
                 <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/plusBtn"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="55dp"
                     android:src="@drawable/add"
-                    app:tint="@color/medium_gray"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/menuCnt"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toEndOf="@+id/minusBtn"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/medium_gray" />
 
                 <TextView
                     android:id="@+id/menuPrice"
@@ -118,7 +181,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:fontFamily="@font/santana"
-                    android:text="@{String.valueOf(menu.price), default=4000}"
+                    makeComma="@{menu.productPrice, default=4000}"
                     android:textSize="25sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -130,21 +193,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/imageView3"
+                <ToggleButton
+                    android:id="@+id/favoriteBtn"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:background="@drawable/button_favorite"
+                    android:backgroundTint="@color/red"
+                    android:checked="false"
                     android:src="@drawable/favorite_border"
-                    app:tint="@color/dark_gray" />
+                    android:text=""
+                    android:textOff=""
+                    android:textOn="" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/addCartBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/button_regular"
-                    android:text="담기" />
+                    android:background="@drawable/button_outlined"
+                    android:text="@string/add_cart" />
             </LinearLayout>
 
         </LinearLayout>

@@ -26,7 +26,7 @@
 
         <!--ratingBar-->
         <item name="colorControlNormal">@color/light_green</item>
-        <item name="colorControlActivated">@color/house_green</item>
+        <item name="colorControlActivated">@color/starbucks_green</item>
     </style>
 
     <style name="statusBarTheme" parent="Theme.AppCompat.Light">

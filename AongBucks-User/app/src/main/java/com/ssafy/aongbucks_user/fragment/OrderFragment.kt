@@ -2,7 +2,6 @@ package com.ssafy.aongbucks_user.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
 import com.ssafy.aongbucks_user.R
-import com.ssafy.aongbucks_user.activity.LoginActivity
 import com.ssafy.aongbucks_user.activity.MainActivity
+import com.ssafy.aongbucks_user.adapter.CommentAdapter
 import com.ssafy.aongbucks_user.adapter.ProductAdapter
 import com.ssafy.aongbucks_user.config.ApplicationClass
 import com.ssafy.aongbucks_user.databinding.FragmentOrderBinding
