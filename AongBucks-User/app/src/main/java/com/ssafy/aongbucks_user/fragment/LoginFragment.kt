@@ -51,10 +51,19 @@ class LoginFragment : Fragment() {
     }
 
     private fun login() {
+        val id = binding.id.text.toString()
+        val pass = binding.pass.text.toString()
+
+        if (id.isEmpty() || pass.isEmpty()) {
+            Toast.makeText(context, R.string.login_exits_empty, Toast.LENGTH_SHORT).show()
+            return
+        }
+
         val user = User(binding.id.text.toString(), binding.pass.text.toString())
         viewModel.userLogin(user)
         viewModel.user.observe(viewLifecycleOwner, {
             // 로그인 성공
+            Toast.makeText(context, R.string.login_completed, Toast.LENGTH_SHORT).show()
             sharedPreferencesUtil.addUser(it)
             loginActivity.openFragment(1)
         })

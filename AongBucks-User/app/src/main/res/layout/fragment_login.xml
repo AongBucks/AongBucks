@@ -16,7 +16,6 @@
         android:layout_marginTop="40dp"
         android:paddingLeft="20dp"
         android:text="@string/login"
-        android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -34,7 +33,6 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/santana"
         android:text="@string/hello"
-        android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -44,7 +42,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/aongbucks"
-        android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -53,8 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@string/login_please"
-        android:textColor="@color/black" />
+        android:text="@string/login_please" />
 
     <TextView
         android:id="@+id/textView5"
@@ -128,16 +124,16 @@
             android:text="@string/login"
             android:textStyle="bold" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/joinBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="@drawable/button_outlined"
-            android:backgroundTint="@color/white"
             android:fontFamily="@font/santana_bold"
-            android:text="@string/join" />
+            android:text="@string/join"
+            android:textColor="@color/accent_green" />
     </LinearLayout>
 
 </LinearLayout>

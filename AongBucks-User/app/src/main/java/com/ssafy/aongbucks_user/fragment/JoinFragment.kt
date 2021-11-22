@@ -55,6 +55,10 @@ class JoinFragment : Fragment() {
 
         // 빈 칸이 없는지 확인해야함
         // 비어있으면 다이얼로그로 알려주자
+        if (id.isEmpty() || name.isEmpty() || pass.isEmpty()) {
+            Toast.makeText(context, R.string.join_exits_empty, Toast.LENGTH_SHORT).show()
+            return
+        }
 
         // 중복 아이디인지 확인
         viewModel.userDuplicated(id)
@@ -75,7 +79,7 @@ class JoinFragment : Fragment() {
         viewModel.joinCompleted.observe(viewLifecycleOwner, {
             // 회원가입 성공하면 다이얼로그 띄우고 확인 누르면 로그인 화면으로 이동
             Log.d(TAG, "join success")
-            Toast.makeText(context, "회원가입이 완료되었습니다.\n로그인을 해주세요.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, R.string.join_completed, Toast.LENGTH_SHORT).show()
             loginActivity.openFragment(3)
         })
 

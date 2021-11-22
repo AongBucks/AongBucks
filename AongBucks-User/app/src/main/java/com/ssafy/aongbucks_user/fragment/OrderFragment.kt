@@ -1,14 +1,18 @@
 package com.ssafy.aongbucks_user.fragment
 
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
+import com.ssafy.aongbucks_user.R
+import com.ssafy.aongbucks_user.activity.MainActivity
+import com.ssafy.aongbucks_user.adapter.CommentAdapter
 import com.ssafy.aongbucks_user.adapter.ProductAdapter
 import com.ssafy.aongbucks_user.config.ApplicationClass
 import com.ssafy.aongbucks_user.databinding.FragmentOrderBinding
@@ -18,7 +22,13 @@ import com.ssafy.aongbucks_user.viewModel.ProductViewModel
 private const val TAG = "OrderFragment_싸피"
 class OrderFragment : Fragment() {
     private lateinit var binding : FragmentOrderBinding
+    private lateinit var mainActivity : MainActivity
     private val viewModel : ProductViewModel by viewModels()
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mainActivity = context as MainActivity
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,9 +71,9 @@ class OrderFragment : Fragment() {
             val products = viewModel.products.value
 
             if (products!!.isEmpty()) {
-                binding.noMenuTv.visibility = View.VISIBLE
+                binding.noMenu.visibility = View.VISIBLE
             } else {
-                binding.noMenuTv.visibility = View.INVISIBLE
+                binding.noMenu.visibility = View.INVISIBLE
             }
 
             initAdapter(products ?: listOf())
@@ -77,9 +87,9 @@ class OrderFragment : Fragment() {
             val favorites = viewModel.favorites.value
 
             if (favorites!!.isEmpty()) {
-                binding.noMenuTv.visibility = View.VISIBLE
+                binding.noMenu.visibility = View.VISIBLE
             } else {
-                binding.noMenuTv.visibility = View.INVISIBLE
+                binding.noMenu.visibility = View.INVISIBLE
             }
 
             initAdapter(favorites ?: listOf())
@@ -88,6 +98,13 @@ class OrderFragment : Fragment() {
 
     private fun initAdapter(products : List<Product>) {
         val adapter = ProductAdapter(requireContext(), products)
+        adapter.setItemClickListener(object : ProductAdapter.ItemClickListener {
+            override fun onClick(View: View, position: Int, productId: Int) {
+                mainActivity.hideBottomNav(true)
+                var bundle = bundleOf("productId" to productId)
+                mainActivity.navController.navigate(R.id.action_order_to_menuDetail, bundle)
+            }
+        })
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext()).apply {
                 orientation = LinearLayoutManager.VERTICAL
