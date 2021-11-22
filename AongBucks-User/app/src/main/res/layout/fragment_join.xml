@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="30dp"
+    android:layout_margin="@dimen/layout_padding_size"
     android:orientation="vertical"
     tools:context=".fragment.JoinFragment">
 
@@ -12,16 +12,16 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:paddingLeft="20dp"
+        android:layout_marginTop="@dimen/title_margin_top_size"
+        android:paddingLeft="@dimen/title_margin_left_size"
         android:text="@string/join"
-        android:textSize="30sp"
+        android:textSize="@dimen/text_title_large_size"
         android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="@dimen/login_logo_size"
+        android:layout_height="@dimen/login_logo_size"
         android:layout_marginTop="50dp"
         app:srcCompat="@drawable/aongbucks" />
 

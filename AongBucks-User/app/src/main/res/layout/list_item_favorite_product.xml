@@ -15,8 +15,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/menu_card_view_size"
+            android:layout_height="@dimen/menu_card_view_size"
             android:layout_margin="10dp"
             android:clipToPadding="false"
             app:cardBackgroundColor="@color/background"

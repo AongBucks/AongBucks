@@ -16,7 +16,9 @@
     <color name="light_yellow">#FFFFF7D1</color>
     <color name="yellow">#FFEED350</color>
     <color name="red">#FFCE1019</color>
+    <color name="crimson">#DC143C</color>
     <color name="pink">#FFE7888C</color>
+    <color name="brown">#6E3732</color>
     <color name="coral">#FFE76069</color>
     <color name="dark_gray">#FF666666</color>
     <color name="medium_gray">#FF999999</color>
