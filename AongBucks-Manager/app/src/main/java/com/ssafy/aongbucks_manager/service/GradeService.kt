@@ -39,17 +39,13 @@ class GradeService {
         return responseLiveData
     }
 
-    fun updateGrade(grade: GradeResponse) : LiveData<Boolean> {
-        val isSuccess = MutableLiveData(false)
+    fun updateGrade(grade: GradeResponse){
         val response: Call<Boolean> = RetrofitUtil.gradeService.updateGradeInfo(grade)
 
         response.enqueue(object : Callback<Boolean> {
             override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                 val res = response.body()
                 if(response.code() == 200){
-                    if (res != null) {
-                        isSuccess.value = true
-                    }
                     Log.d(TAG, "onResponse: $res")
                 } else {
                     Log.d(TAG, "onResponse: Error Code ${response.code()}")
@@ -61,7 +57,6 @@ class GradeService {
             }
 
         })
-        return isSuccess
     }
 
 }

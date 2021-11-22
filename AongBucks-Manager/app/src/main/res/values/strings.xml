@@ -9,5 +9,5 @@
     <string name="order_detail_complete">제조완료</string>
 
     <string name="grade_title">회원 등급을 관리하세요.</string>
-    <string name="grade_sub">우리 매장에 맞춰 할인률과 등업기준을 조정할 수 있습니다.</string>
+    <string name="grade_sub">각 등급을 터치하면 우리 매장에 맞춰 할인률과 등업기준을 조정할 수 있습니다.</string>
 </resources>

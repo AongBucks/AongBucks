@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="gradeDto"
+            type="com.ssafy.aongbucks_manager.reponse.GradeResponse" />
+        <variable
+            name="fragment"
+            type="com.ssafy.aongbucks_manager.fragment.GradeFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_alert_dialog"
+        android:paddingVertical="@dimen/padding_size_30"
+        android:paddingHorizontal="@dimen/padding_size_100"
+        android:onClick="@{fragment::onGradeClickListener}" >
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/Text.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="등급 정보 변경"
+            android:textColor="@color/black"
+            android:textSize="@dimen/item_title_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/gradeImage"
+            android:layout_width="@dimen/grade_img_size"
+            android:layout_height="@dimen/grade_img_size"
+            android:layout_marginTop="@dimen/margin_size_20"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/coffee1"
+            app:gradeImg="@{gradeDto.img}"
+            app:layout_constraintEnd_toEndOf="@+id/gradeDiscountText"
+            app:layout_constraintStart_toStartOf="@+id/gradeDiscountText"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <TextView
+            android:id="@+id/gradeIdTextView"
+            style="@style/Text.Title"
+            android:layout_width="@dimen/grade_id_size"
+            android:layout_height="@dimen/grade_id_size"
+            android:layout_marginLeft="@dimen/margin_size_20"
+            android:background="@drawable/bg_grade_id"
+            android:gravity="center"
+            android:text="@{String.valueOf(gradeDto.id)}"
+            android:textColor="@color/default_green"
+            android:textSize="@dimen/default_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/gradeImage"
+            app:layout_constraintStart_toEndOf="@id/gradeImage"
+            app:layout_constraintTop_toTopOf="@+id/gradeImage" />
+
+        <TextView
+            android:id="@+id/gradeNameTextView"
+            style="@style/Text.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_size_12"
+            android:gravity="center"
+            android:text="@{gradeDto.grade}"
+            android:textSize="@dimen/item_grade_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/gradeIdTextView"
+            app:layout_constraintStart_toEndOf="@id/gradeIdTextView"
+            app:layout_constraintTop_toTopOf="@+id/gradeIdTextView" />
+
+        <TextView
+            android:id="@+id/gradeDiscountText"
+            style="@style/Text.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="할인률(%)"
+            android:textSize="@dimen/default_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/gradeDiscountEditText"
+            app:layout_constraintEnd_toEndOf="@+id/gradeStandardText"
+            app:layout_constraintStart_toStartOf="@+id/gradeStandardText"
+            app:layout_constraintTop_toTopOf="@+id/gradeDiscountEditText" />
+
+        <EditText
+            android:id="@+id/gradeDiscountEditText"
+            style="@style/Text.Regular"
+            android:layout_width="@dimen/grade_dialog_edittext_size"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_12"
+            android:gravity="center"
+            android:text="@{String.valueOf(gradeDto.discount)}"
+            android:textSize="@dimen/item_grade_text_size"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="@+id/gradeStandardEditText"
+            app:layout_constraintStart_toStartOf="@+id/gradeStandardEditText"
+            app:layout_constraintTop_toBottomOf="@+id/gradeImage" />
+
+        <TextView
+            android:id="@+id/gradeStandardText"
+            style="@style/Text.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="등업기준(점)"
+            android:textSize="@dimen/default_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/gradeStandardEditText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gradeStandardEditText" />
+
+        <EditText
+            android:id="@+id/gradeStandardEditText"
+            style="@style/Text.Regular"
+            android:layout_width="@dimen/grade_dialog_edittext_size"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_size_12"
+            android:inputType="numberDecimal"
+            android:gravity="center"
+            android:text="@{String.valueOf(gradeDto.standard)}"
+            android:textSize="@dimen/item_grade_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/gradeStandardText"
+            app:layout_constraintTop_toBottomOf="@+id/gradeDiscountEditText" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            style="@style/Text.Regular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_12"
+            android:background="@android:color/transparent"
+            android:text="취소"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gradeStandardEditText" />
+
+        <Button
+            android:id="@+id/saveButton"
+            style="@style/Text.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="변경"
+            android:textColor="@color/default_green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cancelButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
