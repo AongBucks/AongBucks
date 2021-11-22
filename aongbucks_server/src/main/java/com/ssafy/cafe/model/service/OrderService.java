@@ -37,6 +37,13 @@ public interface OrderService {
      * @param order
      */
     public void updateOrder(Order order);
+    
+    /**
+     * order id로 주문 완료처리
+     * @param orderId
+     */
+    public void completeOrderByOrderId(Integer orderId);
+
     /**
      * 관리자용. 전체 주문 정보
      * @return

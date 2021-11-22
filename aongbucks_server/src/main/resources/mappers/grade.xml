@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- name space는 BookRepo의 fully qualified name으로 설정한다. -->
+<mapper namespace="com.ssafy.cafe.model.dao.GradeDao">
+	<update id="update" parameterType="Grade">
+		update t_grade
+		set
+			grade = #{grade},
+			discount = #{discount},
+			img = #{img},
+			standard = #{standard}
+		where id = #{id}
+	</update>
+	
+	<select id="selectAll" resultType="Grade">
+		select * from t_grade
+	</select>
+</mapper>

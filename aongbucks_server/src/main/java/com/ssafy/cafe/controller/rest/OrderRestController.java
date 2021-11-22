@@ -50,4 +50,11 @@ public class OrderRestController {
     public List<Map<String, Object>> getLastMonthOrder(String id) {
         return oService.getLastMonthOrder(id);
     }
+
+    @PatchMapping("/state/{orderId}")
+    @ApiOperation(value="order 객체의 complete 상태를 전환하고 order의 id를 반환한다.", response = Integer.class )
+    public Integer changeOrder(@PathVariable Integer orderId) {
+        oService.completeOrderByOrderId(orderId);
+        return orderId;
+    }
 }
