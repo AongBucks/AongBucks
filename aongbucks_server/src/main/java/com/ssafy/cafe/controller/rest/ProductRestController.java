@@ -36,8 +36,9 @@ public class ProductRestController {
     
     @GetMapping("/{productId}")
     @ApiOperation(value="{productId}에 해당하는 상품의 정보를 comment와 함께 반환한다."
-            + "이 기능은 상품의 comment를 조회할 때 사용된다.", response = List.class)
-    public List<Map<String, Object>> getProductWithComments(@PathVariable Integer productId){
-        return pService.selectWithComment(productId);
+            + "이 기능은 상품의 comment를 조회할 때 사용된다."
+    		+ "이때 현재 로그인한 사용자가 해당 상품을 즐겨찾기로 등록했는지 여부도 함께 반환한다.", response = List.class)
+    public List<Map<String, Object>> getProductWithComments(@PathVariable Integer productId, String userId){
+        return pService.selectWithComment(productId, userId);
     }
 }

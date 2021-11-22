@@ -21,9 +21,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ssafy.aongbucks_user.R
 import com.ssafy.aongbucks_user.activity.MainActivity
 import com.ssafy.aongbucks_user.adapter.CommentAdapter
+import com.ssafy.aongbucks_user.config.ApplicationClass
 import com.ssafy.aongbucks_user.databinding.FragmentMenuDetailBinding
 import com.ssafy.aongbucks_user.model.dto.Comment
-import com.ssafy.aongbucks_user.model.dto.Product
+import com.ssafy.aongbucks_user.model.dto.User
 import com.ssafy.aongbucks_user.model.response.MenuDetailWithCommentResponse
 import com.ssafy.aongbucks_user.util.CommonUtils
 import com.ssafy.aongbucks_user.viewModel.CommentViewModel
@@ -40,6 +41,7 @@ class MenuDetailFragment : Fragment() {
 
     private lateinit var commentAdapter : CommentAdapter
 
+    private lateinit var user : User
     private var productId = 0
     private var menuCnt = 1
     private var menuPrice = 0
@@ -61,10 +63,19 @@ class MenuDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         productId = arguments?.getInt("productId")!!
-        getData()
-        
-        heartAnimation()
+        user = ApplicationClass.sharedPreferencesUtil.getUser()
 
+        getData()
+        heartAnimation()
+        initListener()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mainActivity.hideBottomNav(false)
+    }
+
+    private fun initListener() {
         binding.minusBtn.setOnClickListener {
             if (menuCnt > 1) {
                 menuCnt--
@@ -81,15 +92,23 @@ class MenuDetailFragment : Fragment() {
             binding.menuPrice.text = CommonUtils.makeComma(menuCnt * menuPrice)
             changeBtnColor (binding.minusBtn.drawable, R.color.medium_gray)
         }
-    }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        mainActivity.hideBottomNav(false)
+        binding.favoriteBtn.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener{
+            override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
+                when (isChecked) {
+                    true -> { // 즐겨찾기에 추가
+
+                    }
+                    false -> { // 즐겨찾기에서 제거
+
+                    }
+                }
+            }
+        })
     }
     
     private fun getData() {
-        viewModel.getProductWithComments(productId)
+        viewModel.getProductWithComments(productId, user.id)
         viewModel.productWithComments.observe(viewLifecycleOwner, {
             val menuWithComments = viewModel.productWithComments.value as List<MenuDetailWithCommentResponse>
             val menu = menuWithComments[0]

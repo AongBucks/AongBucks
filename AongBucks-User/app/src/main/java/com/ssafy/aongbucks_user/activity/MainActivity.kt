@@ -7,12 +7,9 @@ import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.ssafy.aongbucks_user.R
 import com.ssafy.aongbucks_user.config.ApplicationClass
 import com.ssafy.aongbucks_user.databinding.ActivityMainBinding
-import com.ssafy.aongbucks_user.fragment.HomeFragment
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding

@@ -32,4 +32,9 @@
         android:id="@+id/menuDetailFragment"
         android:name="com.ssafy.aongbucks_user.fragment.MenuDetailFragment"
         android:label="MenuDetailFragment" />
+    <fragment
+        android:id="@+id/payFragment"
+        android:name="com.ssafy.aongbucks_user.fragment.PayFragment"
+        android:label="fragment_pay"
+        tools:layout="@layout/fragment_pay" />
 </navigation>

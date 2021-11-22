@@ -72,14 +72,13 @@ class ProductViewModel : ViewModel() {
     val productWithComments : LiveData<List<MenuDetailWithCommentResponse>>
         get() = _productWithComments
 
-    private fun getProductDetailWithComments(productId : Int) {
+    private fun getProductDetailWithComments(productId : Int, userId : String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val response = RetrofitClient.productService.getProductWithComments(productId)
+            val response = RetrofitClient.productService.getProductWithComments(productId, userId)
             if (response.isSuccessful) {
                 if (response.body() != null) {
                     val menuDetail = response.body() as List<MenuDetailWithCommentResponse>
                     _productWithComments.postValue(menuDetail)
-                    Log.d(TAG, "getProductDetailWithComments: ${_productWithComments.value}")
                 }
             } else {
                 Log.d(TAG, "getProductWithComments: ${response.code()}")
@@ -87,8 +86,8 @@ class ProductViewModel : ViewModel() {
         }
     }
 
-    fun getProductWithComments(productId : Int) {
-        getProductDetailWithComments(productId)
+    fun getProductWithComments(productId : Int, userId : String) {
+        getProductDetailWithComments(productId, userId)
     }
 
 }

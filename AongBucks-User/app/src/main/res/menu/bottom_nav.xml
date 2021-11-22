@@ -6,6 +6,9 @@
         android:icon="@drawable/home"
         android:title="@string/home" />
     <item
+        android:icon="@drawable/pay"
+        android:title="Pay" />
+    <item
         android:id="@+id/orderFragment"
         android:icon="@drawable/order"
         android:title="@string/order" />

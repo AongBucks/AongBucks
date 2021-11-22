@@ -4,16 +4,16 @@
 <!-- name space는 BookRepo의 fully qualified name으로 설정한다. -->
 <mapper namespace="com.ssafy.cafe.model.dao.OrderDetailDao">
 	<insert id="insert" parameterType="OrderDetail">
-INSERT INTO t_order_detail
-    (
-    order_id,
-    product_id, 
-    quantity)
-VALUES
-    ( 
-    #{orderId},
-    #{productId}, 
-    #{quantity})
+		INSERT INTO t_order_detail
+		    (
+		    order_id,
+		    product_id, 
+		    quantity)
+		VALUES
+		    ( 
+		    #{orderId},
+		    #{productId}, 
+		    #{quantity})
 	</insert>
 
 
@@ -22,11 +22,13 @@ VALUES
 		WHERE d_id =
 		#{id}
 	</delete>
+	
 	<select id="select" parameterType="int" resultMap="OrderDetailBasic">
 		SELECT * FROM
 		t_order_detail
 		WHERE d_id = #{id} order by d_id desc
 	</select>
+	
 	<select id="selectAll" resultMap="OrderDetailBasic">
 		SELECT * FROM t_order_detail order by d_id desc
 	</select>

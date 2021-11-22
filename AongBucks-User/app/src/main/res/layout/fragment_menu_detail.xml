@@ -199,7 +199,7 @@
                     android:layout_height="50dp"
                     android:background="@drawable/button_favorite"
                     android:backgroundTint="@color/red"
-                    android:checked="false"
+                    android:checked="@{menu.isFavorite == 1 ? true : false}"
                     android:src="@drawable/favorite_border"
                     android:text=""
                     android:textOff=""
