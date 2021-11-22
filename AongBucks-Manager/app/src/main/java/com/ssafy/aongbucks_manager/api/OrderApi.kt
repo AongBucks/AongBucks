@@ -17,5 +17,5 @@ interface OrderApi {
     fun getTotalOrderList(): Call<List<TotalOrderResponse>>
 
     @PATCH("rest/order/state/{orderId}")
-    fun postOrderState(@Path("orderId") orderId: Int) : Call<Int>
+    fun patchOrderState(@Path("orderId") orderId: Int) : Call<Int>
 }

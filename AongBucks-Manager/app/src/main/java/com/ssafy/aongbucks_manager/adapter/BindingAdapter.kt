@@ -10,10 +10,17 @@ import com.ssafy.aongbucks_manager.config.ApplicationClass
 import com.ssafy.aongbucks_manager.util.CommonUtils
 import java.util.*
 
-@BindingAdapter("glideImg")
-fun bindGlideFromResName(view: ImageView, img: String) {
+@BindingAdapter("menuImg")
+fun bindGlideMenuFromResName(view: ImageView, img: String) {
     Glide.with(view)
         .load("${ApplicationClass.MENU_IMGS_URL}${img}")
+        .into(view)
+}
+
+@BindingAdapter("gradeImg")
+fun bindGlideGradeFromResName(view: ImageView, img: String) {
+    Glide.with(view)
+        .load("${ApplicationClass.GRADE_IMGS_URL}${img}")
         .into(view)
 }
 
@@ -67,4 +74,14 @@ fun bindTextComplete(view: TextView, complete: Char) {
 fun bindDetailMenuCount(view: TextView, menuType: String?, count: Int) {
     var type = if(menuType == "coffee") "잔" else "개"
     view.text = count.toString() + type
+}
+
+@BindingAdapter("percent")
+fun bindSalePercent(view: TextView, discount: Float) {
+    view.text = "${discount} %"
+}
+
+@BindingAdapter("score")
+fun bindLevelStandard(view: TextView, standard: Int) {
+    view.text = "${standard}점"
 }

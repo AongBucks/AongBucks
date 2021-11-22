@@ -39,7 +39,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/margin_size_10"
                 android:adjustViewBounds="true"
-                app:glideImg="@{totalOrderDto.img}" />
+                app:menuImg="@{totalOrderDto.img}" />
         </androidx.cardview.widget.CardView>
 
         <TextView

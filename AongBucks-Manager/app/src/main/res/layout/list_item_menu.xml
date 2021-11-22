@@ -37,7 +37,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/margin_size_10"
                 android:adjustViewBounds="true"
-                app:glideImg="@{productDto.img}"/>
+                app:menuImg="@{productDto.img}"/>
         </androidx.cardview.widget.CardView>
 
         <TextView

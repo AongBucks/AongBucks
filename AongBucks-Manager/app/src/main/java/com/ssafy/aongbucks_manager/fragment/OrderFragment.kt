@@ -20,6 +20,7 @@ import com.ssafy.aongbucks_manager.R
 import com.ssafy.aongbucks_manager.activity.MainActivity
 import com.ssafy.aongbucks_manager.adapter.OrderAdapter
 import com.ssafy.aongbucks_manager.databinding.FragmentOrderBinding
+import com.ssafy.aongbucks_manager.dto.Order
 import com.ssafy.aongbucks_manager.reponse.TotalOrderResponse
 import com.ssafy.aongbucks_manager.service.OrderService
 import com.ssafy.aongbucks_manager.viewmodel.MainActivityViewModel
@@ -69,6 +70,19 @@ class OrderFragment : Fragment(){
             binding.orderSwipeRefreshLayout.isRefreshing=false
             Toast.makeText(mainActivity, "주문 목록이 갱신되었습니다.", Toast.LENGTH_SHORT).show()
         }
+
+        orderAdapter = OrderAdapter(mainActivity, this, ArrayList<TotalOrderResponse>())
+        activityViewModel.changeStatePosition.observe(viewLifecycleOwner) {
+            Log.d(TAG, "onViewCreated: selectedOrder observe")
+            orderAdapter.apply {
+                val p = activityViewModel.changeStatePosition.value
+                if (p != null && p > -1) {
+                    list[p].orderCompleted = 'Y'
+                    notifyItemChanged(p)
+                    Log.d(TAG, "initAllOrderData: ${p} change!")
+                }
+            }
+        }
     }
 
     private fun initAllOrderData() {
@@ -83,19 +97,6 @@ class OrderFragment : Fragment(){
                     // 원래의 목록 위치로 돌아오게 함
                     adapter!!.stateRestorationPolicy =
                         RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
-                }
-
-                // TODO: 2021-11-21 이게 맞나..........?
-                activityViewModel.changeStatePosition.observe(viewLifecycleOwner) {
-                    Log.d(TAG, "onViewCreated: selectedOrder observe")
-                    orderAdapter.apply {
-                        val p = activityViewModel.changeStatePosition.value
-                        if (p != null && p > -1) {
-                            list[p].orderCompleted = 'Y'
-                            notifyItemChanged(p)
-                            Log.d(TAG, "initAllOrderData: ${p} change!")
-                        }
-                    }
                 }
             }
         )

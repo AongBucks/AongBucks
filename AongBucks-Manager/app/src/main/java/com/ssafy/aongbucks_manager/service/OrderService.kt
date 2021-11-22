@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ssafy.aongbucks_manager.reponse.OrderDetailResponse
 import com.ssafy.aongbucks_manager.util.RetrofitUtil
-import com.ssafy.aongbucks_manager.dto.*
 import com.ssafy.aongbucks_manager.reponse.TotalOrderResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -68,7 +67,7 @@ class OrderService{
     fun completeState(id: Int) : LiveData<Boolean> {
         var isSuccess = MutableLiveData<Boolean>(false)
 
-        RetrofitUtil.orderService.postOrderState(id)
+        RetrofitUtil.orderService.patchOrderState(id)
             .enqueue(object: Callback<Int> {
                 override fun onResponse(call: Call<Int>, response: Response<Int>) {
                     val res = response.body()

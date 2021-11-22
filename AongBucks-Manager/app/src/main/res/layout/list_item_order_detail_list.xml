@@ -30,7 +30,7 @@
                 android:layout_margin="@dimen/margin_size_10"
                 android:adjustViewBounds="true"
                 android:src="@drawable/coffee1"
-                app:glideImg="@{orderDetailDto.img}"/>
+                app:menuImg="@{orderDetailDto.img}"/>
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
