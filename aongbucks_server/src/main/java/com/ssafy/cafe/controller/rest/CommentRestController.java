@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.ssafy.cafe.model.dto.Comment;
 import com.ssafy.cafe.model.service.CommentService;
-import io.swagger.annotations.Api;
+
 import io.swagger.annotations.ApiOperation;
 
 @RestController
@@ -33,7 +34,7 @@ public class CommentRestController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    @ApiOperation(value="{id}에 해당하는 사용자 정보를 삭제한다.", response = Boolean.class)
+    @ApiOperation(value="{id}에 해당하는 comment를 삭제한다.", response = Boolean.class)
     public Boolean delete(@PathVariable Integer id) {
         cService.removeComment(id);
         return true;

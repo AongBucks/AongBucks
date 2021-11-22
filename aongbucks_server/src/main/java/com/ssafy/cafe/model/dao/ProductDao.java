@@ -19,5 +19,5 @@ public interface ProductDao {
     List<Product> selectFavorites(String userId);
     
     // backend 관통 과정에서 추가됨.
-    List<Map<String, Object>> selectWithComment(Integer productId);
+    List<Map<String, Object>> selectWithComment(Integer productId, String userId);
 }
