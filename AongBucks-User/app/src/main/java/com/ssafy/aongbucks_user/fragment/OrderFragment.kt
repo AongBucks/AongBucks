@@ -13,6 +13,7 @@ import com.google.android.material.tabs.TabLayout
 import com.ssafy.aongbucks_user.R
 import com.ssafy.aongbucks_user.activity.MainActivity
 import com.ssafy.aongbucks_user.adapter.CommentAdapter
+import com.ssafy.aongbucks_user.adapter.FavoriteAdapter
 import com.ssafy.aongbucks_user.adapter.ProductAdapter
 import com.ssafy.aongbucks_user.config.ApplicationClass
 import com.ssafy.aongbucks_user.databinding.FragmentOrderBinding
@@ -76,7 +77,7 @@ class OrderFragment : Fragment() {
                 binding.noMenu.visibility = View.INVISIBLE
             }
 
-            initAdapter(products ?: listOf())
+            initProductAdapter(products ?: listOf())
         })
     }
 
@@ -92,11 +93,11 @@ class OrderFragment : Fragment() {
                 binding.noMenu.visibility = View.INVISIBLE
             }
 
-            initAdapter(favorites ?: listOf())
+            initFavoriteAdapter(favorites ?: listOf())
         })
     }
 
-    private fun initAdapter(products : List<Product>) {
+    private fun initProductAdapter(products : List<Product>) {
         val adapter = ProductAdapter(requireContext(), products)
         adapter.setItemClickListener(object : ProductAdapter.ItemClickListener {
             override fun onClick(View: View, position: Int, productId: Int) {
@@ -112,5 +113,35 @@ class OrderFragment : Fragment() {
             this.adapter = adapter
         }
     }
+    
+    private fun initFavoriteAdapter(products : List<Product>) {
+        val adapter = FavoriteAdapter(requireContext(), products.toMutableList()).apply {
+            setItemClickListener(object : FavoriteAdapter.ItemClickListener {
+                override fun onClick(View: View, position: Int, productId: Int) {
+                    mainActivity.hideBottomNav(true)
+                    var bundle = bundleOf("productId" to productId)
+                    mainActivity.navController.navigate(R.id.action_order_to_menuDetail, bundle)
+                }
+            })
+            setBtnClickListener(object : FavoriteAdapter.ButtonClickListener {
+                override fun onFavorite(view: View, position: Int, productId: Int) {
+                    // 즐겨찾기 목록에서 제거
+                    // 서버에서도 제거해야함
+                    productList.removeAt(position)
+                    notifyItemRemoved(position)
+                    notifyItemRangeChanged(position, itemCount)
+                }
 
+                override fun onAddCart(view: View, position: Int, product: Product) {
+                    // 장바구니에 추가
+                }
+            })
+        }
+        binding.recyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext()).apply {
+                orientation = LinearLayoutManager.VERTICAL
+            }
+            this.adapter = adapter
+        }
+    }
 }

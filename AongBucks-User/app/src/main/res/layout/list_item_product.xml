@@ -13,8 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
             android:layout_width="100dp"
@@ -50,10 +49,10 @@
 
             <TextView
                 android:id="@+id/price"
+                makeComma="@{product.price}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/santana"
-                makeComma="@{product.price}"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
