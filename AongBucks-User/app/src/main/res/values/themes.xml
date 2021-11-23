@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/starbucks_green</item>
         <item name="colorPrimaryVariant">@color/accent_green</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/starbucks_green</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/light_green</item>
         <item name="colorSecondaryVariant">@color/house_green</item>
