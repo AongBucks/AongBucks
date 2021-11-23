@@ -72,6 +72,11 @@ class OrderFragment : Fragment() {
 
             override fun onTabReselected(tab: TabLayout.Tab?) { }
         })
+
+        binding.shoppintCartBtn.setOnClickListener {
+            mainActivity.hideBottomNav(true)
+            mainActivity.navController.navigate(R.id.action_orderFragment_to_cartFragment)
+        }
     }
 
     private fun showTotalMenu() {
