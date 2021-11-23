@@ -84,7 +84,7 @@
             android:layout_marginHorizontal="@dimen/elevation_size"
             android:background="@drawable/ripple_pay_menu"
             android:elevation="@dimen/elevation_size"
-            android:clickable="true"
+            android:onClick="@{fragment::addGiftCard}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout"

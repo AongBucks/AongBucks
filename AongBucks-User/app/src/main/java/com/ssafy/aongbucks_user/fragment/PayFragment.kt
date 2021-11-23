@@ -1,16 +1,24 @@
 package com.ssafy.aongbucks_user.fragment
 
+import android.app.AlertDialog
 import android.app.Dialog
+import android.app.PendingIntent
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.nfc.NfcAdapter
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
 import com.ssafy.aongbucks_user.R
 import com.ssafy.aongbucks_user.activity.MainActivity
@@ -21,8 +29,12 @@ import com.ssafy.aongbucks_user.model.dto.Pay
 import com.ssafy.aongbucks_user.model.dto.User
 import com.ssafy.aongbucks_user.service.PayService
 import com.ssafy.aongbucks_user.util.CommonUtils
+import com.ssafy.aongbucks_user.viewModel.MainActivityViewModel
 
+private const val TAG = "PayFragment_싸피"
 class PayFragment : Fragment(){
+
+    private val activityViewModel: MainActivityViewModel by activityViewModels()
     private lateinit var mainActivity: MainActivity
     private lateinit var binding:FragmentPayBinding
     private lateinit var user: User
@@ -46,6 +58,7 @@ class PayFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         user = ApplicationClass.sharedPreferencesUtil.getUser()
 
+        binding.fragment = this
         initPayData()
     }
 
@@ -67,7 +80,45 @@ class PayFragment : Fragment(){
             dialog.dismiss()
             if (userPay.value != null) {
                 binding.priceTextView.text = CommonUtils.makeComma(userPay.value!!.price)
+            } else {
+                binding.priceTextView.text = "애옹페이를 사용하려면 터치하세요."
             }
+        })
+    }
+
+    fun addGiftCard(view: View) {
+        if (userPay.value == null) {
+            Toast.makeText(mainActivity, "애옹페이 활성화 후 이용해주세요.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        activityViewModel.changeNfcFlag(true)
+        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+        builder.apply {
+            setTitle("알림")
+            setMessage("Table NFC를 찍어주세요.\n")
+            setNegativeButton("취소") { dialog, _ -> dialog.cancel()
+                activityViewModel.changeNfcFlag(false)
+                Toast.makeText(mainActivity, "취소되었습니다.", Toast.LENGTH_SHORT).show()
+            }
+        }
+        val dialog = builder.create()
+        dialog.show()
+
+        activityViewModel.cardMoney.observe(viewLifecycleOwner, {
+            if (activityViewModel.nfcFlag == true) { // nfc 활성화 모드일 때만
+
+                val currentPrice = userPay.value?.price?.plus(it)
+
+                if (currentPrice != null) {
+                    userPay.value?.price = currentPrice
+                    PayService().changePayPrice(userPay.value!!)
+                    Toast.makeText(mainActivity, "${CommonUtils.makeComma(it)}이 등록되었습니다.", Toast.LENGTH_SHORT).show()
+                }
+
+                activityViewModel.changeNfcFlag(false) // nfc 해제
+                dialog.dismiss()
+           }
         })
     }
 
