@@ -1,10 +1,7 @@
 package com.ssafy.aongbucks_user.model
 
 import com.ssafy.aongbucks_user.config.ApplicationClass
-import com.ssafy.aongbucks_user.model.api.CommentApiService
-import com.ssafy.aongbucks_user.model.api.FavoriteApiService
-import com.ssafy.aongbucks_user.model.api.ProductApiService
-import com.ssafy.aongbucks_user.model.api.UserApiService
+import com.ssafy.aongbucks_user.model.api.*
 
 object RetrofitClient {
 
@@ -22,6 +19,10 @@ object RetrofitClient {
 
     val favoriteService : FavoriteApiService by lazy {
         ApplicationClass.retrofit.create(FavoriteApiService::class.java)
+    }
+
+    val payService : PayApiService by lazy {
+        ApplicationClass.retrofit.create(PayApiService::class.java)
     }
 
 }

@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ssafy.aongbucks_user.model.RetrofitClient
-import com.ssafy.aongbucks_user.model.dto.Comment
 import com.ssafy.aongbucks_user.model.dto.Favorite
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

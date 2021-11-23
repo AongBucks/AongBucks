@@ -7,14 +7,14 @@ import retrofit2.http.*
 
 interface PayApiService {
     @POST("rest/pay/{userId}")
-    fun postUserPay(@Path("userId") userId: String) : Call<Boolean>
+    suspend fun postUserPay(@Path("userId") userId: String) : Response<Boolean>
 
     @GET("rest/pay/{userId}")
-    fun getUserPay(@Path("userId") userId: String): Call<Pay>
+    suspend fun getUserPay(@Path("userId") userId: String): Response<Pay>
 
     @GET("rest/pay/isJoined/{userId}")
-    fun getUserIsJoined(@Path("userId") userId: String): Call<Boolean>
+    suspend fun getUserIsJoined(@Path("userId") userId: String): Response<Boolean>
 
     @PATCH("rest/pay/price")
-    fun patchUserPrice(@Body pay: Pay) : Call<Boolean>
+    suspend fun patchUserPrice(@Body pay: Pay) : Response<Boolean>
 }

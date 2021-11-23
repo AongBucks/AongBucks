@@ -77,6 +77,22 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <android.widget.Button
+            android:id="@+id/activeButton"
+            style="@style/Text.Regular"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/pay_card_height_size"
+            android:layout_marginTop="@dimen/margin_size_16"
+            android:layout_marginHorizontal="@dimen/elevation_size"
+            android:background="@drawable/button_join_pay"
+            android:elevation="@dimen/elevation_size"
+            android:text="애옹페이를 활성화하려면 터치하세요."
+            android:textColor="@color/house_green"
+            android:onClick="@{fragment::joinPay}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/userNameTextView" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/pay_menu_height_size"
