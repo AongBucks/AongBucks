@@ -115,7 +115,7 @@
                 android:backgroundTint="@color/accent_green"
                 android:clickable="true"
                 android:src="@drawable/shopping_cart"
-                android:tint="@color/warm_neutral"
+                app:tint="@color/warm_neutral"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:rippleColor="@color/warm_neutral" />

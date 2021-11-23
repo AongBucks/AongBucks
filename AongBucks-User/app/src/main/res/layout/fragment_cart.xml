@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="fragment"
+            type="com.ssafy.aongbucks_user.fragment.CartFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/layout_padding_size">
+
+        <TextView
+            android:id="@+id/cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/title_margin_top_size"
+            android:layout_marginLeft="@dimen/title_margin_left_size"
+            android:text="Cart"
+            android:textSize="@dimen/text_title_large_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/carRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/cart_item_height_size"
+            android:layout_marginTop="@dimen/margin_size_16"
+            app:layout_constraintTop_toBottomOf="@id/cart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:fontFamily="@font/santana"
+            android:id="@+id/totalProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="총 상품금액"
+            android:layout_marginBottom="@dimen/padding_size_8"
+            app:layout_constraintBottom_toTopOf="@+id/discount"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:fontFamily="@font/santana"
+            android:id="@+id/totalProductTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="총 상품금액"
+            android:layout_marginBottom="@dimen/padding_size_8"
+            app:layout_constraintBottom_toTopOf="@+id/discount"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:fontFamily="@font/santana"
+            android:id="@+id/discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="예상 할인금액"
+            android:layout_marginBottom="@dimen/padding_size_8"
+            app:layout_constraintBottom_toTopOf="@+id/mile"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:fontFamily="@font/santana"
+            android:id="@+id/discountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="예상 할인금액"
+            android:layout_marginBottom="@dimen/padding_size_8"
+            app:layout_constraintBottom_toTopOf="@+id/mile"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:fontFamily="@font/santana"
+            android:id="@+id/mile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="예상 적립금"
+            android:textColor="@color/accent_green"
+            android:layout_marginBottom="@dimen/margin_size_20"
+            app:layout_constraintBottom_toTopOf="@+id/totalOrder"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:fontFamily="@font/santana"
+            android:id="@+id/mileTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="예상 적립금"
+            android:textColor="@color/accent_green"
+            android:layout_marginBottom="@dimen/margin_size_20"
+            app:layout_constraintBottom_toTopOf="@+id/totalOrder"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:fontFamily="@font/santana"
+            android:id="@+id/totalOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_size_16"
+            android:text="총 주문금액"
+            android:textSize="@dimen/item_title_text_size"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:fontFamily="@font/santana"
+            android:id="@+id/totalOrderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_size_16"
+            android:text="총 주문금액"
+            android:textSize="@dimen/item_title_text_size"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <android.widget.Button
+            android:fontFamily="@font/santana"
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_regular"
+            android:text="주문하기"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
