@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,8 +20,10 @@ import com.ssafy.aongbucks_user.adapter.ProductAdapter
 import com.ssafy.aongbucks_user.config.ApplicationClass
 import com.ssafy.aongbucks_user.databinding.FragmentOrderBinding
 import com.ssafy.aongbucks_user.model.dto.Product
+import com.ssafy.aongbucks_user.model.dto.ShoppingCart
 import com.ssafy.aongbucks_user.model.dto.User
 import com.ssafy.aongbucks_user.viewModel.FavoriteViewModel
+import com.ssafy.aongbucks_user.viewModel.MainActivityViewModel
 import com.ssafy.aongbucks_user.viewModel.ProductViewModel
 
 private const val TAG = "OrderFragment_싸피"
@@ -28,6 +31,8 @@ class OrderFragment : Fragment() {
     private lateinit var binding : FragmentOrderBinding
     private lateinit var mainActivity : MainActivity
     private lateinit var user : User
+
+    private val activityViewModel: MainActivityViewModel by activityViewModels()
 
     private val pViewModel : ProductViewModel by viewModels()
     private val fViewModel : FavoriteViewModel by viewModels()
@@ -72,6 +77,10 @@ class OrderFragment : Fragment() {
 
             override fun onTabReselected(tab: TabLayout.Tab?) { }
         })
+
+        binding.shoppintCartBtn.setOnClickListener {
+            mainActivity.navController.navigate(R.id.action_orderFragment_to_cartFragment)
+        }
     }
 
     private fun showTotalMenu() {
@@ -149,6 +158,12 @@ class OrderFragment : Fragment() {
 
                 override fun onAddCart(view: View, position: Int, product: Product) {
                     // 장바구니에 추가
+                    val product = productList[position]
+                    val shoppingCart = ShoppingCart(product.id, product.img, product.name, 1,
+                    product.price, product.price, product.type)
+
+                    activityViewModel.addCart(shoppingCart)
+                    Toast.makeText(requireContext(), "장바구니에 추가되었습니다.",Toast.LENGTH_SHORT).show()
                 }
             })
         }

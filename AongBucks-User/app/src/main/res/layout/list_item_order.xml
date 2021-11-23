@@ -30,7 +30,7 @@
                     menuImage="@{order.img}"
                     android:layout_width="@dimen/cardview_img_size"
                     android:layout_height="@dimen/cardview_img_size"
-                    android:scaleType="fitXY" />
+                    android:scaleType="centerCrop" />
 
             </androidx.cardview.widget.CardView>
 

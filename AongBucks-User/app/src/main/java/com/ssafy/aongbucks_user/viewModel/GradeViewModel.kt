@@ -37,4 +37,30 @@ class GradeViewModel : ViewModel() {
             }
         }
     }
+
+    /**
+     * 특정 등급의 할인률 조회
+     */
+    private val _discount = MutableLiveData<Float>()
+    val discount : LiveData<Float>
+        get() = _discount
+
+    fun initDiscount(id: String) {
+        getDiscountById(id)
+    }
+
+    private fun getDiscountById(id: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val response = RetrofitClient.gradeService.getDiscountGrade(id)
+            if (response.isSuccessful) {
+                if (response.body() != null) {
+                    _discount.postValue(response.body())
+                    Log.d(TAG, "getDiscountById: ${_discount}")
+                }
+            } else {
+                _discount.postValue(-1f)
+                Log.d(TAG, "getDiscountById: ${response.code()}")
+            }
+        }
+    }
 }

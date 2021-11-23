@@ -24,4 +24,9 @@ public class GradeServiceImpl implements GradeService {
 		gDao.update(grade);
 	}
 
+	@Override
+	public float getDiscount(String id) {
+		return gDao.selectDiscount(id);
+	}
+
 }

@@ -15,6 +15,7 @@ import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,11 +25,13 @@ import com.ssafy.aongbucks_user.adapter.CommentAdapter
 import com.ssafy.aongbucks_user.config.ApplicationClass
 import com.ssafy.aongbucks_user.databinding.FragmentMenuDetailBinding
 import com.ssafy.aongbucks_user.model.dto.Comment
+import com.ssafy.aongbucks_user.model.dto.ShoppingCart
 import com.ssafy.aongbucks_user.model.dto.User
 import com.ssafy.aongbucks_user.model.response.MenuDetailWithCommentResponse
 import com.ssafy.aongbucks_user.util.CommonUtils
 import com.ssafy.aongbucks_user.viewModel.CommentViewModel
 import com.ssafy.aongbucks_user.viewModel.FavoriteViewModel
+import com.ssafy.aongbucks_user.viewModel.MainActivityViewModel
 import com.ssafy.aongbucks_user.viewModel.ProductViewModel
 import kotlinx.android.synthetic.main.list_item_comment.view.*
 
@@ -36,6 +39,8 @@ private const val TAG = "MenuDetailFragment_싸피"
 class MenuDetailFragment : Fragment() {
     private lateinit var binding : FragmentMenuDetailBinding
     private lateinit var mainActivity: MainActivity
+
+    private val activityViewModel: MainActivityViewModel by activityViewModels()
 
     private val pViewModel : ProductViewModel by viewModels()
     private val cViewModel : CommentViewModel by viewModels()
@@ -51,6 +56,11 @@ class MenuDetailFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mainActivity = context as MainActivity
+        mainActivity.hideBottomNav(true)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         mainActivity.hideBottomNav(true)
     }
 
@@ -94,6 +104,15 @@ class MenuDetailFragment : Fragment() {
             binding.menuCnt.text = menuCnt.toString()
             binding.menuPrice.text = CommonUtils.makeComma(menuCnt * menuPrice)
             changeBtnColor (binding.minusBtn.drawable, R.color.medium_gray)
+        }
+
+        binding.addCartBtn.setOnClickListener {
+            if (menuCnt == 0) {
+                Toast.makeText(context,"상품 개수를 추가해주세요.",Toast.LENGTH_SHORT).show()
+            } else {
+                addCart()
+                Toast.makeText(context,"상품이 장바구니에 담겼습니다.",Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.favoriteBtn.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener{
@@ -208,6 +227,19 @@ class MenuDetailFragment : Fragment() {
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             adapter = commentAdapter
+        }
+    }
+
+    private fun addCart() {
+        val m = binding.menu
+        if (m != null) {
+            val shoppingCart = ShoppingCart(productId, m.productImg,
+                m.productName, menuCnt, menuPrice,
+                menuCnt*menuPrice, m.type)
+
+            activityViewModel.addCart(shoppingCart)
+
+            Log.d(TAG, "addCart: 현재 카트상황 ${activityViewModel.shoppingCart}")
         }
     }
 }

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="cartDto"
+            type="com.ssafy.aongbucks_user.model.dto.ShoppingCart" />
+        <variable
+            name="fragment"
+            type="com.ssafy.aongbucks_user.fragment.CartFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/cart_item_height_size"
+        android:layout_marginRight="@dimen/margin_size_16" >
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="@dimen/cart_image_size"
+            android:layout_height="@dimen/cart_image_size"
+            android:backgroundTint="@color/background"
+            android:layout_marginTop="@dimen/margin_size_20"
+            android:layout_marginRight="@dimen/margin_size_20"
+            app:cardCornerRadius="@dimen/cardview_radius_size"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/menuImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                android:src="@drawable/coffee1"
+                menuImage="@{cartDto.menuImg}"/>
+        </androidx.cardview.widget.CardView>
+
+        <ImageButton
+            android:id="@+id/removeButton"
+            android:layout_width="@dimen/cart_item_remove_size"
+            android:layout_height="@dimen/cart_item_remove_size"
+            android:layout_gravity="right"
+            android:background="@drawable/ripple_item_remove"
+            android:onClick="@{fragment::onRemoveItemListener}"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.82"
+            app:layout_constraintStart_toStartOf="@+id/cardView2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.18"
+            app:srcCompat="@drawable/ic_remove_circle"
+            app:tint="@color/crimson" />
+
+        <TextView
+            android:id="@+id/textShoppingMenuName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="@{cartDto.menuName}"
+            android:textSize="@dimen/item_title_text_size"
+            android:layout_marginTop="@dimen/margin_size_16"
+            android:layout_marginRight="@dimen/margin_size_20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
+        <LinearLayout
+            android:id="@+id/menuLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_16"
+            android:layout_marginRight="@dimen/margin_size_20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textShoppingMenuName">
+
+            <TextView
+                android:id="@+id/textShoppingMenuMoney"
+                style="@style/Text.Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="4000원"
+                app:price="@{cartDto.menuPrice}"/>
+
+            <TextView
+                style="@style/Text.light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="X"/>
+
+            <TextView
+                android:id="@+id/textShoppingMenuCount"
+                style="@style/Text.Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="2잔"
+                app:menuType="@{cartDto.type}"
+                app:menuCount="@{cartDto.menuCnt}"/>
+        </LinearLayout>
+
+            <TextView
+                android:id="@+id/textShoppingMenuMoneyAll"
+                style="@style/Text.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:textColor="@color/starbucks_green"
+                android:text="총 8000원"
+                app:totalPrice="@{cartDto.totalPrice}"
+                android:layout_marginTop="@dimen/margin_size_10"
+                android:layout_marginRight="@dimen/margin_size_20"
+                android:layout_marginBottom="@dimen/margin_size_20"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/menuLayout"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

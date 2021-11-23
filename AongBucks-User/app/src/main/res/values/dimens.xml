@@ -10,8 +10,13 @@
     <dimen name="pay_menu_height_size">70dp</dimen>
     <dimen name="pay_radius_size">20dp</dimen>
     <dimen name="icon_size">24dp</dimen>
+    <dimen name="icon_width_padding_size">56dp</dimen>
     <dimen name="progress_dialog_width_size">300dp</dimen>
     <dimen name="progress_dialog_height_size">200dp</dimen>
+    <dimen name="cart_item_height_size">280dp</dimen>
+    <dimen name="cart_item_width_size">160dp</dimen>
+    <dimen name="cart_image_size">130dp</dimen>
+    <dimen name="cart_item_remove_size">40dp</dimen>
 
     <dimen name="mypage_grade_img_size">50dp</dimen>
     <dimen name="grade_img_size">100dp</dimen>
@@ -35,6 +40,7 @@
 
     <dimen name="padding_size_30">30dp</dimen>
     <dimen name="padding_size_20">20dp</dimen>
+    <dimen name="padding_size_16">16dp</dimen>
     <dimen name="padding_size_12">12dp</dimen>
     <dimen name="padding_size_10">10dp</dimen>
     <dimen name="padding_size_8">8dp</dimen>

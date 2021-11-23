@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="fragment"
+            type="com.ssafy.aongbucks_user.fragment.OrderCompleteFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/layout_padding_size">
+
+        <TextView
+            android:id="@+id/userNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/title_margin_top_size"
+            android:layout_marginLeft="@dimen/title_margin_left_size"
+            android:text="Complete!"
+            android:textSize="@dimen/text_title_large_size"
+            android:textColor="@color/accent_green"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/orderNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/item_title_text_size"
+            android:text="대기번호 00\n결제가 완료되었습니다."
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:fontFamily="@font/santana"
+            android:id="@+id/orderProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="총 주문금액"
+            android:layout_marginBottom="@dimen/padding_size_8"
+            app:layout_constraintBottom_toTopOf="@+id/discount"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:fontFamily="@font/santana"
+            android:id="@+id/orderProductTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="총 주문금액"
+            android:layout_marginBottom="@dimen/padding_size_8"
+            app:layout_constraintBottom_toTopOf="@+id/discount"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:fontFamily="@font/santana"
+            android:id="@+id/discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="최종 할인금액"
+            android:layout_marginBottom="@dimen/padding_size_8"
+            app:layout_constraintBottom_toTopOf="@+id/mile"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:fontFamily="@font/santana"
+            android:id="@+id/discountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="예상 할인금액"
+            android:layout_marginBottom="@dimen/padding_size_8"
+            app:layout_constraintBottom_toTopOf="@+id/mile"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:fontFamily="@font/santana"
+            android:id="@+id/mile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="최종 적립금"
+            android:textColor="@color/accent_green"
+            android:layout_marginBottom="@dimen/margin_size_20"
+            app:layout_constraintBottom_toTopOf="@+id/totalPay"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:fontFamily="@font/santana"
+            android:id="@+id/mileTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="예상 적립금"
+            android:textColor="@color/accent_green"
+            android:layout_marginBottom="@dimen/margin_size_20"
+            app:layout_constraintBottom_toTopOf="@+id/totalPay"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:fontFamily="@font/santana"
+            android:id="@+id/totalPay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_size_16"
+            android:text="애옹페이 잔액"
+            android:textSize="@dimen/item_title_text_size"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:fontFamily="@font/santana"
+            android:id="@+id/totalPayTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_size_16"
+            android:text="현재잔액"
+            android:textSize="@dimen/item_title_text_size"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <android.widget.Button
+            android:fontFamily="@font/santana"
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_outlined"
+            android:text="돌아가기"
+            android:textColor="@color/starbucks_green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

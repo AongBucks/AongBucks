@@ -22,6 +22,9 @@
                 android:name="productId"
                 app:argType="integer" />
         </action>
+        <action
+            android:id="@+id/action_orderFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/myPageFragment"
@@ -41,6 +44,30 @@
         android:name="com.ssafy.aongbucks_user.fragment.PayFragment"
         android:label="fragment_pay"
         tools:layout="@layout/fragment_pay" />
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.ssafy.aongbucks_user.fragment.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_orderCompleteFragment"
+            app:destination="@id/orderCompleteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderCompleteFragment"
+        android:name="com.ssafy.aongbucks_user.fragment.OrderCompleteFragment"
+        android:label="fragment_order_complete"
+        tools:layout="@layout/fragment_order_complete" />
+    <fragment
+        android:id="@+id/joinFragment"
+        android:name="com.ssafy.aongbucks_user.fragment.JoinFragment"
+        android:label="fragment_join"
+        tools:layout="@layout/fragment_join" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.ssafy.aongbucks_user.fragment.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/gradeFragment"
         android:name="com.ssafy.aongbucks_user.fragment.GradeFragment"
