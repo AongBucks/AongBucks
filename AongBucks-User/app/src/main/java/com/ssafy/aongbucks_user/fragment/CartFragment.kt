@@ -2,7 +2,6 @@ package com.ssafy.aongbucks_user.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +16,6 @@ import com.ssafy.aongbucks_user.activity.MainActivity
 import com.ssafy.aongbucks_user.adapter.CartListAdapter
 import com.ssafy.aongbucks_user.config.ApplicationClass
 import com.ssafy.aongbucks_user.databinding.FragmentCartBinding
-import com.ssafy.aongbucks_user.model.dto.ShoppingCart
 import com.ssafy.aongbucks_user.model.dto.User
 import com.ssafy.aongbucks_user.viewModel.MainActivityViewModel
 
@@ -78,6 +76,8 @@ class CartFragment : Fragment(){
         } else {
             binding.emptyText.visibility = View.GONE
         }
+
+
 
 //        binding.shoppingCount.text = "총 ${activityViewModel.getSize()}개"
 //        binding.shoppingMoney.text = "${activityViewModel.getTotalPrice()}원"

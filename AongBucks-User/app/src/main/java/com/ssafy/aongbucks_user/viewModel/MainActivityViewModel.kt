@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.ssafy.aongbucks_user.model.dto.Order
 import com.ssafy.aongbucks_user.model.dto.OrderDetail
 import com.ssafy.aongbucks_user.model.dto.ShoppingCart
+import com.ssafy.aongbucks_user.model.dto.TotalCart
 
 class MainActivityViewModel: ViewModel() {
 
@@ -37,6 +38,15 @@ class MainActivityViewModel: ViewModel() {
     /**
      * Shopping Cart
      */
+
+    lateinit var totalCart : TotalCart
+        private set
+
+    fun updateCart(tc: TotalCart) {
+        totalCart = tc
+    }
+
+
     var shoppingCart = mutableListOf<ShoppingCart>()
         private set
 

@@ -2,6 +2,7 @@ package com.ssafy.aongbucks_user.adapter
 
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
@@ -69,4 +70,9 @@ fun bindOrderTotalPrice(view: TextView, price: Int) {
 fun bindDetailMenuCount(view: TextView, menuType: String?, count: Int) {
     var type = if(menuType == "coffee") "잔" else "개"
     view.text = count.toString() + type
+}
+
+@BindingAdapter("countOrderText")
+fun bindCountOrderText(view: Button, count: Int) {
+    view.text = "${count}건 주문하기"
 }

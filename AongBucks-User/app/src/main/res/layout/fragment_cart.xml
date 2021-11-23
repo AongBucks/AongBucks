@@ -6,6 +6,9 @@
 
     <data>
         <variable
+            name="totalDto"
+            type="com.ssafy.aongbucks_user.model.dto.TotalCart" />
+        <variable
             name="fragment"
             type="com.ssafy.aongbucks_user.fragment.CartFragment" />
     </data>
@@ -65,7 +68,8 @@
             android:text="총 상품금액"
             android:layout_marginBottom="@dimen/padding_size_8"
             app:layout_constraintBottom_toTopOf="@+id/discount"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:price="@{totalDto.price}"/>
 
         <TextView
             android:fontFamily="@font/santana"
@@ -74,7 +78,7 @@
             android:layout_height="wrap_content"
             android:text="예상 할인금액"
             android:layout_marginBottom="@dimen/padding_size_8"
-            app:layout_constraintBottom_toTopOf="@+id/mile"
+            app:layout_constraintBottom_toTopOf="@+id/reserve"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -84,12 +88,13 @@
             android:layout_height="wrap_content"
             android:text="예상 할인금액"
             android:layout_marginBottom="@dimen/padding_size_8"
-            app:layout_constraintBottom_toTopOf="@+id/mile"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintBottom_toTopOf="@+id/reserve"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:price="@{totalDto.discount}"/>
 
         <TextView
             android:fontFamily="@font/santana"
-            android:id="@+id/mile"
+            android:id="@+id/reserve"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="예상 적립금"
@@ -100,14 +105,15 @@
 
         <TextView
             android:fontFamily="@font/santana"
-            android:id="@+id/mileTextView"
+            android:id="@+id/reserveTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="예상 적립금"
             android:textColor="@color/accent_green"
             android:layout_marginBottom="@dimen/margin_size_20"
             app:layout_constraintBottom_toTopOf="@+id/totalOrder"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:price="@{totalDto.reserve}"/>
 
         <TextView
             android:fontFamily="@font/santana"
@@ -129,7 +135,8 @@
             android:text="총 주문금액"
             android:textSize="@dimen/item_title_text_size"
             app:layout_constraintBottom_toTopOf="@+id/button"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:price="@{totalDto.resultPrice}"/>
 
         <android.widget.Button
             android:fontFamily="@font/santana"
@@ -142,7 +149,8 @@
             android:onClick="@{fragment::onOrderClickListener}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:countOrderText="@{totalDto.resultPrice}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
