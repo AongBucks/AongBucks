@@ -91,13 +91,6 @@ public class UserRestController {
             return info;
         }
     }
-    
-    @GetMapping("/discount/{userId}")
-    @ApiOperation(value="사용자의 등급에 맞춘 할인률을 반환한다.", response = Integer.class )
-    public Float changeOrder(@PathVariable String userId) {
-    	 User selected = uService.selectUser(userId);
-        return gService.getDiscount(selected.getGrade_id());
-    }
 
     public Map<String, Object> getGrade(Integer stamp) {
         Map<String, Object> grade = new HashMap<>();

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import java.util.Map;
 import com.ssafy.cafe.model.dto.Grade;
+import com.ssafy.cafe.model.dto.User;
 
 @RestController
 @RequestMapping("rest/grade")
@@ -35,4 +37,10 @@ public class GradeRestController {
 		gService.updateGrade(grade);
 		return true;
 	}
+	
+    @GetMapping("/discount/{gradeId}")
+    @ApiOperation(value="사용자의 등급에 맞춘 할인률을 반환한다.", response = Float.class )
+    public Float getDiscountById(@PathVariable int gradeId) {
+        return gService.getDiscount(gradeId);
+    }
 }
