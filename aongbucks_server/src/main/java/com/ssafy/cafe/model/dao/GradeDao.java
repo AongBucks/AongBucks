@@ -9,5 +9,5 @@ public interface GradeDao {
 	
 	int update(Grade grade);
 	
-	float selectDiscount(int id);
+	float selectDiscount(String id);
 }

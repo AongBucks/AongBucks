@@ -14,7 +14,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="@dimen/cart_item_width_size"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/cart_item_height_size"
         android:layout_marginRight="@dimen/margin_size_16" >
 
@@ -24,6 +24,7 @@
             android:layout_height="@dimen/cart_image_size"
             android:backgroundTint="@color/background"
             android:layout_marginTop="@dimen/margin_size_20"
+            android:layout_marginRight="@dimen/margin_size_20"
             app:cardCornerRadius="@dimen/cardview_radius_size"
             app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,23 +59,29 @@
             app:srcCompat="@drawable/ic_remove_circle"
             app:tint="@color/crimson" />
 
+        <TextView
+            android:id="@+id/textShoppingMenuName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="@{cartDto.menuName}"
+            android:textSize="@dimen/item_title_text_size"
+            android:layout_marginTop="@dimen/margin_size_16"
+            android:layout_marginRight="@dimen/margin_size_20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
         <LinearLayout
             android:id="@+id/menuLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_size_16"
-            android:layout_marginHorizontal="@dimen/margin_size_20"
+            android:layout_marginRight="@dimen/margin_size_20"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView2">
-
-            <TextView
-                android:id="@+id/textShoppingMenuName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="@{cartDto.menuName}" />
+            app:layout_constraintTop_toBottomOf="@+id/textShoppingMenuName">
 
             <TextView
                 android:id="@+id/textShoppingMenuMoney"
@@ -85,19 +92,14 @@
                 android:gravity="right"
                 android:text="4000원"
                 app:price="@{cartDto.menuPrice}"/>
-        </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/totalLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_size_10"
-            android:layout_marginHorizontal="@dimen/margin_size_20"
-            android:layout_marginBottom="@dimen/margin_size_20"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/menuLayout">
+            <TextView
+                style="@style/Text.light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="X"/>
 
             <TextView
                 android:id="@+id/textShoppingMenuCount"
@@ -109,6 +111,7 @@
                 android:text="2잔"
                 app:menuType="@{cartDto.type}"
                 app:menuCount="@{cartDto.menuCnt}"/>
+        </LinearLayout>
 
             <TextView
                 android:id="@+id/textShoppingMenuMoneyAll"
@@ -119,8 +122,14 @@
                 android:gravity="right"
                 android:textColor="@color/starbucks_green"
                 android:text="총 8000원"
-                app:totalPrice="@{cartDto.totalPrice}"/>
-        </LinearLayout>
+                app:totalPrice="@{cartDto.totalPrice}"
+                android:layout_marginTop="@dimen/margin_size_10"
+                android:layout_marginRight="@dimen/margin_size_20"
+                android:layout_marginBottom="@dimen/margin_size_20"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/menuLayout"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

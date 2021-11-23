@@ -49,11 +49,11 @@ class MainActivityViewModel: ViewModel() {
     lateinit var totalCart : TotalCart
         private set
 
-    private fun makeTotalCart(price: Int) {
+    private fun makeTotalCart(price: Int, cnt: Int) {
         val mile:Float = 0.1f // 10% 적립
 
         totalCart = TotalCart(
-            price, (price*discountByGrade).toInt(), (price*mile).toInt()
+            price, (price*discountByGrade/100).toInt(), (price*mile).toInt(), cnt
         )
     }
 
@@ -91,14 +91,16 @@ class MainActivityViewModel: ViewModel() {
 
     fun initTotalPrice() {
         var price = 0
+        var cnt = 0
 
         val size = shoppingCart.size
 
         for (i in 0 until size) {
             price += shoppingCart[i].totalPrice
+            cnt += shoppingCart[i].menuCnt
         }
 
-        makeTotalCart(price) // 세부 결제 금액 정보 갱신
+        makeTotalCart(price, cnt) // 세부 결제 금액 정보 갱신
     }
 
     fun getCartSize(): Int {

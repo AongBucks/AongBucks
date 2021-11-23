@@ -133,6 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_size_16"
             android:text="총 주문금액"
+            android:textStyle="bold"
             android:textSize="@dimen/item_title_text_size"
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="parent"
@@ -151,7 +152,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:countOrderText="@{totalDto.resultPrice}"/>
+            app:countOrderText="@{totalDto.quantity}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -9,5 +9,5 @@ public interface GradeService {
 	
 	public void updateGrade(Grade grade);
 	
-	public float getDiscount(int id);
+	public float getDiscount(String id);
 }
