@@ -39,13 +39,23 @@ class MainActivityViewModel: ViewModel() {
      * Shopping Cart
      */
 
+    var discountByGrade: Float = 0.0f
+        private set
+
+    fun changeDiscount(discount: Float) {
+        discountByGrade = discount
+    }
+
     lateinit var totalCart : TotalCart
         private set
 
-    fun updateCart(tc: TotalCart) {
-        totalCart = tc
-    }
+    private fun makeTotalCart(price: Int) {
+        val mile:Float = 0.1f // 10% 적립
 
+        totalCart = TotalCart(
+            price, (price*discountByGrade).toInt(), (price*mile).toInt()
+        )
+    }
 
     var shoppingCart = mutableListOf<ShoppingCart>()
         private set
@@ -79,7 +89,7 @@ class MainActivityViewModel: ViewModel() {
         return -1 // 중복X
     }
 
-    fun getTotalPrice(): Int {
+    fun initTotalPrice() {
         var price = 0
 
         val size = shoppingCart.size
@@ -88,7 +98,7 @@ class MainActivityViewModel: ViewModel() {
             price += shoppingCart[i].totalPrice
         }
 
-        return price
+        makeTotalCart(price) // 세부 결제 금액 정보 갱신
     }
 
     fun getCartSize(): Int {

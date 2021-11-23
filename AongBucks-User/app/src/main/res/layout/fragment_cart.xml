@@ -139,6 +139,7 @@
             app:price="@{totalDto.resultPrice}"/>
 
         <android.widget.Button
+            style="@style/Text.Title"
             android:fontFamily="@font/santana"
             android:id="@+id/button"
             android:layout_width="0dp"

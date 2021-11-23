@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,8 +20,10 @@ import com.ssafy.aongbucks_user.adapter.ProductAdapter
 import com.ssafy.aongbucks_user.config.ApplicationClass
 import com.ssafy.aongbucks_user.databinding.FragmentOrderBinding
 import com.ssafy.aongbucks_user.model.dto.Product
+import com.ssafy.aongbucks_user.model.dto.ShoppingCart
 import com.ssafy.aongbucks_user.model.dto.User
 import com.ssafy.aongbucks_user.viewModel.FavoriteViewModel
+import com.ssafy.aongbucks_user.viewModel.MainActivityViewModel
 import com.ssafy.aongbucks_user.viewModel.ProductViewModel
 
 private const val TAG = "OrderFragment_싸피"

@@ -4,5 +4,5 @@ data class TotalCart (
     var price: Int,
     var discount: Int,
     var reserve: Int,
-    var resultPrice: Int
+    var resultPrice: Int = price-discount
 )

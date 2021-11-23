@@ -77,11 +77,8 @@ class CartFragment : Fragment(){
             binding.emptyText.visibility = View.GONE
         }
 
-
-
-//        binding.shoppingCount.text = "총 ${activityViewModel.getSize()}개"
-//        binding.shoppingMoney.text = "${activityViewModel.getTotalPrice()}원"
-
+        activityViewModel.initTotalPrice()
+        binding.totalDto = activityViewModel.totalCart
     }
 
     fun onRemoveItemListener(view: View) {
