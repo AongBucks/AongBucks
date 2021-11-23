@@ -39,6 +39,12 @@ public class PayRestController {
 		return pService.select(userId);
 	}
 	
+	@GetMapping("/isJoined/{userId}")
+	@ApiOperation(value="user가 가입된 상태이면 true 반환한다.", response = Boolean.class)
+	public Boolean getIsAlreadyJoin(@PathVariable String userId) {
+		return pService.select(userId) != null;
+	}
+	
 	@PatchMapping("/price")
 	@ApiOperation(value="price잔액을 바꾼다.", response = Boolean.class)
 	public Boolean updatePrice(@RequestBody Pay pay) {
