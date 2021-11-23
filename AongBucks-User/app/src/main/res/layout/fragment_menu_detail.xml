@@ -34,7 +34,7 @@
                     <ImageView
                         android:id="@+id/menuImage"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/menu_image_view_size"
+                        android:layout_height="@dimen/menudetail_image_view_size"
                         android:layout_marginBottom="@dimen/margin_size_90"
                         android:background="@color/background"
                         android:scaleType="fitXY"
@@ -199,7 +199,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@drawable/button_favorite"
-                    android:backgroundTint="@color/red"
+                    android:backgroundTint="@color/light_green"
                     android:checked="@{menu.isFavorite == 1 ? true : false}"
                     android:src="@drawable/favorite_border"
                     android:text=""
@@ -213,7 +213,8 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/button_outlined"
-                    android:text="@string/add_cart" />
+                    android:text="@string/add_cart"
+                    android:textColor="@color/white" />
             </LinearLayout>
 
         </LinearLayout>

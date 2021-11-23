@@ -46,6 +46,7 @@
 			FROM t_favorite
 			WHERE user_id = #{id}
 		)
+		order by id asc
 	</select>
 	
 	
