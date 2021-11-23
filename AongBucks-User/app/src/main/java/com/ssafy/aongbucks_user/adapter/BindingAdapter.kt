@@ -6,18 +6,28 @@ import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
+import com.ssafy.aongbucks_user.config.ApplicationClass
+import com.ssafy.aongbucks_user.model.response.LatestOrderResponse
 import com.ssafy.aongbucks_user.util.CommonUtils
+import java.util.*
 
 
 private const val TAG = "BindingAdapter_싸피"
 
-@BindingAdapter("imageDrawable")
-fun imageDrawable(view : ImageView, img : String?) {
-    val packageName = "com.ssafy.aongbucks_user"
-    val imgName = img?.substring(0, img.length - 4) ?: "coffee1"
-    Log.d(TAG, "imageDrawable: $imgName")
-    val resId = view.resources.getIdentifier(imgName, "drawable", packageName)
-    view.setImageResource(resId)
+@BindingAdapter("menuImage")
+fun menuImageDrawable(view : ImageView, img : String?) {
+    Glide.with(view)
+        .load("${ApplicationClass.MENU_IMGS_URL}${img}")
+        .into(view)
+}
+
+@BindingAdapter("gradeImage")
+fun gradeImageDrawable(view : ImageView, img : String?) {
+    Glide.with(view)
+        .load("${ApplicationClass.GRADE_IMGS_URL}${img}")
+        .fitCenter()
+        .into(view)
 }
 
 @BindingAdapter("setRating")
@@ -27,10 +37,20 @@ fun setRating(ratingBar : RatingBar, rating: Double) {
 
 @BindingAdapter("setRatingAvg")
 fun setRatingAvg(view: TextView, ratingAvg : Double) {
-    view.text = String.format("%.0lf", ratingAvg)
+    view.text = String.format("%.0f", ratingAvg)
 }
 
 @BindingAdapter("makeComma")
 fun addCommaToPrice(view : TextView, price : Int) {
     view.text = CommonUtils.makeComma(price)
+}
+
+@BindingAdapter("setDate")
+fun setDate(view : TextView, date : Date) {
+    view.text = CommonUtils.getFormattedString(date)
+}
+
+@BindingAdapter("setOrderStatus")
+fun setOrderStatus(view : TextView, data : LatestOrderResponse) {
+    view.text = CommonUtils.isOrderCompleted(data)
 }

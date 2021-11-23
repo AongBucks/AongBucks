@@ -37,12 +37,16 @@
     <string name="comment_updated">평점이 수정되었습니다.</string>
     <string name="no_comments">등록된 평점이 없습니다.</string>
 
-
     <string name="favorite_menu">나의 메뉴</string>
     <string name="no_menu">등록된 메뉴가 없습니다.</string>
     <string name="to_favorite_menu">좋아하는 메뉴에</string>
     <string name="press_heart">를 눌러 보세요.</string>
     <string name="favorite_added">나의 메뉴에 등록되었습니다.</string>
     <string name="favorite_deleted">나의 메뉴에서 삭제되었습니다.</string>
-    <string name="hello_sir">님 안녕하세요!</string>
+
+    <string name="hello_sir">%s님 안녕하세요!</string>
+    <string name="order_history">주문내역</string>
+    <string name="order_else">%s 외 %d건</string>
+    <string name="grade_discount">%d\%% 할인</string>
+
 </resources>

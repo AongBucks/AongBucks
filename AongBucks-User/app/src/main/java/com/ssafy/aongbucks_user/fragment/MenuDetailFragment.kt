@@ -157,6 +157,7 @@ class MenuDetailFragment : Fragment() {
 
     private fun setAdapter(comments : List<MenuDetailWithCommentResponse>) {
         commentAdapter = CommentAdapter(requireContext(), comments.toMutableList()).apply {
+            stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
             val listener = object : CommentAdapter.ButtonClickListener {
                 override fun onDelete(view: View, position: Int, commentId: Int) {
                     cViewModel.delComment(commentId)
@@ -204,7 +205,6 @@ class MenuDetailFragment : Fragment() {
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             adapter = commentAdapter
-            adapter!!.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         }
     }
 }

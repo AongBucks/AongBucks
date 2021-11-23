@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import com.ssafy.aongbucks_user.R
 import com.ssafy.aongbucks_user.activity.MainActivity
@@ -104,24 +105,26 @@ class OrderFragment : Fragment() {
     }
 
     private fun initProductAdapter(products : List<Product>) {
-        val adapter = ProductAdapter(requireContext(), products)
-        adapter.setItemClickListener(object : ProductAdapter.ItemClickListener {
-            override fun onClick(View: View, position: Int, productId: Int) {
-                mainActivity.hideBottomNav(true)
-                var bundle = bundleOf("productId" to productId)
-                mainActivity.navController.navigate(R.id.action_order_to_menuDetail, bundle)
-            }
-        })
+        val adapter = ProductAdapter(requireContext(), products).apply {
+            stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+            setItemClickListener(object : ProductAdapter.ItemClickListener {
+                override fun onClick(View: View, position: Int, productId: Int) {
+                    mainActivity.hideBottomNav(true)
+                    var bundle = bundleOf("productId" to productId)
+                    mainActivity.navController.navigate(R.id.action_order_to_menuDetail, bundle)
+                }
+            })
+        }
+
         binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext()).apply {
-                orientation = LinearLayoutManager.VERTICAL
-            }
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             this.adapter = adapter
         }
     }
     
     private fun initFavoriteAdapter(products : List<Product>) {
         val adapter = FavoriteAdapter(requireContext(), products.toMutableList()).apply {
+            stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
             setItemClickListener(object : FavoriteAdapter.ItemClickListener {
                 override fun onClick(View: View, position: Int, productId: Int) {
                     mainActivity.hideBottomNav(true)
@@ -150,9 +153,7 @@ class OrderFragment : Fragment() {
             })
         }
         binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext()).apply {
-                orientation = LinearLayoutManager.VERTICAL
-            }
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             this.adapter = adapter
         }
     }
