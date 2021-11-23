@@ -4,7 +4,10 @@
     <dimen name="login_logo_size">70dp</dimen>
     <dimen name="pay_card_height_size">200dp</dimen>
     <dimen name="pay_menu_height_size">70dp</dimen>
+    <dimen name="pay_radius_size">20dp</dimen>
     <dimen name="icon_size">24dp</dimen>
+    <dimen name="progress_dialog_width_size">300dp</dimen>
+    <dimen name="progress_dialog_height_size">200dp</dimen>
     
     <dimen name="menudetail_margin_bottom">150dp</dimen>
     <dimen name="title_margin_top_size">@dimen/margin_size_40</dimen>
