@@ -8,4 +8,6 @@ public interface GradeDao {
 	List<Grade> selectAll();
 	
 	int update(Grade grade);
+	
+	float selectDiscount(int id);
 }

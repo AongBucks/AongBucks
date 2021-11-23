@@ -8,4 +8,6 @@ public interface GradeService {
 	public List<Grade> getAllGrade();
 	
 	public void updateGrade(Grade grade);
+	
+	public float getDiscount(int id);
 }

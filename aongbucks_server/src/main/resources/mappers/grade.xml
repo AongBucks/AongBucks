@@ -16,4 +16,8 @@
 	<select id="selectAll" resultType="Grade">
 		select * from t_grade order by standard asc
 	</select>
+	
+	<select id="selectDiscount" parameterType = "Int" resultType="Float">
+		select discount from t_grade where id = #{id}
+	</select>
 </mapper>
