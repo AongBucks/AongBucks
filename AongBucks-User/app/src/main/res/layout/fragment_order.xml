@@ -10,10 +10,10 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/title_margin_left_size"
         android:layout_marginTop="@dimen/title_margin_top_size"
-        android:paddingLeft="@dimen/title_margin_left_size"
         android:text="@string/order"
         android:textSize="@dimen/text_title_large_size" />
 
