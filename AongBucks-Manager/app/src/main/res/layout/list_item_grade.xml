@@ -61,7 +61,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@{gradeDto.grade}"
+            android:text="@{gradeDto.title}"
             android:textSize="@dimen/item_grade_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline"

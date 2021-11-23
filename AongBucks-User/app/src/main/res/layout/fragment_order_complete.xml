@@ -6,6 +6,9 @@
 
     <data>
         <variable
+            name="totalDto"
+            type="com.ssafy.aongbucks_user.model.dto.TotalCart" />
+        <variable
             name="fragment"
             type="com.ssafy.aongbucks_user.fragment.OrderCompleteFragment" />
     </data>
@@ -57,7 +60,8 @@
             android:text="총 주문금액"
             android:layout_marginBottom="@dimen/padding_size_8"
             app:layout_constraintBottom_toTopOf="@+id/discount"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:price="@{totalDto.resultPrice}"/>
 
         <TextView
             android:fontFamily="@font/santana"
@@ -77,7 +81,8 @@
             android:text="예상 할인금액"
             android:layout_marginBottom="@dimen/padding_size_8"
             app:layout_constraintBottom_toTopOf="@+id/mile"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:price="@{totalDto.discount}" />
 
         <TextView
             android:fontFamily="@font/santana"
@@ -99,7 +104,8 @@
             android:textColor="@color/accent_green"
             android:layout_marginBottom="@dimen/margin_size_20"
             app:layout_constraintBottom_toTopOf="@+id/totalPay"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:price="@{totalDto.reserve}" />
 
         <TextView
             android:fontFamily="@font/santana"

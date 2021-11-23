@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_size_12"
             android:gravity="center"
-            android:text="@{gradeDto.grade}"
+            android:text="@{gradeDto.title}"
             android:textSize="@dimen/item_grade_text_size"
             app:layout_constraintBottom_toBottomOf="@+id/gradeIdTextView"
             app:layout_constraintStart_toEndOf="@id/gradeIdTextView"

@@ -76,11 +76,14 @@ class PayFragment : Fragment(){
                 Log.d(TAG, "onViewCreated: !!!userpay observe")
                 binding.priceTextView.text = CommonUtils.makeComma(it.price)
                 binding.activeButton.visibility = View.GONE
+                binding.constraintLayout.isClickable = true
             }
         })
     }
 
     private fun initPayData() {
+//        payViewModel.changeFlag(false) // 혹시 켜져있었다면..
+
         Log.d(TAG, "initPayData: ")
         var dialogBinding : DialogProgressBinding =
             DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_progress, null, false)
@@ -97,6 +100,7 @@ class PayFragment : Fragment(){
     }
 
     fun addGiftCard(view: View) {
+        // TODO: 2021-11-24 한 번 nfc해두면 앱 종료 전까지 무한 충전됨 ㅜㅜ
         Log.d(TAG, "addGiftCard: ")
         if (payViewModel.isJoined.value == false) {
             Toast.makeText(mainActivity, "애옹페이 활성화 후 이용해주세요.", Toast.LENGTH_SHORT).show()
@@ -104,13 +108,16 @@ class PayFragment : Fragment(){
         }
 
         activityViewModel.changeNfcFlag(true)
+        payViewModel.changeFlag(true)
         val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext(), R.style.AlertDialog)
         builder.apply {
+            setCancelable(false)
             setTitle("기프트카드 등록")
             setMessage("NFC를 태그해주세요.\n")
             setNegativeButton("취소") { dialog, _ ->
                 dialog.cancel()
                 activityViewModel.changeNfcFlag(false)
+                payViewModel.changeFlag(false) // 무조건 여기서 해제됨!!
                 Toast.makeText(mainActivity, "취소되었습니다.", Toast.LENGTH_SHORT).show()
             }
         }
@@ -119,13 +126,14 @@ class PayFragment : Fragment(){
 
         activityViewModel.cardMoney.observe(viewLifecycleOwner, {
             Log.d(TAG, "addGiftCard: !!!card money observe")
-            if (activityViewModel.nfcFlag == true) { // nfc 활성화 모드일 때만
+            if (payViewModel.flag == true) { // nfc 활성화 모드일 때만
 
                 if (it != null) {
                     payViewModel.plusMoney(it)
                     Toast.makeText(mainActivity, "${CommonUtils.makeComma(it)}이 등록되었습니다.", Toast.LENGTH_SHORT).show()
                 }
 
+                payViewModel.changeFlag(false)
                 activityViewModel.changeNfcFlag(false) // nfc 해제
                 dialog.dismiss()
            }
@@ -153,9 +161,28 @@ class PayFragment : Fragment(){
         dialog.show()
     }
 
+    fun doPay(view: View) {
+        if (activityViewModel.totalCart == null) {
+            Toast.makeText(mainActivity, "결제할 상품이 없습니다.", Toast.LENGTH_SHORT).show()
+        } else {
+            if(payViewModel.minusMoney(activityViewModel.totalCart!!.resultPrice)) {
+                payViewModel.plusMoney(activityViewModel.totalCart!!.reserve)
+
+                Toast.makeText(mainActivity, "${activityViewModel.totalCart!!.reserve}원이 적립되었습니다.", Toast.LENGTH_SHORT).show()
+
+                payViewModel.userPay.value?.let { activityViewModel.initPayMoney(it.price) }
+
+                mainActivity.navController.navigate(R.id.action_payFragment_to_orderCompleteFragment)
+            } else {
+                Toast.makeText(mainActivity, "잔액이 부족합니다.", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     override fun onPause() {
         super.onPause()
         Log.d(TAG, "onPause: ")
+//        payViewModel.changeFlag(false) // 혹시 못 껐으면,,
     }
 
     override fun onResume() {

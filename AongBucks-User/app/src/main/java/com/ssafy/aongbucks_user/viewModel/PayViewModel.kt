@@ -13,6 +13,13 @@ import kotlinx.coroutines.launch
 private const val TAG = "PayViewModel_싸피"
 class PayViewModel: ViewModel() {
 
+    var flag = false
+        private set
+
+    fun changeFlag(f: Boolean) {
+        flag = f
+    }
+
     /**
      * user pay 정보
      */
@@ -30,6 +37,16 @@ class PayViewModel: ViewModel() {
         val temp = _userPay.value
         _userPay.postValue(temp!!)
         updatePrice(_userPay.value!!)
+    }
+
+    fun minusMoney(price: Int): Boolean {
+        if (_userPay.value?.price!! < price) return false
+
+        _userPay.value?.price = _userPay.value?.price?.minus(price)!!
+        val temp = _userPay.value
+        _userPay.postValue(temp!!)
+        updatePrice(_userPay.value!!)
+        return true
     }
 
     private fun selectById(userId: String) {
@@ -115,4 +132,6 @@ class PayViewModel: ViewModel() {
             }
         }
     }
+
+
 }
