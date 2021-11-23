@@ -13,6 +13,9 @@
     <dimen name="progress_dialog_width_size">300dp</dimen>
     <dimen name="progress_dialog_height_size">200dp</dimen>
 
+    <dimen name="mypage_grade_img_size">50dp</dimen>
+    <dimen name="grade_img_size">100dp</dimen>
+
     <dimen name="menudetail_margin_bottom">150dp</dimen>
     <dimen name="title_margin_top_size">@dimen/margin_size_40</dimen>
     <dimen name="title_margin_left_size">@dimen/margin_size_20</dimen>
@@ -24,6 +27,7 @@
     <dimen name="margin_size_70">70dp</dimen>
     <dimen name="margin_size_50">50dp</dimen>
     <dimen name="margin_size_40">40dp</dimen>
+    <dimen name="margin_size_30">30dp</dimen>
     <dimen name="margin_size_20">20dp</dimen>
     <dimen name="margin_size_16">16dp</dimen>
     <dimen name="margin_size_10">10dp</dimen>
@@ -49,5 +53,7 @@
     <dimen name="order_cardview_width">180dp</dimen>
 
     <dimen name="textview_radius">10dp</dimen>
+
+    <dimen name="divider_height_size">6dp</dimen>
 
 </resources>

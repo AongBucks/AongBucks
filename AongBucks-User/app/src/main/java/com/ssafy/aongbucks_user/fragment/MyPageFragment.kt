@@ -49,6 +49,10 @@ class MyPageFragment : Fragment() {
         getOrderData()
 
         binding.logoutBtn.setOnClickListener { mainActivity.logout() }
+
+        binding.membershipBtn.setOnClickListener {
+            mainActivity.navController.navigate(R.id.action_mypage_to_grade)
+        }
     }
 
     private fun getUserData() {

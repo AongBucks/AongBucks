@@ -27,7 +27,11 @@
         android:id="@+id/myPageFragment"
         android:name="com.ssafy.aongbucks_user.fragment.MyPageFragment"
         android:label="fragment_my_page"
-        tools:layout="@layout/fragment_my_page" />
+        tools:layout="@layout/fragment_my_page" >
+        <action
+            android:id="@+id/action_mypage_to_grade"
+            app:destination="@id/gradeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/menuDetailFragment"
         android:name="com.ssafy.aongbucks_user.fragment.MenuDetailFragment"
@@ -37,4 +41,13 @@
         android:name="com.ssafy.aongbucks_user.fragment.PayFragment"
         android:label="fragment_pay"
         tools:layout="@layout/fragment_pay" />
+    <fragment
+        android:id="@+id/gradeFragment"
+        android:name="com.ssafy.aongbucks_user.fragment.GradeFragment"
+        android:label="GradeFragment" >
+        <action
+            android:id="@+id/action_gradeFragment_to_myPageFragment"
+            app:destination="@id/myPageFragment"
+            app:popUpTo="@id/myPageFragment" />
+    </fragment>
 </navigation>

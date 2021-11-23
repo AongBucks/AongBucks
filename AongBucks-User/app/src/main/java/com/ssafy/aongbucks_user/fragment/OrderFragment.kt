@@ -109,7 +109,7 @@ class OrderFragment : Fragment() {
             stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
             setItemClickListener(object : ProductAdapter.ItemClickListener {
                 override fun onClick(View: View, position: Int, productId: Int) {
-                    mainActivity.hideBottomNav(true)
+//                    mainActivity.hideBottomNav(true)
                     var bundle = bundleOf("productId" to productId)
                     mainActivity.navController.navigate(R.id.action_order_to_menuDetail, bundle)
                 }
@@ -127,7 +127,7 @@ class OrderFragment : Fragment() {
             stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
             setItemClickListener(object : FavoriteAdapter.ItemClickListener {
                 override fun onClick(View: View, position: Int, productId: Int) {
-                    mainActivity.hideBottomNav(true)
+//                    mainActivity.hideBottomNav(true)
                     var bundle = bundleOf("productId" to productId)
                     mainActivity.navController.navigate(R.id.action_order_to_menuDetail, bundle)
                 }

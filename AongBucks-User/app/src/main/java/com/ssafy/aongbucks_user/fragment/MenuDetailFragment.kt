@@ -51,6 +51,7 @@ class MenuDetailFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mainActivity = context as MainActivity
+        mainActivity.hideBottomNav(true)
     }
 
     override fun onCreateView(
@@ -102,6 +103,7 @@ class MenuDetailFragment : Fragment() {
                         fViewModel.addFavorite(user.id, productId)
                         fViewModel.added.observe(viewLifecycleOwner, { added ->
                             if (added) {
+                                binding.favoriteBtn.isChecked = true
                                 Toast.makeText(requireContext(), R.string.favorite_added, Toast.LENGTH_SHORT).show()
                             }
                         })
@@ -110,6 +112,7 @@ class MenuDetailFragment : Fragment() {
                         fViewModel.delFavorite(user.id, productId)
                         fViewModel.deleted.observe(viewLifecycleOwner, { deleted ->
                             if (deleted) {
+                                binding.favoriteBtn.isChecked = false
                                 Toast.makeText(requireContext(), R.string.favorite_deleted, Toast.LENGTH_SHORT).show()
                             }
                         })
