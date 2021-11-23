@@ -34,16 +34,17 @@
                     <ImageView
                         android:id="@+id/menuImage"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="90dp"
+                        android:layout_height="@dimen/menu_image_view_size"
+                        android:layout_marginBottom="@dimen/margin_size_90"
                         android:background="@color/background"
-                        app:srcCompat="@drawable/coffee1" />
+                        android:scaleType="fitXY"
+                        menuImage="@{menu.productImg}" />
 
                     <androidx.appcompat.widget.Toolbar
                         android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"
                         app:layout_collapseMode="pin"
-                        app:title="@{menu.productName, default =Title}"
+                        app:title="@{menu.productName, default = Title}"
                         app:titleTextColor="@color/black" />
 
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -53,7 +54,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/menudetail_margin_bottom"
-                android:padding="15dp"
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
 
@@ -67,7 +67,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:padding="20dp">
+                        android:padding="@dimen/padding_size_20">
 
                         <TextView
                             android:id="@+id/textView10"
@@ -79,10 +79,11 @@
 
                         <RatingBar
                             android:id="@+id/ratingBar"
+                            setRating="@{menu.productRatingAvg}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:numStars="5"
-                            setRating="@{menu.productRating}" />
+                            android:isIndicator="true"
+                            android:numStars="5" />
 
                         <TextView
                             android:id="@+id/rating"

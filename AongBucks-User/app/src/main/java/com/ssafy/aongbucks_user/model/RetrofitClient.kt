@@ -25,4 +25,8 @@ object RetrofitClient {
         ApplicationClass.retrofit.create(PayApiService::class.java)
     }
 
+    val orderService : OrderApiService by lazy {
+        ApplicationClass.retrofit.create(OrderApiService::class.java)
+    }
+
 }

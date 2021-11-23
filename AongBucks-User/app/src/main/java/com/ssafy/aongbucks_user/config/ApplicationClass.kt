@@ -18,6 +18,7 @@ class ApplicationClass : Application() {
         const val SERVER_URL = "http://121.151.11.143:9999/"
 //        const val SERVER_URL = "http://172.30.1.2:9999/" // 유진서버
         const val MENU_IMGS_URL = "${SERVER_URL}imgs/menu/"
+        const val GRADE_IMGS_URL = "${SERVER_URL}imgs/grade/"
         const val IMGS_URL = "${SERVER_URL}imgs/"
 
         lateinit var sharedPreferencesUtil: SharedPreferencesUtil
