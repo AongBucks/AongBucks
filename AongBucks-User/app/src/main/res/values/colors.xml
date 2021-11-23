@@ -23,6 +23,8 @@
     <color name="dark_gray">#FF666666</color>
     <color name="medium_gray">#FF999999</color>
     <color name="light_gray">#FFCCCCCC</color>
+    <color name="gray_100">#FFE8EBED</color>
+    <color name="gray_50">#FFF7F8F9</color>
     <color name="background">#FFEFE1D9</color>
 
 </resources>

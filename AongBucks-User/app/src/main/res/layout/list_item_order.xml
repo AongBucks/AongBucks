@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="order"
+            type="com.ssafy.aongbucks_user.model.response.LatestOrderResponse" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/order_cardview_width"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_size_10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_size_10">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/cardview_radius_size">
+
+                <ImageView
+                    android:id="@+id/menuImage"
+                    menuImage="@{order.img}"
+                    android:layout_width="@dimen/cardview_img_size"
+                    android:layout_height="@dimen/cardview_img_size"
+                    android:scaleType="fitXY" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/menuNames"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_size_10"
+                android:gravity="center"
+                android:text="@{ order.orderCnt > 1 ? @string/order_else(order.productName, order.orderCnt - 1) : order.productName}"
+                android:textSize="@dimen/text_default_size" />
+
+            <TextView
+                android:id="@+id/menuPrice"
+                makeComma="@{order.totalPrice}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/santana"
+                android:gravity="center"
+                android:textSize="@dimen/text_default_size" />
+
+            <TextView
+                android:id="@+id/menuDate"
+                setDate="@{order.orderDate}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/santana"
+                android:gravity="center"
+                android:textSize="@dimen/text_default_size" />
+
+            <TextView
+                android:id="@+id/menuCompleted"
+                setOrderStatus="@{order}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_size_10"
+                android:background="@drawable/textview_round_light_green"
+                android:gravity="center"
+                android:textColor="@color/starbucks_green"
+                android:textSize="@dimen/text_default_size" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -106,7 +106,4 @@ class OrderFragment : Fragment(){
         Log.d(TAG, "onOrderClickListener: ${view.tag}")
         activityViewModel.detailOpen((view.tag as TotalOrderResponse))
     }
-
-    // TODO: 2021-11-20 끝을 드래그하면 새로고침되게하면 ㄱㅊ을 것 같은데?! 
-    
 }

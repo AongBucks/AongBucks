@@ -2,14 +2,14 @@ package com.ssafy.cafe.model.dto;
 
 public class Grade {
 	private Integer id;
-	private String grade;
+	private String title;
 	private Float discount;
 	private String img;
 	private Integer standard;
-	public Grade(Integer id, String grade, Float discount, String img, Integer standard) {
+	public Grade(Integer id, String title, Float discount, String img, Integer standard) {
 		super();
 		this.id = id;
-		this.grade = grade;
+		this.title = title;
 		this.discount = discount;
 		this.img = img;
 		this.standard = standard;
@@ -20,11 +20,11 @@ public class Grade {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getGrade() {
-		return grade;
+	public String getTitle() {
+		return title;
 	}
-	public void setGrade(String grade) {
-		this.grade = grade;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public Float getDiscount() {
 		return discount;

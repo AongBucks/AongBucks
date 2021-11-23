@@ -15,5 +15,4 @@
 		WHERE user_id = #{userId} and product_id = #{productId}
 	</delete>
 	
-
 </mapper>

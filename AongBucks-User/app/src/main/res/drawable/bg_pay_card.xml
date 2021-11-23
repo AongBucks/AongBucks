@@ -6,6 +6,6 @@
         android:color="@color/house_green" />
 
     <corners
-        android:radius="20dp" />
+        android:radius="@dimen/pay_radius_size" />
 
 </shape>
