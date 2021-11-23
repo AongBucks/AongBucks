@@ -48,4 +48,10 @@ class CartFragment : Fragment(){
         binding.fragment = this
 
     }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mainActivity.hideBottomNav(false)
+    }
 }
