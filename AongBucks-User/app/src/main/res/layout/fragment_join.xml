@@ -119,7 +119,8 @@
             android:background="@drawable/button_outlined"
             android:fontFamily="@font/santana_bold"
             android:onClick="join"
-            android:text="@string/join" />
+            android:text="@string/join"
+            android:textColor="@color/white" />
     </LinearLayout>
 
 </LinearLayout>
