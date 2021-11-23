@@ -12,8 +12,9 @@
     <dimen name="progress_dialog_width_size">300dp</dimen>
     <dimen name="progress_dialog_height_size">200dp</dimen>
     <dimen name="cart_item_height_size">230dp</dimen>
-    <dimen name="cart_item_width_size">200dp</dimen>
+    <dimen name="cart_item_width_size">180dp</dimen>
     <dimen name="cart_image_size">130dp</dimen>
+    <dimen name="cart_item_remove_size">40dp</dimen>
 
     <dimen name="menudetail_margin_bottom">150dp</dimen>
     <dimen name="title_margin_top_size">@dimen/margin_size_40</dimen>

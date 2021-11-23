@@ -54,3 +54,19 @@ fun setDate(view : TextView, date : Date) {
 fun setOrderStatus(view : TextView, data : LatestOrderResponse) {
     view.text = CommonUtils.isOrderCompleted(data)
 }
+
+@BindingAdapter("price")
+fun bindOrderPrice(view: TextView, price: Int) {
+    view.text = CommonUtils.makeComma(price)
+}
+
+@BindingAdapter("totalPrice")
+fun bindOrderTotalPrice(view: TextView, price: Int) {
+    view.text = "총 " + CommonUtils.makeComma(price)
+}
+
+@BindingAdapter(value = ["menuType", "menuCount"])
+fun bindDetailMenuCount(view: TextView, menuType: String?, count: Int) {
+    var type = if(menuType == "coffee") "잔" else "개"
+    view.text = count.toString() + type
+}

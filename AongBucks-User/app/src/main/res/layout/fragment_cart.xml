@@ -36,6 +36,18 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
+            android:id="@+id/emptyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="장바구니에 상품이 없습니다."
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.38" />
+
+        <TextView
             android:fontFamily="@font/santana"
             android:id="@+id/totalProduct"
             android:layout_width="wrap_content"
@@ -127,6 +139,7 @@
             android:background="@drawable/button_regular"
             android:text="주문하기"
             android:textColor="@color/white"
+            android:onClick="@{fragment::onOrderClickListener}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

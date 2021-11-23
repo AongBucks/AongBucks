@@ -104,10 +104,10 @@ class PayFragment : Fragment(){
         }
 
         activityViewModel.changeNfcFlag(true)
-        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext(), R.style.AlertDialog)
         builder.apply {
-            setTitle("알림")
-            setMessage("Table NFC를 찍어주세요.\n")
+            setTitle("기프트카드 등록")
+            setMessage("NFC를 태그해주세요.\n")
             setNegativeButton("취소") { dialog, _ ->
                 dialog.cancel()
                 activityViewModel.changeNfcFlag(false)
