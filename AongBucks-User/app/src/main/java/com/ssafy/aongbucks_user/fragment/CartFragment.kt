@@ -2,6 +2,7 @@ package com.ssafy.aongbucks_user.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +21,7 @@ import com.ssafy.aongbucks_user.model.dto.ShoppingCart
 import com.ssafy.aongbucks_user.model.dto.User
 import com.ssafy.aongbucks_user.viewModel.MainActivityViewModel
 
+private const val TAG = "CartFragment_싸피"
 class CartFragment : Fragment(){
 
     private val activityViewModel: MainActivityViewModel by activityViewModels()
@@ -83,7 +85,7 @@ class CartFragment : Fragment(){
     }
 
     fun onRemoveItemListener(view: View) {
-        val position = (view.tag as ShoppingCart).position
+        val position = view.tag as Int
         activityViewModel.removeCart(position)
         initData()
     }
