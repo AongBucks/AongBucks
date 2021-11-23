@@ -43,15 +43,20 @@
         android:id="@+id/payFragment"
         android:name="com.ssafy.aongbucks_user.fragment.PayFragment"
         android:label="fragment_pay"
-        tools:layout="@layout/fragment_pay" />
+        tools:layout="@layout/fragment_pay" >
+        <action
+            android:id="@+id/action_payFragment_to_orderCompleteFragment"
+            app:destination="@id/orderCompleteFragment"
+            app:popUpTo="@id/orderCompleteFragment"/>
+    </fragment>
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.ssafy.aongbucks_user.fragment.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" >
         <action
-            android:id="@+id/action_cartFragment_to_orderCompleteFragment"
-            app:destination="@id/orderCompleteFragment" />
+            android:id="@+id/action_cartFragment_to_payFragment"
+            app:destination="@id/payFragment" />
     </fragment>
     <fragment
         android:id="@+id/orderCompleteFragment"

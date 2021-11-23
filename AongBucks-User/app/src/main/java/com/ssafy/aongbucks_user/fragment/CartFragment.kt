@@ -18,9 +18,14 @@ import com.ssafy.aongbucks_user.activity.MainActivity
 import com.ssafy.aongbucks_user.adapter.CartListAdapter
 import com.ssafy.aongbucks_user.config.ApplicationClass
 import com.ssafy.aongbucks_user.databinding.FragmentCartBinding
+import com.ssafy.aongbucks_user.model.dto.Order
 import com.ssafy.aongbucks_user.model.dto.User
 import com.ssafy.aongbucks_user.viewModel.GradeViewModel
 import com.ssafy.aongbucks_user.viewModel.MainActivityViewModel
+import com.ssafy.aongbucks_user.viewModel.OrderViewModel
+import com.ssafy.aongbucks_user.viewModel.PayViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 private const val TAG = "CartFragment_싸피"
 class CartFragment : Fragment(){
@@ -28,6 +33,7 @@ class CartFragment : Fragment(){
     private val activityViewModel: MainActivityViewModel by activityViewModels()
 
     private val gViewModel: GradeViewModel by viewModels()
+    private val oViewModel: OrderViewModel by viewModels()
 
     private lateinit var mainActivity: MainActivity
     private lateinit var binding: FragmentCartBinding
@@ -94,7 +100,7 @@ class CartFragment : Fragment(){
             activityViewModel.changeDiscount(it)
 
             // price update
-            activityViewModel.initTotalPrice()
+            activityViewModel.getTotalPrice()
             binding.totalDto = activityViewModel.totalCart
         })
     }
@@ -111,10 +117,42 @@ class CartFragment : Fragment(){
             return
         }
 
-        // order confirm dialog
+        // order confirm
+        completedOrder("pick-up")
 
         // navigate to order complete fragment
-        mainActivity.navController.navigate(R.id.action_cartFragment_to_orderCompleteFragment)
+        mainActivity.navController.navigate(R.id.action_cartFragment_to_payFragment)
+        // TODO: 2021-11-24 백스택 안 남기기! (pay 에도)
+    }
+
+    private fun completedOrder(orderTable: String){
+        // 유저
+        var user = ApplicationClass.sharedPreferencesUtil.getUser()
+
+        // 시간
+        val nowDate = Date(System.currentTimeMillis())
+        val now = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX").format(nowDate)
+
+
+        val order = Order(user.id, orderTable, now).apply {
+            totalQnanty = activityViewModel.getCartSize()
+            totalPrice = activityViewModel.getTotalPrice()
+            topProductName = activityViewModel.shoppingCart[0].menuName
+            topImg = activityViewModel.shoppingCart[0].menuImg
+        }
+        activityViewModel.makeDetail(order) // order detail 설정
+
+        oViewModel.makeOrder(order)
+        activityViewModel.shoppingCart.clear()
+
+        Toast.makeText(context, "테이블 : ${orderTable}", Toast.LENGTH_SHORT).show()
+    }
+
+    /**
+     * 애옹페이로 지불하기
+     */
+    private fun pay(price: Int) {
+
     }
 
     override fun onDestroy() {

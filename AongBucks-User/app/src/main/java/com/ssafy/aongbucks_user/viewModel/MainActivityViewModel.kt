@@ -36,9 +36,19 @@ class MainActivityViewModel: ViewModel() {
 
 
     /**
+     * aong pay
+     */
+    var currentPayMoney: Int = 0
+        private set
+
+    fun initPayMoney(price: Int) {
+        currentPayMoney = price
+    }
+
+
+    /**
      * Shopping Cart
      */
-
     var discountByGrade: Float = 0.0f
         private set
 
@@ -46,7 +56,7 @@ class MainActivityViewModel: ViewModel() {
         discountByGrade = discount
     }
 
-    lateinit var totalCart : TotalCart
+    var totalCart : TotalCart? = null
         private set
 
     private fun makeTotalCart(price: Int, cnt: Int) {
@@ -89,7 +99,7 @@ class MainActivityViewModel: ViewModel() {
         return -1 // 중복X
     }
 
-    fun initTotalPrice() {
+    fun getTotalPrice(): Int {
         var price = 0
         var cnt = 0
 
@@ -101,6 +111,8 @@ class MainActivityViewModel: ViewModel() {
         }
 
         makeTotalCart(price, cnt) // 세부 결제 금액 정보 갱신
+
+        return price
     }
 
     fun getCartSize(): Int {
