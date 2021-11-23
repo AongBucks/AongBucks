@@ -3,7 +3,7 @@
     android:shape="rectangle">
 
     <solid
-        android:color="@color/house_green" />
+        android:color="@color/background" />
 
     <corners
         android:radius="@dimen/pay_radius_size" />
