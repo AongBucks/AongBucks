@@ -2,14 +2,9 @@ package com.ssafy.aongbucks_user.fragment
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.app.PendingIntent
-import android.app.ProgressDialog
 import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.nfc.NfcAdapter
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -37,8 +32,10 @@ class PayFragment : Fragment(){
     private val activityViewModel: MainActivityViewModel by activityViewModels()
     private lateinit var mainActivity: MainActivity
     private lateinit var binding:FragmentPayBinding
+
     private lateinit var user: User
-    private lateinit var userPay: LiveData<Pay?>
+    private lateinit var userPay: LiveData<Pay?> // user pay info
+    private lateinit var isJoined: LiveData<Boolean>
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -72,22 +69,27 @@ class PayFragment : Fragment(){
             setContentView(dialogBinding.root)
             window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT)) // 배경 둥글게 하기 위함
 
-            userPay = PayService().getPayInfo(user.id)
+            isJoined = PayService().isUserPayJoined(user.id)
+
             show()
         }
 
-        userPay.observe(viewLifecycleOwner, {
+        isJoined.observe(viewLifecycleOwner, { join ->
             dialog.dismiss()
-            if (userPay.value != null) {
-                binding.priceTextView.text = CommonUtils.makeComma(userPay.value!!.price)
-            } else {
-                binding.priceTextView.text = "애옹페이를 사용하려면 터치하세요."
+            if (join) {
+                userPay = PayService().getPayInfo(user.id)
+                userPay.observe(viewLifecycleOwner, { pay ->
+                    binding.priceTextView.text = CommonUtils.makeComma(userPay.value!!.price)
+                    binding.activeButton.visibility = View.GONE
+                })
             }
         })
+
+
     }
 
     fun addGiftCard(view: View) {
-        if (userPay.value == null) {
+        if (isJoined.value == false) {
             Toast.makeText(mainActivity, "애옹페이 활성화 후 이용해주세요.", Toast.LENGTH_SHORT).show()
             return
         }
