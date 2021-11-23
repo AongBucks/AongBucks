@@ -8,6 +8,6 @@ import retrofit2.http.PATCH
 interface GradeApiService {
 
     @GET("/rest/grade/all")
-    suspend fun getAllGrade() : Response<Grade>
+    suspend fun getAllGrade() : Response<List<Grade>>
 
 }

@@ -49,6 +49,7 @@
     <dimen name="cardview_elevation_size">8dp</dimen>
     <dimen name="cardview_img_size">100dp</dimen>
     <dimen name="cardview_radius_size">100dp</dimen>
+    <dimen name="cardview_stroke_size">1dp</dimen>
 
     <dimen name="order_cardview_width">180dp</dimen>
 

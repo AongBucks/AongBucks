@@ -48,6 +48,10 @@
         <action
             android:id="@+id/action_gradeFragment_to_myPageFragment"
             app:destination="@id/myPageFragment"
-            app:popUpTo="@id/myPageFragment" />
+            app:popUpTo="@id/myPageFragment">
+            <argument
+                android:name="userGrade"
+                app:argType="com.ssafy.aongbucks_user.model.dto.Grade" />
+        </action>
     </fragment>
 </navigation>
