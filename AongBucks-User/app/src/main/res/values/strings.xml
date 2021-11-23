@@ -44,4 +44,5 @@
     <string name="press_heart">를 눌러 보세요.</string>
     <string name="favorite_added">나의 메뉴에 등록되었습니다.</string>
     <string name="favorite_deleted">나의 메뉴에서 삭제되었습니다.</string>
+    <string name="hello_sir">님 안녕하세요!</string>
 </resources>

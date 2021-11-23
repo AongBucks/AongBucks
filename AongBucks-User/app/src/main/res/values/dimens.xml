@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="menu_card_view_size">80dp</dimen>
+    <dimen name="menu_image_view_size">430dp</dimen>
+    <dimen name="menu_card_view_margin">11dp</dimen>
     <dimen name="login_logo_size">70dp</dimen>
     
     <dimen name="menudetail_margin_bottom">150dp</dimen>
@@ -8,6 +10,9 @@
     <dimen name="title_margin_left_size">@dimen/margin_size_20</dimen>
     <dimen name="layout_padding_size">@dimen/padding_size_30</dimen>
 
+    <dimen name="margin_size_90">90dp</dimen>
+    <dimen name="margin_size_80">80dp</dimen>
+    <dimen name="margin_size_70">70dp</dimen>
     <dimen name="margin_size_50">50dp</dimen>
     <dimen name="margin_size_40">40dp</dimen>
     <dimen name="margin_size_20">20dp</dimen>
@@ -20,5 +25,8 @@
     <dimen name="text_title_large_size">30sp</dimen>
     <dimen name="text_title_size">25sp</dimen>
     <dimen name="text_default_size">16sp</dimen>
-    
+
+    <dimen name="cardview_elevation_large_size">15dp</dimen>
+    <dimen name="cardview_elevation_size">8dp</dimen>
+
 </resources>

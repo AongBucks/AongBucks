@@ -18,17 +18,17 @@
         <androidx.cardview.widget.CardView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/menu_card_view_margin"
             android:clipToPadding="false"
             app:cardBackgroundColor="@color/background"
             app:cardCornerRadius="100dp">
 
             <ImageView
                 android:id="@+id/menuImage"
+                imageDrawable="@{product.img}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#00FFFFFF"
-                app:srcCompat="@drawable/coffee1" />
+                android:scaleType="fitXY" />
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
