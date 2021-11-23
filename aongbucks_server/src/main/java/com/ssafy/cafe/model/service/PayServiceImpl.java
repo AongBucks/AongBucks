@@ -22,8 +22,8 @@ public class PayServiceImpl implements PayService {
 	}
 
 	@Override
-	public Boolean isJoined(String userId) {
-		return pDao.select(userId) != null;
+	public Pay select(String userId) {
+		return pDao.select(userId);
 	}
 
 	@Override

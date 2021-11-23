@@ -33,10 +33,10 @@ public class PayRestController {
 		return true;
 	}
 
-	@GetMapping("/isJoined/{userId}")
-	@ApiOperation(value="user가 가입된 상태인지 알려준다.", response = Boolean.class)
-	public Boolean getGradeInfo(@PathVariable String userId) {
-		return pService.isJoined(userId);
+	@GetMapping("/{userId}")
+	@ApiOperation(value="user가 가입된 상태이면 pay정보를 반환한다.", response = Pay.class)
+	public Pay getGradeInfo(@PathVariable String userId) {
+		return pService.select(userId);
 	}
 	
 	@PatchMapping("/price")

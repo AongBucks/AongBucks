@@ -7,7 +7,7 @@ import com.ssafy.cafe.model.dto.Pay;
 public interface PayService {
 	public void addUser(String userId);
 	
-	public Boolean isJoined(String userId);
+	public Pay select(String userId);
 	
 	public void setPrice(Pay pay);
 }
