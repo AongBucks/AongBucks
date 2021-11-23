@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/margin_size_10"
+                android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
                 app:menuImg="@{totalOrderDto.img}" />
         </androidx.cardview.widget.CardView>
