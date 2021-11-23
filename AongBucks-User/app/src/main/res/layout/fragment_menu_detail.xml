@@ -34,7 +34,7 @@
                     <ImageView
                         android:id="@+id/menuImage"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/menu_image_view_size"
+                        android:layout_height="@dimen/menudetail_image_view_size"
                         android:layout_marginBottom="@dimen/margin_size_90"
                         android:background="@color/background"
                         android:scaleType="fitXY"
