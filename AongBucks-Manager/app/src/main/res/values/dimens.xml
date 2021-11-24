@@ -28,6 +28,8 @@
     <dimen name="grade_id_size">32dp</dimen>
     <dimen name="grade_dialog_edittext_size">80dp</dimen>
 
+    <dimen name="max_text_width">300dp</dimen>
+
     <!-- margin size -->
     <dimen name="margin_size_40">40dp</dimen>
     <dimen name="margin_size_36">36dp</dimen>
