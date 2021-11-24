@@ -7,7 +7,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="@dimen/progress_dialog_width_size"
         android:layout_height="@dimen/progress_dialog_height_size"
-        android:background="@drawable/bg_alert_dialog"
+        android:background="@drawable/bg_round"
         android:padding="@dimen/layout_padding_size">
 
         <ProgressBar

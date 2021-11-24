@@ -21,6 +21,9 @@
     <dimen name="cart_item_width_size">160dp</dimen>
     <dimen name="cart_image_size">130dp</dimen>
     <dimen name="cart_item_remove_size">40dp</dimen>
+    <dimen name="dialog_min_width_major">90%</dimen>
+    <dimen name="dialog_min_width_minor">25%</dimen>
+    <dimen name="bottom_navigation_height">56dp</dimen>
 
     <dimen name="mypage_grade_img_size">50dp</dimen>
     <dimen name="grade_img_size">100dp</dimen>
@@ -63,6 +66,7 @@
     <dimen name="cardview_img_small_size">70dp</dimen>
     <dimen name="cardview_radius_size">100dp</dimen>
     <dimen name="cardview_stroke_size">1dp</dimen>
+    <dimen name="cardview_radius_medium_size">20dp</dimen>
 
     <dimen name="order_cardview_width">180dp</dimen>
 

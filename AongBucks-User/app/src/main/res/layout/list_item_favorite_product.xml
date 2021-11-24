@@ -35,18 +35,20 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="@dimen/menu_name_width"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginEnd="@dimen/margin_size_10"
             android:gravity="center_vertical"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/favoriteBtn"
             app:layout_constraintStart_toEndOf="@+id/cardView"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/name"
-                android:layout_width="@dimen/menu_name_width"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:ellipsize="marquee"

@@ -31,6 +31,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_size_10"
             android:layout_marginTop="@dimen/margin_size_40">
 
             <TextView
@@ -59,11 +60,10 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_size_10"
+            android:layout_marginHorizontal="@dimen/margin_size_10"
             android:layout_marginTop="@dimen/margin_size_30"
-            android:layout_marginRight="@dimen/margin_size_10"
             android:layout_marginBottom="@dimen/margin_size_10"
-            app:cardCornerRadius="@dimen/cardview_default_radius"
+            app:cardCornerRadius="@dimen/cardview_radius_medium_size"
             app:cardElevation="@dimen/cardview_elevation_size">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -115,6 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_size_30"
+            android:layout_marginHorizontal="@dimen/margin_size_10"
             android:text="@string/order_history"
             android:textSize="@dimen/text_title_size" />
 

@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- dialog -->
-    <style name="AlertDialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
-        <item name="android:windowBackground">@drawable/bg_alert_dialog</item>
-        <item name="android:textSize">@dimen/item_title_text_size</item>
+    <style name="AongAlertDialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:windowBackground">@drawable/bg_round</item>
+        <item name="android:textSize">@dimen/text_default_size</item>
         <item name="buttonBarNeutralButtonStyle">@style/buttonBarButtonStyleNeutral</item>
         <item name="buttonBarPositiveButtonStyle">@style/buttonBarButtonStylePositive</item>
         <item name="buttonBarNegativeButtonStyle">@style/buttonBarButtonStyleNegative</item>
+
+        <item name="android:windowMinWidthMajor">@dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@dimen/dialog_min_width_minor</item>
     </style>
 
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar" >
