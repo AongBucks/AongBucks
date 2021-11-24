@@ -102,5 +102,12 @@
             android:id="@+id/action_orderDetailFragment_to_myPageFragment"
             app:destination="@id/myPageFragment"
             app:popUpTo="@id/myPageFragment" />
+        <action
+            android:id="@+id/action_orderdetail_to_menudetail"
+            app:destination="@id/menuDetailFragment">
+            <argument
+                android:name="productId"
+                app:argType="integer" />
+        </action>
     </fragment>
 </navigation>

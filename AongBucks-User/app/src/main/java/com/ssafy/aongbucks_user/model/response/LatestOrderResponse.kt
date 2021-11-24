@@ -18,5 +18,5 @@ data class LatestOrderResponse(
     @SerializedName("price") val productPrice: Int,
     @SerializedName("type") val type: String,
     @SerializedName("id") val productId: Int,
-    var totalPrice: Int = 0
+    @SerializedName("totalprice") val totalPrice: Int
 ) : Parcelable

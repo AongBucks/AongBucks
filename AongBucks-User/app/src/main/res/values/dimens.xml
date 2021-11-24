@@ -71,4 +71,7 @@
     <dimen name="divider_width_size">1dp</dimen>
     <dimen name="divider_detail_height">1dp</dimen>
 
+    <dimen name="menu_name_width">190dp</dimen>
+    <dimen name="favorite_menu_name_width">160dp</dimen>
+
 </resources>

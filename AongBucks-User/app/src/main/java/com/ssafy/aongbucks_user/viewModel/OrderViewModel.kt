@@ -42,16 +42,16 @@ class OrderViewModel : ViewModel() {
     /**
      * 주문내역 조회
      */
-    private val _orders = MutableLiveData<List<OrderDetailResponse>>()
-    val orders : LiveData<List<OrderDetailResponse>>
-        get() = _orders
+    private val _orderDetails = MutableLiveData<List<OrderDetailResponse>>()
+    val orderDetails : LiveData<List<OrderDetailResponse>>
+        get() = _orderDetails
 
     private fun getOrderDetailList(orderId : Int) {
         viewModelScope.launch(Dispatchers.IO) {
             val response = RetrofitClient.orderService.getOrderDetail(orderId)
             if (response.isSuccessful) {
                 if (response.body() != null) {
-                    _orders.postValue(response.body())
+                    _orderDetails.postValue(response.body())
                 }
             } else {
                 Log.d(TAG, "getOrderDetailList: ${response.code()}")

@@ -76,6 +76,8 @@ class MenuDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         productId = arguments?.getInt("productId")!!
+
+        Log.d(TAG, "onViewCreated: $productId")
         user = ApplicationClass.sharedPreferencesUtil.getUser()
 
         getData()
