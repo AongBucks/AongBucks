@@ -17,6 +17,8 @@
     <dimen name="cart_item_width_size">160dp</dimen>
     <dimen name="cart_image_size">130dp</dimen>
     <dimen name="cart_item_remove_size">40dp</dimen>
+    <item type="dimen" name="dialog_min_width_major">90%</item>
+    <item type="dimen" name="dialog_min_width_minor">25%</item>
 
     <dimen name="mypage_grade_img_size">50dp</dimen>
     <dimen name="grade_img_size">100dp</dimen>

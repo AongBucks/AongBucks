@@ -109,7 +109,7 @@ class PayFragment : Fragment(){
 
         activityViewModel.changeNfcFlag(true)
         payViewModel.changeFlag(true)
-        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext(), R.style.AlertDialog)
+        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
         builder.apply {
             setCancelable(false)
             setTitle("기프트카드 등록")

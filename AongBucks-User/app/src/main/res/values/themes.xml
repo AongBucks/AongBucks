@@ -20,6 +20,8 @@
         <item name="android:radioButtonStyle">@style/customRadioButtonFontStyle</item>
         <item name="android:checkboxStyle">@style/customCheckboxFontStyle</item>
 
+        <item name="android:alertDialogTheme">@style/AongAlertDialog</item>
+
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
