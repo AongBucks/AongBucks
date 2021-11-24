@@ -34,7 +34,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setNdef()
+        nfcAdapter = NfcAdapter.getDefaultAdapter(this)
+        // NFC가 지원되는 경우
+        if (nfcAdapter != null) {
+            setNdef()
+        }
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
@@ -114,7 +118,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         // 포그라운드 기능 활성화 (하드웨어때메 퍼미션 필요)
-        nfcAdapter!!.enableForegroundDispatch(
+        nfcAdapter?.enableForegroundDispatch(
             this,
             pIntent,
             filters,
@@ -132,6 +136,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        nfcAdapter!!.disableForegroundDispatch(this)
+        nfcAdapter?.disableForegroundDispatch(this)
     }
 }

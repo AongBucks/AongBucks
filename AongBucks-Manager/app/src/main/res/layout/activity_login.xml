@@ -43,27 +43,29 @@
             app:layout_constraintStart_toStartOf="@+id/title"
             app:layout_constraintTop_toBottomOf="@+id/title" />
 
-        <TextView
-            android:id="@+id/codeText"
-            style="@style/Text.Regular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/login_code_hint"
-            android:textSize="@dimen/default_text_size"
-            app:layout_constraintBottom_toTopOf="@+id/codeEditText"
-            app:layout_constraintStart_toStartOf="@+id/codeEditText" />
-
-        <EditText
-            style="@style/Text.Regular"
-            android:id="@+id/codeEditText"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="@dimen/login_code_size"
             android:layout_height="wrap_content"
-            android:inputType="numberPassword"
+            app:passwordToggleDrawable="@drawable/password_toggle_selector"
+            app:passwordToggleTint="@color/light_green"
+            app:passwordToggleEnabled="true"
             android:layout_marginBottom="@dimen/margin_size_20"
-            android:textSize="@dimen/title_big_text_size"
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="@+id/button"
-            app:layout_constraintStart_toStartOf="@+id/button" />
+            app:layout_constraintStart_toStartOf="@+id/button">
+
+            <EditText
+                android:id="@+id/codeEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:ems="10"
+                android:imeOptions="actionSend"
+                android:inputType="textPassword"
+                android:textSize="@dimen/item_title_text_size"
+                android:hint="관리자 코드"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <android.widget.Button
             android:id="@+id/button"
