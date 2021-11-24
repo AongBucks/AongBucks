@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.ssafy.aongbucks_manager"
-        minSdkVersion 30
+        minSdkVersion 29
         targetSdkVersion 31
         versionCode 1
         versionName "1.0"
