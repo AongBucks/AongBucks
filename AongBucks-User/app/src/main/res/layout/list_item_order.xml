@@ -11,8 +11,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="@dimen/order_cardview_width"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/cardview_radius_medium_size"
-        android:layout_margin="@dimen/margin_size_10">
+        android:layout_margin="@dimen/margin_size_5">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,7 +27,7 @@
 
                 <ImageView
                     android:id="@+id/menuImage"
-                    menuImage="@{order.img}"
+                    app:menuImage="@{order.img}"
                     android:layout_width="@dimen/cardview_img_size"
                     android:layout_height="@dimen/cardview_img_size"
                     android:scaleType="centerCrop" />
@@ -46,7 +45,7 @@
 
             <TextView
                 android:id="@+id/menuPrice"
-                makeComma="@{order.totalPrice}"
+                app:totalPrice="@{order.totalPrice}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/santana"
@@ -55,7 +54,7 @@
 
             <TextView
                 android:id="@+id/menuDate"
-                setDate="@{order.orderDate}"
+                app:date="@{order.orderDate}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/santana"
@@ -64,7 +63,7 @@
 
             <TextView
                 android:id="@+id/menuCompleted"
-                setOrderStatus="@{order}"
+                app:orderStatus="@{order}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_size_10"

@@ -76,7 +76,7 @@
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    gradeImage="@{grade.img}"
+                    app:gradeImage="@{grade.img}"
                     android:layout_width="@dimen/mypage_grade_img_size"
                     android:layout_height="@dimen/mypage_grade_img_size"
                     android:layout_marginTop="@dimen/margin_size_10"
