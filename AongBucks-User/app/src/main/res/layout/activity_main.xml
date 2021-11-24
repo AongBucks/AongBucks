@@ -23,7 +23,7 @@
         android:id="@+id/bottomNavigation"
         style="@style/BottomNavigation"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/bottom_navigation_height"
         app:itemIconTint="@drawable/bottom_icon_color"
         app:itemTextColor="@drawable/bottom_icon_color"
         app:layout_constraintBottom_toBottomOf="parent"
