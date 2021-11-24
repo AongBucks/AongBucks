@@ -28,8 +28,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/pay_card_height_size"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="4:2.5"
             android:layout_marginTop="@dimen/margin_size_16"
             android:layout_marginHorizontal="@dimen/elevation_size"
             android:background="@drawable/ripple_pay_card"
@@ -67,12 +68,13 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="130dp"
                 android:src="@drawable/ic_aong"
+                android:paddingBottom="@dimen/padding_size_32"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.935"
+                app:layout_constraintHorizontal_bias="0.89"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"
                 app:layout_constraintWidth_percent="0.25" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -80,8 +82,9 @@
         <android.widget.Button
             android:id="@+id/activeButton"
             style="@style/Text.Regular"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/pay_card_height_size"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="4:2.5"
             android:layout_marginTop="@dimen/margin_size_16"
             android:layout_marginHorizontal="@dimen/elevation_size"
             android:background="@drawable/button_join_pay"
