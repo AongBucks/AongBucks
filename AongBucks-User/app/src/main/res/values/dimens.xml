@@ -2,8 +2,12 @@
 <resources>
     <dimen name="splash_logo_size">150dp</dimen>
 
-    <dimen name="menu_card_view_size">80dp</dimen>
+
     <dimen name="menudetail_image_view_size">430dp</dimen>
+    <dimen name="menudetail_title_text_size">22dp</dimen>
+    <dimen name="menudetail_price_width">60dp</dimen>
+
+    <dimen name="menu_card_view_size">80dp</dimen>
     <dimen name="menu_card_view_margin">11dp</dimen>
     <dimen name="login_logo_size">70dp</dimen>
     <dimen name="pay_card_height_size">200dp</dimen>
@@ -35,6 +39,7 @@
     <dimen name="margin_size_30">30dp</dimen>
     <dimen name="margin_size_20">20dp</dimen>
     <dimen name="margin_size_16">16dp</dimen>
+    <dimen name="margin_size_13">13dp</dimen>
     <dimen name="margin_size_10">10dp</dimen>
     <dimen name="margin_size_5">5dp</dimen>
 
@@ -54,6 +59,7 @@
     <dimen name="cardview_elevation_large_size">15dp</dimen>
     <dimen name="cardview_elevation_size">8dp</dimen>
     <dimen name="cardview_img_size">100dp</dimen>
+    <dimen name="cardview_img_small_size">70dp</dimen>
     <dimen name="cardview_radius_size">100dp</dimen>
     <dimen name="cardview_stroke_size">1dp</dimen>
 
@@ -62,5 +68,7 @@
     <dimen name="textview_radius">10dp</dimen>
 
     <dimen name="divider_height_size">6dp</dimen>
+    <dimen name="divider_width_size">1dp</dimen>
+    <dimen name="divider_detail_height">1dp</dimen>
 
 </resources>
