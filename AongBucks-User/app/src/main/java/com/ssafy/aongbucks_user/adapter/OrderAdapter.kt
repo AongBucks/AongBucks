@@ -23,7 +23,7 @@ class OrderAdapter(var context : Context, var orderList : List<LatestOrderRespon
             }
 
             itemView.setOnClickListener {
-                itemClickListener.onClick(it, layoutPosition, orderList[layoutPosition].orderId)
+                itemClickListener.onClick(it, layoutPosition, orderList[layoutPosition])
             }
         }
     }
@@ -42,7 +42,7 @@ class OrderAdapter(var context : Context, var orderList : List<LatestOrderRespon
     override fun getItemCount(): Int = orderList.size
 
     interface ItemClickListener {
-        fun onClick(View : View, position: Int, orderId : Int)
+        fun onClick(View : View, position: Int, order : LatestOrderResponse)
     }
 
     private lateinit var itemClickListener : ItemClickListener

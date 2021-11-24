@@ -26,7 +26,7 @@
 
             <ImageView
                 android:id="@+id/menuImage"
-                menuImage="@{product.img}"
+                app:menuImage="@{product.img}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/warm_neutral"
@@ -34,7 +34,8 @@
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/linearLayout"
+            android:layout_width="@dimen/menu_name_width"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:gravity="center_vertical"
@@ -45,21 +46,22 @@
 
             <TextView
                 android:id="@+id/name"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/menu_name_width"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:ellipsize="marquee"
                 android:text="@{product.name}"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/price"
-                makeComma="@{product.price}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/santana"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:price="@{product.price}" />
 
         </LinearLayout>
 

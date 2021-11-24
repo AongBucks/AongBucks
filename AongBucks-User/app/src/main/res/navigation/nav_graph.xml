@@ -33,7 +33,18 @@
         tools:layout="@layout/fragment_my_page" >
         <action
             android:id="@+id/action_mypage_to_grade"
-            app:destination="@id/gradeFragment" />
+            app:destination="@id/gradeFragment">
+            <argument
+                android:name="userGrade"
+                app:argType="com.ssafy.aongbucks_user.model.dto.Grade" />
+        </action>
+        <action
+            android:id="@+id/action_mypage_to_orderdetail"
+            app:destination="@id/orderDetailFragment">
+            <argument
+                android:name="order"
+                app:argType="com.ssafy.aongbucks_user.model.response.LatestOrderResponse" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/menuDetailFragment"
@@ -80,10 +91,23 @@
         <action
             android:id="@+id/action_gradeFragment_to_myPageFragment"
             app:destination="@id/myPageFragment"
-            app:popUpTo="@id/myPageFragment">
+            app:popUpTo="@id/myPageFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailFragment"
+        android:name="com.ssafy.aongbucks_user.fragment.OrderDetailFragment"
+        android:label="fragment_order_detail"
+        tools:layout="@layout/fragment_order_detail" >
+        <action
+            android:id="@+id/action_orderDetailFragment_to_myPageFragment"
+            app:destination="@id/myPageFragment"
+            app:popUpTo="@id/myPageFragment" />
+        <action
+            android:id="@+id/action_orderdetail_to_menudetail"
+            app:destination="@id/menuDetailFragment">
             <argument
-                android:name="userGrade"
-                app:argType="com.ssafy.aongbucks_user.model.dto.Grade" />
+                android:name="productId"
+                app:argType="integer" />
         </action>
     </fragment>
 </navigation>

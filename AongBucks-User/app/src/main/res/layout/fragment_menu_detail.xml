@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -28,24 +27,25 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     app:collapsedTitleGravity="center"
+                    app:collapsedTitleTextAppearance="@style/ExpandedAppBar"
+                    app:expandedTitleTextAppearance="@style/ExpandedAppBar"
                     app:layout_scrollFlags="scroll|exitUntilCollapsed"
                     app:toolbarId="@+id/toolbar">
 
                     <ImageView
                         android:id="@+id/menuImage"
+                        menuImage="@{menu.productImg}"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/menudetail_image_view_size"
                         android:layout_marginBottom="@dimen/margin_size_90"
                         android:background="@color/background"
-                        android:scaleType="fitXY"
-                        menuImage="@{menu.productImg}" />
+                        android:scaleType="fitXY" />
 
                     <androidx.appcompat.widget.Toolbar
                         android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"
                         app:layout_collapseMode="pin"
-                        app:title="@{menu.productName, default = Title}"
-                        app:titleTextColor="@color/black" />
+                        app:title="@{menu.productName, default = Title}" />
 
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
             </com.google.android.material.appbar.AppBarLayout>
@@ -65,34 +65,59 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:padding="@dimen/padding_size_20">
+
+
+                        <TextView
+                            android:id="@+id/detailMenuPrice"
+                            app:price="@{menu.productPrice}"
+                            android:layout_width="@dimen/menudetail_price_width"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_size_13"
+                            android:fontFamily="@font/santana"
+                            android:textSize="@dimen/text_default_size"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            style="@style/divider"
+                            android:layout_width="@dimen/divider_width_size"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/margin_size_10"
+                            android:divider="@android:drawable/divider_horizontal_bright"
+                            android:orientation="horizontal"/>
 
                         <TextView
                             android:id="@+id/textView10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="@dimen/margin_size_10"
+                            android:fontFamily="@font/santana"
                             android:text="@string/rating"
-                            android:textSize="18sp" />
+                            android:textSize="@dimen/text_default_size"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/rating"
+                            app:ratingAvg="@{menu.productRatingAvg}"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_size_5"
+                            android:layout_marginEnd="@dimen/margin_size_5"
+                            android:fontFamily="@font/santana"
+                            android:gravity="center"
+                            android:textSize="@dimen/text_default_size"
+                            android:textStyle="bold" />
 
                         <RatingBar
                             android:id="@+id/ratingBar"
-                            setRating="@{menu.productRatingAvg}"
+                            style="@style/Widget.AppCompat.RatingBar.Indicator"
+                            app:rating="@{menu.productRatingAvg}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:isIndicator="true"
                             android:numStars="5" />
-
-                        <TextView
-                            android:id="@+id/rating"
-                            setRatingAvg="@{menu.productRatingAvg}"
-                            android:layout_width="40dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:gravity="center"
-                            android:textSize="20sp" />
 
                     </LinearLayout>
 
@@ -148,7 +173,7 @@
                     android:id="@+id/minusBtn"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="20dp"
                     android:src="@drawable/minus"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -159,8 +184,11 @@
                     android:id="@+id/menuCnt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/santana"
                     android:text="1"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_default_size"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/plusBtn"
                     app:layout_constraintStart_toEndOf="@+id/minusBtn"
                     app:layout_constraintTop_toTopOf="@+id/minusBtn" />
@@ -178,12 +206,12 @@
 
                 <TextView
                     android:id="@+id/menuPrice"
+                    app:price="@{menu.productPrice}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:fontFamily="@font/santana"
-                    makeComma="@{menu.productPrice, default=4000}"
-                    android:textSize="25sp"
+                    android:textSize="@dimen/text_default_size"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

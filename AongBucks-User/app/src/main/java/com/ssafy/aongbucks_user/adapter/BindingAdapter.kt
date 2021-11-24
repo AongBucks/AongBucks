@@ -31,28 +31,23 @@ fun gradeImageDrawable(view : ImageView, img : String?) {
         .into(view)
 }
 
-@BindingAdapter("setRating")
-fun setRating(ratingBar : RatingBar, rating: Double) {
+@BindingAdapter("rating")
+fun bindRating(ratingBar : RatingBar, rating: Double) {
     ratingBar.rating = rating.toFloat()
 }
 
-@BindingAdapter("setRatingAvg")
-fun setRatingAvg(view: TextView, ratingAvg : Double) {
+@BindingAdapter("ratingAvg")
+fun bindRatingAvg(view: TextView, ratingAvg : Double) {
     view.text = String.format("%.0f", ratingAvg)
 }
 
-@BindingAdapter("makeComma")
-fun addCommaToPrice(view : TextView, price : Int) {
-    view.text = CommonUtils.makeComma(price)
-}
-
-@BindingAdapter("setDate")
-fun setDate(view : TextView, date : Date) {
+@BindingAdapter("date")
+fun bindDate(view : TextView, date : Date) {
     view.text = CommonUtils.getFormattedString(date)
 }
 
-@BindingAdapter("setOrderStatus")
-fun setOrderStatus(view : TextView, data : LatestOrderResponse) {
+@BindingAdapter("orderStatus")
+fun bindOrderStatus(view : TextView, data : LatestOrderResponse) {
     view.text = CommonUtils.isOrderCompleted(data)
 }
 

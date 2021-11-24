@@ -56,4 +56,9 @@
     <string name="first_grade_standard">신규 가입</string>
     <string name="each_grade_standard">%d잔 주문</string>
     <string name="each_grade_benefit">%.0f\%% 할인</string>
+
+    <string name="order_detail">주문상세</string>
+    <string name="order_total_price">총 주문금액 :</string>
+    <string name="order_date">주문일시 :</string>
+
 </resources>

@@ -47,7 +47,7 @@
                     android:numStars="5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/userId"
-                    app:setRating="@{comment.productRating}" />
+                    app:rating="@{comment.productRating}" />
 
                 <TextView
                     android:id="@+id/content"
@@ -57,7 +57,6 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="20dp"
                     android:text="@{comment.commentContent}"
-                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cRatingBar" />

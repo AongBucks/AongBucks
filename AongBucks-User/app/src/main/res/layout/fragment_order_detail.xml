@@ -4,8 +4,8 @@
 
     <data>
         <variable
-            name="userGrade"
-            type="com.ssafy.aongbucks_user.model.dto.Grade" />
+            name="order"
+            type="com.ssafy.aongbucks_user.model.response.LatestOrderResponse" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -30,9 +30,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_size_30"
-                    android:text="@string/membership"
-                    android:textSize="@dimen/text_default_size" />
+                    android:text="@string/order_detail"
+                    android:textSize="@dimen/text_default_size"
+                    android:layout_gravity="center"/>
 
             </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.AppBarLayout>
@@ -52,64 +52,66 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
                     android:orientation="vertical"
                     android:padding="@dimen/padding_size_30">
 
-                    <ImageView
-                        android:id="@+id/imageView4"
-                        android:layout_width="@dimen/grade_img_size"
-                        android:layout_height="@dimen/grade_img_size"
-                        app:gradeImage="@{userGrade.img}" />
-
                     <TextView
-                        android:id="@+id/gradeTitle"
+                        android:id="@+id/textView24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_size_20"
-                        android:text="@{userGrade.title, default=씨앗}"
-                        android:textSize="@dimen/text_default_size" />
+                        app:orderStatus="@{order}"
+                        android:textColor="@color/medium_gray" />
+
+                    <TextView
+                        android:id="@+id/textView29"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_size_10"
+                        android:text="@{order.orderCnt > 1 ? @string/order_else(order.productName, order.orderCnt - 1) : order.productName}"
+                        android:textSize="@dimen/item_title_text_size" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/margin_size_10"
-                        android:gravity="center"
+                        android:layout_marginTop="@dimen/margin_size_20"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/toNextGrade"
+                            android:id="@+id/textView26"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/santana"
-                            android:text="@{String.valueOf(userGrade.to)}"
-                            android:textStyle="bold" />
+                            android:text="@string/order_total_price"
+                            android:textColor="@color/medium_gray" />
 
                         <TextView
-                            android:id="@+id/textView19"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/margin_size_5"
-                            android:fontFamily="@font/santana"
-                            android:text="@string/to_next_grade" />
-
-                        <TextView
-                            android:id="@+id/textView20"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/santana"
-                            android:text="@{userGrade.next}"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/textView21"
+                            android:id="@+id/textView25"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/margin_size_5"
-                            android:fontFamily="@font/santana"
-                            android:text="@string/achieve" />
+                            android:textColor="@color/medium_gray"
+                            app:price="@{order.totalPrice}" />
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView28"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/order_date"
+                            android:textColor="@color/medium_gray" />
+
+                        <TextView
+                            android:id="@+id/textView27"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_size_5"
+                            android:textColor="@color/medium_gray"
+                            app:date="@{order.orderDate}" />
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -122,29 +124,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="@dimen/padding_size_20">
-
-                    <TextView
-                        android:id="@+id/textView17"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/membership"
-                        android:textSize="@dimen/text_title_size" />
-
-                    <TextView
-                        android:id="@+id/textView18"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_size_10"
-                        android:text="@string/offer_discount"
-                        android:textColor="@color/medium_gray" />
+                    android:padding="@dimen/padding_size_10">
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/gradeRecyclerView"
-                        android:overScrollMode="never"
+                        android:id="@+id/orderDetailRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/margin_size_20" />
+                        android:overScrollMode="never" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -152,4 +138,5 @@
 
         </androidx.core.widget.NestedScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </layout>

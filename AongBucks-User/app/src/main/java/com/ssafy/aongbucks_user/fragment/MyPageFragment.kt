@@ -75,8 +75,10 @@ class MyPageFragment : Fragment() {
             val orderAdapter = OrderAdapter(requireContext(), orderList).apply {
                 stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
                 setItemClickListener(object : OrderAdapter.ItemClickListener {
-                    override fun onClick(View: View, position: Int, orderId: Int) {
+                    override fun onClick(View: View, position: Int, order: LatestOrderResponse) {
                         // 주문 상세 화면으로 넘어가기
+                        val bundle = bundleOf("order" to order)
+                        mainActivity.navController.navigate(R.id.action_mypage_to_orderdetail, bundle)
                     }
                 })
             }
