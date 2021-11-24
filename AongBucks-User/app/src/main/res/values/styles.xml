@@ -3,7 +3,7 @@
     <!-- dialog -->
     <style name="AongAlertDialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:windowBackground">@drawable/bg_alert_dialog</item>
+        <item name="android:windowBackground">@drawable/bg_round</item>
         <item name="android:textSize">@dimen/text_default_size</item>
         <item name="buttonBarNeutralButtonStyle">@style/buttonBarButtonStyleNeutral</item>
         <item name="buttonBarPositiveButtonStyle">@style/buttonBarButtonStylePositive</item>

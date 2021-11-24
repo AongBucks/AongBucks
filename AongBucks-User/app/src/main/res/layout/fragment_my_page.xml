@@ -63,7 +63,7 @@
             android:layout_marginTop="@dimen/margin_size_30"
             android:layout_marginRight="@dimen/margin_size_10"
             android:layout_marginBottom="@dimen/margin_size_10"
-            app:cardCornerRadius="@dimen/cardview_default_radius"
+            app:cardCornerRadius="@dimen/cardview_radius_medium_size"
             app:cardElevation="@dimen/cardview_elevation_size">
 
             <androidx.constraintlayout.widget.ConstraintLayout
