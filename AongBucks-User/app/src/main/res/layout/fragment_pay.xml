@@ -87,7 +87,7 @@
             app:layout_constraintDimensionRatio="4:2.5"
             android:layout_marginTop="@dimen/margin_size_16"
             android:layout_marginHorizontal="@dimen/elevation_size"
-            android:background="@drawable/button_join_pay"
+            android:background="@drawable/ripple_join_pay"
             android:elevation="@dimen/elevation_size"
             android:text="애옹페이를 활성화하려면 터치하세요."
             android:textColor="@color/house_green"
