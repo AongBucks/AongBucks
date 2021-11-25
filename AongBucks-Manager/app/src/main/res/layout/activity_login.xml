@@ -72,7 +72,7 @@
             style="@style/Text.Regular"
             android:layout_width="@dimen/login_code_size"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_button"
+            android:background="@drawable/ripple_complete"
             android:text="@string/login_button"
             android:textColor="@color/white"
             android:textSize="@dimen/default_text_size"
