@@ -71,3 +71,8 @@ fun bindDetailMenuCount(view: TextView, menuType: String?, count: Int) {
 fun bindCountOrderText(view: Button, count: Int) {
     view.text = "${count}건 주문하기"
 }
+
+@BindingAdapter("orderState")
+fun bindOrderState(view: TextView, state: Char) {
+    view.text = if (state == 'Y') "제조 완료" else "접수 대기"
+}
