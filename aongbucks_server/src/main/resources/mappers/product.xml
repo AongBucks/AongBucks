@@ -57,7 +57,7 @@
     (select count(rating)  from t_comment where product_id=p.id) as commentCnt,
     (select avg(rating)  from t_comment where product_id=p.id) as avg,
     (select sum(quantity) from t_order_detail where product_id=p.id) as sells,
-	(select count(product_id) from t_favorite where user_id=#{userId} and product_id=p.id) as isFavorite
+	(select if(count(product_id) > 0, 1, 0) from t_favorite where user_id=#{userId} and product_id=p.id) as isFavorite
     from t_product p left join  t_comment c on p.id=c.product_id
     where p.id=#{productId}
     order by c.id desc;
