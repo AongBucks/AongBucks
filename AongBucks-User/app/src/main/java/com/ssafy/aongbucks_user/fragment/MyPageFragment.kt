@@ -56,7 +56,7 @@ class MyPageFragment : Fragment() {
 
         binding.logoutBtn.setOnClickListener { mainActivity.logout() }
 
-        binding.membershipBtn.setOnClickListener {
+        binding.membershipLayout.setOnClickListener {
             val bundle = bundleOf("userGrade" to grade)
             mainActivity.navController.navigate(R.id.action_mypage_to_grade, bundle)
         }

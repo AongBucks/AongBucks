@@ -48,12 +48,13 @@
                 android:id="@+id/logoutBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_outlined"
+                android:background="@drawable/ripple_outlined"
                 android:text="@string/logout"
                 android:textColor="@color/accent_green"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -67,12 +68,14 @@
             app:cardElevation="@dimen/cardview_elevation_size">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/membershipLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingLeft="@dimen/padding_size_20"
                 android:paddingTop="@dimen/margin_size_10"
                 android:paddingRight="@dimen/padding_size_20"
-                android:paddingBottom="@dimen/margin_size_10">
+                android:paddingBottom="@dimen/margin_size_10"
+                android:background="?attr/selectableItemBackground">
 
                 <ImageView
                     android:id="@+id/imageView2"

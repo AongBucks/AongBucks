@@ -17,6 +17,7 @@ import com.ssafy.aongbucks_user.adapter.CartListAdapter
 import com.ssafy.aongbucks_user.config.ApplicationClass
 import com.ssafy.aongbucks_user.databinding.FragmentCartBinding
 import com.ssafy.aongbucks_user.databinding.FragmentOrderCompleteBinding
+import com.ssafy.aongbucks_user.model.dto.Order
 import com.ssafy.aongbucks_user.model.dto.User
 import com.ssafy.aongbucks_user.viewModel.GradeViewModel
 import com.ssafy.aongbucks_user.viewModel.MainActivityViewModel
@@ -26,6 +27,7 @@ private const val TAG = "OrderCompleteFragment_싸피"
 class OrderCompleteFragment : Fragment(){
 
     private val activityViewModel: MainActivityViewModel by activityViewModels()
+    private val oViewModel: OrderViewModel by viewModels()
 
     private lateinit var mainActivity: MainActivity
     private lateinit var binding: FragmentOrderCompleteBinding
@@ -57,10 +59,15 @@ class OrderCompleteFragment : Fragment(){
         binding.fragment = this
         binding.totalDto = activityViewModel.totalCart
         binding.totalPayTextView.text = activityViewModel.currentPayMoney.toString()
+        binding.orderNumberTextView.text = "주문번호 ${activityViewModel.orderId}\n결제가 완료되었습니다."
     }
 
     override fun onDestroy() {
         super.onDestroy()
         mainActivity.hideBottomNav(false)
+    }
+
+    fun onButtonClickListener(view: View) {
+        mainActivity.navController.navigate(R.id.action_orderCompleteFragment_to_orderFragment)
     }
 }

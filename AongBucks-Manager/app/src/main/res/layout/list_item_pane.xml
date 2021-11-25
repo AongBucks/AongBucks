@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/margin_size_10"
         android:onClick="@{activity::onPaneClickListener}"
+        android:background="?attr/selectableItemBackground"
         app:backColor="@{menuDto.selected}">
 
         <androidx.appcompat.widget.AppCompatImageView

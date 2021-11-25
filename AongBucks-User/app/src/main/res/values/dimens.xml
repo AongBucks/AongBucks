@@ -59,6 +59,7 @@
     <dimen name="item_title_text_size">20sp</dimen>
     <dimen name="text_card_size">16sp</dimen>
     <dimen name="text_default_size">16sp</dimen>
+    <dimen name="text_small_size">12sp</dimen>
 
     <dimen name="cardview_elevation_large_size">15dp</dimen>
     <dimen name="cardview_elevation_size">8dp</dimen>

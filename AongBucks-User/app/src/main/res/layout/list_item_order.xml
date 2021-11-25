@@ -19,6 +19,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical"
+            android:background="?attr/selectableItemBackground"
             android:padding="@dimen/margin_size_10">
 
             <androidx.cardview.widget.CardView

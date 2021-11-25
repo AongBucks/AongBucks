@@ -106,7 +106,7 @@
             android:layout_width="@dimen/complete_button_width_size"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/bg_button"
+            android:background="@drawable/ripple_complete"
             android:text="@string/order_detail_complete"
             android:textColor="@color/white"
             android:textSize="@dimen/default_text_size"

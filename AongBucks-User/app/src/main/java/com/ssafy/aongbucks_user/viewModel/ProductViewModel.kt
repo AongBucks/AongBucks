@@ -27,7 +27,7 @@ class ProductViewModel : ViewModel() {
             if (response.isSuccessful) {
                 if (response.body() != null) {
                     _products.postValue(response.body())
-                    Log.d(TAG, "getProductList: ${_products.value}")
+                    Log.d(TAG, "getProductList: ${_products.value?.size}")
                 }
             } else {
                 Log.d(TAG, "getProductList: ${response.code()}")
@@ -52,7 +52,7 @@ class ProductViewModel : ViewModel() {
             if (response.isSuccessful) {
                 if (response.body() != null) {
                     _favorites.postValue(response.body())
-                    Log.d(TAG, "getFavoriteProductList: ${_favorites.value}")
+                    Log.d(TAG, "getFavoriteProductList: ${_favorites.value?.size}")
                 }
             } else {
                 Log.d(TAG, "getFavoriteProductList: ${response.code()}")
