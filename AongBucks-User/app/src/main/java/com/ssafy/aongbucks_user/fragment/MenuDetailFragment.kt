@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
@@ -50,6 +51,7 @@ class MenuDetailFragment : Fragment() {
 
     private lateinit var user : User
     private var productId = 0
+    private var isFavorite = 0
     private var menuCnt = 1
     private var menuPrice = 0
 
@@ -119,25 +121,24 @@ class MenuDetailFragment : Fragment() {
 
         binding.favoriteBtn.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener{
             override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
-                when (isChecked) {
-                    true -> { // 즐겨찾기에 추가
-                        fViewModel.addFavorite(user.id, productId)
-                        fViewModel.added.observe(viewLifecycleOwner, { added ->
-                            if (added) {
-                                binding.favoriteBtn.isChecked = true
-                                Toast.makeText(requireContext(), R.string.favorite_added, Toast.LENGTH_SHORT).show()
-                            }
-                        })
-                    }
-                    false -> { // 즐겨찾기에서 제거
-                        fViewModel.delFavorite(user.id, productId)
-                        fViewModel.deleted.observe(viewLifecycleOwner, { deleted ->
-                            if (deleted) {
-                                binding.favoriteBtn.isChecked = false
-                                Toast.makeText(requireContext(), R.string.favorite_deleted, Toast.LENGTH_SHORT).show()
-                            }
-                        })
-                    }
+                if (isChecked && isFavorite == 0) { // 즐겨찾기에 추가
+                    fViewModel.addFavorite(user.id, productId)
+                    fViewModel.added.observe(viewLifecycleOwner, { added ->
+                        if (added) {
+                            binding.favoriteBtn.isChecked = true
+                            isFavorite = 1
+                            Toast.makeText(requireContext(), R.string.favorite_added, Toast.LENGTH_SHORT).show()
+                        }
+                    })
+                } else if (!isChecked && isFavorite != 0) { // 즐겨찾기에서 제거
+                    fViewModel.delFavorite(user.id, productId)
+                    fViewModel.deleted.observe(viewLifecycleOwner, { deleted ->
+                        if (deleted) {
+                            binding.favoriteBtn.isChecked = false
+                            isFavorite = 0
+                            Toast.makeText(requireContext(), R.string.favorite_deleted, Toast.LENGTH_SHORT).show()
+                        }
+                    })
                 }
             }
         })
@@ -149,7 +150,8 @@ class MenuDetailFragment : Fragment() {
             val menuWithComments = pViewModel.productWithComments.value as List<MenuDetailWithCommentResponse>
             val menu = menuWithComments[0]
             menuPrice = menu.productPrice
-            Log.d(TAG, "onViewCreated: $menu")
+            Log.d(TAG, "onViewCreated menuDetail: $menu")
+            isFavorite = menu.isFavorite
 
             binding.menu = menu
             if (menuWithComments[0].productCommentTotalCnt > 0) {
