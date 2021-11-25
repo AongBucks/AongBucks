@@ -57,8 +57,7 @@
         tools:layout="@layout/fragment_pay" >
         <action
             android:id="@+id/action_payFragment_to_orderCompleteFragment"
-            app:destination="@id/orderCompleteFragment"
-            app:popUpTo="@id/orderCompleteFragment"/>
+            app:destination="@id/orderCompleteFragment" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
@@ -73,7 +72,11 @@
         android:id="@+id/orderCompleteFragment"
         android:name="com.ssafy.aongbucks_user.fragment.OrderCompleteFragment"
         android:label="fragment_order_complete"
-        tools:layout="@layout/fragment_order_complete" />
+        tools:layout="@layout/fragment_order_complete" >
+        <action
+            android:id="@+id/action_orderCompleteFragment_to_orderFragment"
+            app:destination="@id/orderFragment" />
+    </fragment>
     <fragment
         android:id="@+id/joinFragment"
         android:name="com.ssafy.aongbucks_user.fragment.JoinFragment"

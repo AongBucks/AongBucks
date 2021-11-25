@@ -23,7 +23,6 @@ import com.ssafy.aongbucks_user.model.dto.User
 import com.ssafy.aongbucks_user.viewModel.GradeViewModel
 import com.ssafy.aongbucks_user.viewModel.MainActivityViewModel
 import com.ssafy.aongbucks_user.viewModel.OrderViewModel
-import com.ssafy.aongbucks_user.viewModel.PayViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -83,7 +82,7 @@ class CartFragment : Fragment(){
         cartListAdapter.cartList = activityViewModel.shoppingCart
         cartListAdapter.notifyDataSetChanged()
 
-        if (activityViewModel.getCartSize() == 0) {
+        if (activityViewModel.getCartQuantitySize() == 0) {
             binding.emptyText.visibility = View.VISIBLE
         } else {
             binding.emptyText.visibility = View.GONE
@@ -112,20 +111,19 @@ class CartFragment : Fragment(){
     }
 
     fun onOrderClickListener(view: View) {
-        if (activityViewModel.getCartSize() == 0) {
+        if (activityViewModel.getCartQuantitySize() == 0) {
             Toast.makeText(context,"주문할 상품이 없습니다.", Toast.LENGTH_SHORT).show()
             return
         }
 
         // order confirm
-        completedOrder("pick-up")
+        setOrder("pick-up")
 
-        // navigate to order complete fragment
+        // 결제하기
         mainActivity.navController.navigate(R.id.action_cartFragment_to_payFragment)
-        // TODO: 2021-11-24 백스택 안 남기기! (pay 에도)
     }
 
-    private fun completedOrder(orderTable: String){
+    private fun setOrder(orderTable: String) {
         // 유저
         var user = ApplicationClass.sharedPreferencesUtil.getUser()
 
@@ -133,19 +131,8 @@ class CartFragment : Fragment(){
         val nowDate = Date(System.currentTimeMillis())
         val now = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX").format(nowDate)
 
-
-        val order = Order(user.id, orderTable, now).apply {
-            totalQnanty = activityViewModel.getCartSize()
-            totalPrice = activityViewModel.getTotalPrice()
-            topProductName = activityViewModel.shoppingCart[0].menuName
-            topImg = activityViewModel.shoppingCart[0].menuImg
-        }
-        activityViewModel.makeDetail(order) // order detail 설정
-
-        // TODO: 2021-11-25 결제후에 되어야 하는데 좀 이상허다... cart -> pay -> cart(완료) -> complete 이렇게 되어야 할 듯
-        oViewModel.makeOrder(order)
-        activityViewModel.shoppingCart.clear()
-        Log.d(TAG, "completedOrder: ")
+        val order = Order(user.id, orderTable, now)
+        activityViewModel.setFinalCart(order) // order detail 설정
     }
 
     override fun onDestroy() {

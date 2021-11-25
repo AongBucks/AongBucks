@@ -23,6 +23,7 @@ import com.ssafy.aongbucks_user.databinding.FragmentPayBinding
 import com.ssafy.aongbucks_user.model.dto.User
 import com.ssafy.aongbucks_user.util.CommonUtils
 import com.ssafy.aongbucks_user.viewModel.MainActivityViewModel
+import com.ssafy.aongbucks_user.viewModel.OrderViewModel
 import com.ssafy.aongbucks_user.viewModel.PayViewModel
 
 private const val TAG = "PayFragment_싸피"
@@ -30,6 +31,7 @@ class PayFragment : Fragment(){
 
     private val activityViewModel: MainActivityViewModel by activityViewModels()
     private val payViewModel: PayViewModel by viewModels()
+    private val oViewModel: OrderViewModel by viewModels()
 
     private lateinit var mainActivity: MainActivity
     private lateinit var binding:FragmentPayBinding
@@ -162,18 +164,39 @@ class PayFragment : Fragment(){
     }
 
     fun doPay(view: View) {
-        if (activityViewModel.totalCart == null) {
+        if (activityViewModel.totalCart == null || activityViewModel.finalShoppingCart == null) {
             Toast.makeText(mainActivity, "결제할 상품이 없습니다.", Toast.LENGTH_SHORT).show()
         } else {
-            if(payViewModel.minusMoney(activityViewModel.totalCart!!.resultPrice)) {
-                payViewModel.plusMoney(activityViewModel.totalCart!!.reserve)
-
+            if(payViewModel.minusMoney(activityViewModel.totalCart!!.resultPrice)) { // 상품 금액 차감
+                payViewModel.plusMoney(activityViewModel.totalCart!!.reserve) // 적립급
                 Toast.makeText(mainActivity, "${activityViewModel.totalCart!!.reserve}원이 적립되었습니다.", Toast.LENGTH_SHORT).show()
 
-                payViewModel.userPay.value?.let { activityViewModel.initPayMoney(it.price) }
+                payViewModel.userPay.value?.let { activityViewModel.initPayMoney(it.price) } // 현재 상태에 반영
 
-                mainActivity.navController.navigate(R.id.action_payFragment_to_orderCompleteFragment)
-                Log.d(TAG, "doPay: 결제완료")
+                // 주문 접수
+                var dialogBinding : DialogProgressBinding =
+                    DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_progress, null, false)
+                dialogBinding.progressText.text = "주문을 접수하고 있어옹"
+
+                dialog.apply {
+                    setContentView(dialogBinding.root)
+                    window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT)) // 배경 둥글게 하기 위함
+                    setCancelable(false)
+
+                    oViewModel.makeOrder(activityViewModel.finalShoppingCart!!)
+
+                    show()
+                }
+                Log.d(TAG, "doPay: ${activityViewModel.finalShoppingCart}")
+
+                oViewModel.orderId.observe(viewLifecycleOwner, {
+                    activityViewModel.completeOrder(it)
+                    dialog.cancel()
+                    activityViewModel.shoppingCart.clear() // 장바구니 비우기
+                    mainActivity.navController.navigate(R.id.action_payFragment_to_orderCompleteFragment)
+                    Log.d(TAG, "doPay: 결제완료")
+                })
+
             } else {
                 Toast.makeText(mainActivity, "잔액이 부족합니다.", Toast.LENGTH_SHORT).show()
             }

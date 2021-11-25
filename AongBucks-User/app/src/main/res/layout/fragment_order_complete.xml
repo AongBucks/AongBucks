@@ -134,9 +134,10 @@
             android:id="@+id/button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_outlined"
+            android:background="@drawable/ripple_order_complete"
             android:text="돌아가기"
             android:textColor="@color/starbucks_green"
+            android:onClick="@{fragment::onButtonClickListener}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

@@ -45,9 +45,8 @@ class MainActivityViewModel: ViewModel() {
         currentPayMoney = price
     }
 
-
     /**
-     * Shopping Cart
+     * Membership
      */
     var discountByGrade: Float = 0.0f
         private set
@@ -56,6 +55,14 @@ class MainActivityViewModel: ViewModel() {
         discountByGrade = discount
     }
 
+    /**
+     * Shopping Cart
+     */
+    // 최종 쇼핑 카트 (-> 주문 예정)
+    var finalShoppingCart: Order? = null
+        private set
+
+    // 전체 금액 저장
     var totalCart : TotalCart? = null
         private set
 
@@ -67,6 +74,15 @@ class MainActivityViewModel: ViewModel() {
         )
     }
 
+    // 주문 번호
+    var orderId: Int = -1
+        private set
+
+    fun completeOrder(id: Int) {
+        orderId = id
+    }
+
+    // 장바구니
     var shoppingCart = mutableListOf<ShoppingCart>()
         private set
 
@@ -115,7 +131,7 @@ class MainActivityViewModel: ViewModel() {
         return price
     }
 
-    fun getCartSize(): Int {
+    fun getCartQuantitySize(): Int {
         var total = 0
 
         val size = shoppingCart.size
@@ -127,11 +143,21 @@ class MainActivityViewModel: ViewModel() {
         return total
     }
 
-    fun makeDetail(order: Order) {
+    fun setFinalCart(order: Order) {
         val size = shoppingCart.size
 
-        for (i in 0 until size) {
-            order.details.add(OrderDetail(order.id, shoppingCart[i].menuId, shoppingCart[i].menuCnt))
+        order.apply {
+            totalQuantity = getCartQuantitySize()
+            totalPrice = getTotalPrice()
+            topProductName = shoppingCart[0].menuName
+            topImg = shoppingCart[0].menuImg
+
+            // detail
+            for (i in 0 until size) {
+                details.add(OrderDetail(order.id, shoppingCart[i].menuId, shoppingCart[i].menuCnt))
+            }
         }
+
+        finalShoppingCart = order
     }
 }

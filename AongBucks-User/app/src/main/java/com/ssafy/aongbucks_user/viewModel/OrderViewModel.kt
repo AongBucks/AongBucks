@@ -18,6 +18,7 @@ class OrderViewModel : ViewModel() {
     /**
      * 주문 추가
      */
+
     private val _orderId = MutableLiveData<Int>()
     val orderId : LiveData<Int>
         get() = _orderId
@@ -35,7 +36,8 @@ class OrderViewModel : ViewModel() {
         }
     }
 
-    fun makeOrder(order : Order) {
+    fun makeOrder(order: Order) {
+        Log.d(TAG, "makeOrder: ${order}")
         addOrder(order)
     }
 
