@@ -2,6 +2,7 @@ package com.ssafy.aongbucks_user.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +22,7 @@ import com.ssafy.aongbucks_user.model.response.LatestOrderResponse
 import com.ssafy.aongbucks_user.viewModel.OrderViewModel
 import com.ssafy.aongbucks_user.viewModel.UserViewModel
 
+private const val TAG = "MyPageFragment_싸피"
 class MyPageFragment : Fragment() {
     private lateinit var binding : FragmentMyPageBinding
     private lateinit var mainActivity : MainActivity

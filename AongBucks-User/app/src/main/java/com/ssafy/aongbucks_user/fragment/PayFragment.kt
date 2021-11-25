@@ -173,6 +173,7 @@ class PayFragment : Fragment(){
                 payViewModel.userPay.value?.let { activityViewModel.initPayMoney(it.price) }
 
                 mainActivity.navController.navigate(R.id.action_payFragment_to_orderCompleteFragment)
+                Log.d(TAG, "doPay: 결제완료")
             } else {
                 Toast.makeText(mainActivity, "잔액이 부족합니다.", Toast.LENGTH_SHORT).show()
             }

@@ -142,17 +142,10 @@ class CartFragment : Fragment(){
         }
         activityViewModel.makeDetail(order) // order detail 설정
 
+        // TODO: 2021-11-25 결제후에 되어야 하는데 좀 이상허다... cart -> pay -> cart(완료) -> complete 이렇게 되어야 할 듯
         oViewModel.makeOrder(order)
         activityViewModel.shoppingCart.clear()
-
-        Toast.makeText(context, "테이블 : ${orderTable}", Toast.LENGTH_SHORT).show()
-    }
-
-    /**
-     * 애옹페이로 지불하기
-     */
-    private fun pay(price: Int) {
-
+        Log.d(TAG, "completedOrder: ")
     }
 
     override fun onDestroy() {

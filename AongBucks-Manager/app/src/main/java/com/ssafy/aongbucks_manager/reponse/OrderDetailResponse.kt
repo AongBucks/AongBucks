@@ -11,9 +11,9 @@ data class OrderDetailResponse(
     @SerializedName("quantity") val quantity: Int,
     @SerializedName("p_id") val productId: Int,
     @SerializedName("name") val productName: String,
-    @SerializedName("unitprice") val unitPrice: Int,
+    @SerializedName("unit_price") val unitPrice: Int,
     @SerializedName("img") val img: String,
     @SerializedName("stamp") val stampCount: Int,
-    @SerializedName("totalprice") val totalPrice: Int,
+    @SerializedName("total_price") val totalPrice: Int,
     @SerializedName("type") val productType: String
 )
