@@ -6,15 +6,26 @@
     android:layout_height="match_parent"
     android:background="@color/house_green"
     tools:context=".activity.SplashActivity">
-    <ImageView
-        android:id="@+id/imageView3"
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="@dimen/cardview_radius_size"
         android:layout_width="@dimen/splash_logo_size"
         android:layout_height="@dimen/splash_logo_size"
-        app:tint="@color/white"
+        android:backgroundTint="@color/accent_green"
+        android:padding="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/aongbucks_inverse" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="false"
+            app:lottie_rawRes="@raw/lottie_logo" />
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

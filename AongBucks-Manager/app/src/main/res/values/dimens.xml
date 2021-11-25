@@ -30,6 +30,8 @@
 
     <dimen name="max_text_width">300dp</dimen>
 
+    <dimen name="cardview_radius_size">100dp</dimen>
+
     <!-- margin size -->
     <dimen name="margin_size_40">40dp</dimen>
     <dimen name="margin_size_36">36dp</dimen>
@@ -51,5 +53,5 @@
 
     <!-- etc size -->
     <dimen name="title_line_spacing_extra">10dp</dimen>
-    <dimen name="splash_logo_size">150dp</dimen>
+    <dimen name="splash_logo_size">200dp</dimen>
 </resources>
