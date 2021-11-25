@@ -11,6 +11,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="?attr/selectableItemBackground"
         android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
@@ -72,8 +73,8 @@
             android:layout_width="50dp"
             android:layout_height="30dp"
             android:layout_marginEnd="10dp"
-            android:background="@drawable/button_outlined"
-            android:text="@string/add_cart"
+            android:background="@drawable/ripple_outlined"
+            android:text="@string/add_cart_favorite"
             android:textColor="@color/accent_green"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

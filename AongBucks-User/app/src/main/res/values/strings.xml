@@ -29,7 +29,8 @@
 
     <string name="total_menu">전체 메뉴</string>
 
-    <string name="add_cart">담기</string>
+    <string name="add_cart">장바구니</string>
+    <string name="add_cart_favorite">담기</string>
 
     <string name="rating">평점</string>
     <string name="comment_deleted">평점이 삭제되었습니다.</string>

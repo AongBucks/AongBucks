@@ -234,15 +234,15 @@
                     android:textOff=""
                     android:textOn="" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/addCartBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/button_outlined"
+                    android:background="@drawable/ripple_outlined"
                     android:text="@string/add_cart"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/starbucks_green" />
             </LinearLayout>
 
         </LinearLayout>
