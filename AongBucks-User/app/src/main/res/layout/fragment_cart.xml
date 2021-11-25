@@ -145,7 +145,7 @@
             android:id="@+id/button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_regular"
+            android:background="@drawable/ripple_regular"
             android:text="주문하기"
             android:textColor="@color/white"
             android:onClick="@{fragment::onOrderClickListener}"
