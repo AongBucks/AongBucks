@@ -14,7 +14,7 @@ data class LatestOrderResponse(
     @SerializedName("o_id") val orderId: Int,
     @SerializedName("name") val productName: String,
     @SerializedName("order_time") val orderDate: Date,
-    @SerializedName("completed") var orderCompleted: Char = 'N',
+    @SerializedName("completed") var orderCompleted: Char,
     @SerializedName("price") val productPrice: Int,
     @SerializedName("type") val type: String,
     @SerializedName("id") val productId: Int,

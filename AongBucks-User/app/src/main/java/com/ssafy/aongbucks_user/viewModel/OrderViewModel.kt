@@ -75,6 +75,7 @@ class OrderViewModel : ViewModel() {
             val response = RetrofitClient.orderService.getLastMonthOrder(userId)
             if (response.isSuccessful) {
                 if (response.body() != null) {
+                    Log.d(TAG, "getLatestOrder: ${response.body()}")
                     _latestOrders.postValue(response.body())
                 }
             } else {
