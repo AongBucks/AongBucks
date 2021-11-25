@@ -85,15 +85,15 @@
 	<!-- 최근 1개월 주문 내역 -->
 	<select id="getLastMonthOrder" parameterType="string" resultType="map">
 		select o.o_id, o.user_id, o.order_time, s.quantity, o.completed, s.total_price, s.name, s.img
-		from t_order o  
-			join (select d.order_id, sum(quantity) quantity, sum(quantity*price) total_price, img, p.name
-					from t_order_detail d join t_product p 
-					on d.product_id = p.id
-					group by d.order_id
-					order by order_id) s 
-			on o.o_id = s.order_id
-		where user_id=#{id} and order_time > date_add(now(), interval - 1 month)
-		order by order_time desc;
+			from t_order o  
+				join (select d.order_id, sum(quantity) quantity, sum(quantity*price) total_price, img, p.name
+						from t_order_detail d join t_product p 
+						on d.product_id = p.id
+						group by d.order_id
+						order by order_id) s 
+				on o.o_id = s.order_id
+			where user_id=#{id} and order_time > date_add(now(), interval - 1 month)
+			order by order_time desc;
 	</select>
 
 	<select id="selectAllOrderInfo" resultType="map">
