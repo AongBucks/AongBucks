@@ -131,7 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="@drawable/button_outlined"
+            android:background="@drawable/ripple_outlined"
             android:fontFamily="@font/santana_bold"
             android:text="@string/join"
             android:textColor="@color/accent_green" />
