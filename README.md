@@ -66,3 +66,8 @@
 |--|--|--|
 |[![Image from Gyazo](https://i.gyazo.com/153ccc9798e2064283305e9b28613cb2.gif)](https://gyazo.com/153ccc9798e2064283305e9b28613cb2)|[![Image from Gyazo](https://i.gyazo.com/a0bc5327a97001bcfa9cde6816d4fc86.gif)](https://gyazo.com/a0bc5327a97001bcfa9cde6816d4fc86)|[![Image from Gyazo](https://i.gyazo.com/3afdf04b24aa527bac2e3eadb1e7bca8.gif)](https://gyazo.com/3afdf04b24aa527bac2e3eadb1e7bca8)|
 
+<br>
+<br>
+
+# 🗃 DB 설계
+<img src="https://user-images.githubusercontent.com/37680108/147855965-d6599a0f-4697-4967-bfe1-e991e9f9a03b.png" width="500">
